@@ -1,0 +1,97 @@
+{
+  "retrieved": "2026-11-11",
+  "source": "OpenStreetMap vía Nominatim: búsqueda museo Lima Peru",
+  "license": "ODbL 1.0",
+  "places": [
+    {
+      "id": 1,
+      "name": "Museo de Arte de Lima",
+      "short": "MALI",
+      "district": "Centro",
+      "lat": -12.0604622,
+      "lon": -77.0370039,
+      "source": "https://www.openstreetmap.org/way/40301549"
+    },
+    {
+      "id": 2,
+      "name": "Museo Larco",
+      "short": "Larco",
+      "district": "Pueblo Libre",
+      "lat": -12.0727847,
+      "lon": -77.0709002,
+      "source": "https://www.openstreetmap.org/way/387071625"
+    },
+    {
+      "id": 3,
+      "name": "Museo Nacional de Arqueología, Antropología e Historia del Perú",
+      "short": "MNAAHP",
+      "district": "Pueblo Libre",
+      "lat": -12.0773665,
+      "lon": -77.0622797,
+      "source": "https://www.openstreetmap.org/node/1932068207"
+    },
+    {
+      "id": 4,
+      "name": "Museo de Arte Italiano",
+      "short": "Arte Italiano",
+      "district": "Centro",
+      "lat": -12.0585022,
+      "lon": -77.0367796,
+      "source": "https://www.openstreetmap.org/way/172742395"
+    },
+    {
+      "id": 5,
+      "name": "Museo Metropolitano de Lima",
+      "short": "Metropolitano",
+      "district": "Centro",
+      "lat": -12.0635144,
+      "lon": -77.0370197,
+      "source": "https://www.openstreetmap.org/way/174868391"
+    },
+    {
+      "id": 6,
+      "name": "Museo de Historia Natural (UNMSM)",
+      "short": "Historia Natural",
+      "district": "Jesús María",
+      "lat": -12.077446,
+      "lon": -77.037117,
+      "source": "https://www.openstreetmap.org/way/396425043"
+    },
+    {
+      "id": 7,
+      "name": "Museo Central",
+      "short": "MUCEN",
+      "district": "Centro",
+      "lat": -12.0481131,
+      "lon": -77.0301428,
+      "source": "https://www.openstreetmap.org/way/406645554"
+    },
+    {
+      "id": 8,
+      "name": "Museo de Arte Contemporaneo de Lima",
+      "short": "MAC Lima",
+      "district": "Barranco",
+      "lat": -12.1367297,
+      "lon": -77.0232736,
+      "source": "https://www.openstreetmap.org/way/261982317"
+    },
+    {
+      "id": 9,
+      "name": "Museo de La Electricidad",
+      "short": "Electricidad",
+      "district": "Barranco",
+      "lat": -12.1504015,
+      "lon": -77.0217254,
+      "source": "https://www.openstreetmap.org/way/436605096"
+    },
+    {
+      "id": 10,
+      "name": "Museo Pedro de Osma",
+      "short": "Pedro de Osma",
+      "district": "Barranco",
+      "lat": -12.1546379,
+      "lon": -77.0226424,
+      "source": "https://www.openstreetmap.org/way/383861976"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+id,name,short,district,lat,lon,source
+1,Museo de Arte de Lima,MALI,Centro,-12.0604622,-77.0370039,https://www.openstreetmap.org/way/40301549
+2,Museo Larco,Larco,Pueblo Libre,-12.0727847,-77.0709002,https://www.openstreetmap.org/way/387071625
+3,"Museo Nacional de Arqueología, Antropología e Historia del Perú",MNAAHP,Pueblo Libre,-12.0773665,-77.0622797,https://www.openstreetmap.org/node/1932068207
+4,Museo de Arte Italiano,Arte Italiano,Centro,-12.0585022,-77.0367796,https://www.openstreetmap.org/way/172742395
+5,Museo Metropolitano de Lima,Metropolitano,Centro,-12.0635144,-77.0370197,https://www.openstreetmap.org/way/174868391
+6,Museo de Historia Natural (UNMSM),Historia Natural,Jesús María,-12.077446,-77.037117,https://www.openstreetmap.org/way/396425043
+7,Museo Central,MUCEN,Centro,-12.0481131,-77.0301428,https://www.openstreetmap.org/way/406645554
+8,Museo de Arte Contemporaneo de Lima,MAC Lima,Barranco,-12.1367297,-77.0232736,https://www.openstreetmap.org/way/261982317
+9,Museo de La Electricidad,Electricidad,Barranco,-12.1504015,-77.0217254,https://www.openstreetmap.org/way/436605096
+10,Museo Pedro de Osma,Pedro de Osma,Barranco,-12.1546379,-77.0226424,https://www.openstreetmap.org/way/383861976

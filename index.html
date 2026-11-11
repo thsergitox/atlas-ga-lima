@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#204ed5">
+  <meta name="description" content="Una exposición visual del algoritmo genético de itinerarios: Python, COX, selección y mutación sobre diez museos de Lima.">
+  <title>Atlas GA · Diez museos, una ruta</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="src/presentation/styles.css">
+  <script defer src="assets/vendor/katex/katex.min.js"></script>
+  <script type="module" src="src/presentation/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#slide-title">Saltar a la diapositiva</a>
+  <header class="masthead">
+    <a class="brand" href="#problema" aria-label="Atlas GA, ir al inicio"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M5 27 13 9l10 16 8-20"/><circle cx="5" cy="27" r="3"/><circle cx="13" cy="9" r="3"/><circle cx="23" cy="25" r="3"/><circle cx="31" cy="5" r="3"/></svg><span>Atlas <strong>GA</strong></span></a>
+    <div class="presentation-name">Computación Evolutiva <span>Itinerarios en Lima</span></div>
+    <div class="header-actions"><button id="notes-button" class="quiet" aria-expanded="false" aria-controls="notes">Notas <kbd>N</kbd></button><button id="fullscreen" class="icon-button" aria-label="Entrar en pantalla completa" title="Pantalla completa (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button></div>
+  </header>
+  <main id="presentation" class="presentation">
+    <section class="lesson" aria-labelledby="slide-title">
+      <div class="lesson-copy">
+        <h1 id="slide-title" tabindex="-1">Diez museos.<br>¿En qué orden?</h1>
+        <p id="slide-lead" class="lead">Los mismos lugares. Miles de rutas posibles. Un algoritmo que aprende a combinarlas.</p>
+        <div id="lesson-detail"></div>
+      </div>
+      <div id="lesson-bottom"></div>
+    </section>
+    <section class="visual" aria-label="Demostración del itinerario">
+      <div class="map-caption"><span><span class="live-dot"></span><span id="map-title">Lima, Perú</span></span><button id="map-labels" class="map-label-toggle" aria-pressed="false">Nombres</button></div>
+      <div id="map" class="map-host"></div>
+      <div id="map-tooltip" class="map-tooltip" hidden></div>
+      <div id="stage" class="stage"></div>
+      <div class="map-credit"><span>Conexiones entre paradas · no trazado vial</span><span>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a></span></div>
+    </section>
+  </main>
+  <footer class="deck-controls">
+    <button id="contents-button" class="contents-button" aria-expanded="false" aria-controls="contents"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h5v5H4zm11 0h5v5h-5zM4 15h5v5H4zm11 0h5v5h-5z"/></svg><span>Diapositivas</span></button>
+    <nav id="timeline" class="timeline" aria-label="Pasos del algoritmo"></nav>
+    <div class="slide-position"><span id="slide-count">01 / 12</span><div class="arrow-controls"><button id="previous" class="icon-button" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><button id="next" class="icon-button next" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div></div>
+    <div id="progress" class="deck-progress"></div>
+  </footer>
+  <aside id="notes" class="notes-panel" hidden aria-labelledby="notes-title"><div class="drawer-heading"><h2 id="notes-title">Notas del expositor</h2><button id="close-notes" class="icon-button" aria-label="Cerrar notas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><h3 id="notes-slide"></h3><div id="notes-copy"></div><p class="notes-hint">Flechas: diapositiva · N: notas · F: pantalla completa · Esc: cerrar</p></aside>
+  <div id="contents" class="contents-panel" hidden><div class="drawer-heading"><h2>La exposición</h2><button id="close-contents" class="icon-button" aria-label="Cerrar índice"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><nav id="contents-list" aria-label="Índice de diapositivas"></nav></div>
+  <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+  <div id="load-error" class="load-error" hidden><h2>No se pudieron cargar los datos.</h2><p>Recarga la página para volver a intentarlo.</p><button onclick="location.reload()">Recargar</button></div>
+</body>
+</html>

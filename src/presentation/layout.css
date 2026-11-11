@@ -1,0 +1,65 @@
+.masthead{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;border-bottom:1px solid var(--line);background:var(--bg);gap:20px}
+.brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);font:600 25px Bricolage,serif;letter-spacing:-.025em}
+.brand strong{color:var(--blue);font-weight:600}
+.brand svg{width:33px;height:33px;stroke:var(--blue);fill:var(--bg);stroke-width:2}
+.presentation-name{display:flex;gap:28px;color:var(--muted);font-size:15px;align-items:center}
+.presentation-name span{padding-left:28px;border-left:1px solid var(--line)}
+.header-actions{display:flex;gap:14px;align-items:center}
+.presentation{display:grid;grid-template-columns:minmax(370px,.83fr) minmax(0,1.17fr);min-height:calc(100dvh - 162px);height:calc(100dvh - 162px);max-width:2000px;margin:auto}
+.lesson{padding:38px 38px 30px 48px;display:flex;flex-direction:column;justify-content:space-between;min-width:0;overflow-y:auto;gap:24px}
+.lesson-copy{max-width:66ch}
+.lead{font-size:clamp(17px,1.45vw,23px);line-height:1.5;color:#3b526c;margin-top:22px;max-width:43ch}
+.insight{font-size:15px;color:var(--muted);line-height:1.55;max-width:59ch;margin-top:18px}
+#lesson-bottom{min-width:0}
+.formula-panel{padding:18px 0 0;max-width:100%;overflow-x:auto;font-size:clamp(12px,1.14vw,17px);color:var(--blue)}
+.formula-panel .katex-display{margin:0;text-align:left}
+.formula-panel .katex-display>.katex{text-align:left}
+.hero-actions{display:flex;gap:22px;align-items:center;margin:34px 0}
+.hero-actions>span{font-size:14px;line-height:1.5;color:var(--muted)}
+.hero-fact{font:400 clamp(27px,3vw,44px) Bricolage,serif;letter-spacing:-.025em;color:var(--blue)}
+.hero-fact span{font:400 15px/1.5 Source,sans-serif;color:var(--muted);display:block;letter-spacing:0;margin-top:9px}
+.hero-reference{font-size:14px;display:flex;flex-direction:column;gap:5px;color:var(--muted)}
+.slide-problema h1{font-size:clamp(48px,5.15vw,88px);max-width:12ch;line-height:1.05}
+.slide-problema .lesson{padding-top:64px;padding-bottom:40px}
+.slide-problema .lead{max-width:31ch}
+.visual{position:relative;min-width:0;min-height:0;background:#edf1f5;display:flex;flex-direction:column;border-left:1px solid var(--line);overflow:hidden}
+.map-caption{display:flex;align-items:center;justify-content:space-between;position:absolute;top:20px;left:28px;right:28px;z-index:2;font-size:14px;color:#3b526c}
+.map-caption>span{display:flex;gap:9px;align-items:center}
+.live-dot{height:7px;width:7px;border-radius:50%;background:var(--blue)}
+.stage{position:relative;z-index:2;margin:0 24px 28px;flex-shrink:0;font-size:14px;max-height:61%;overflow-y:auto}
+.stage>div{background:var(--white);padding:18px 22px;border-radius:12px}
+.map-credit{position:absolute;bottom:6px;left:25px;right:25px;display:flex;justify-content:space-between;gap:10px;font-size:10px;z-index:3;color:#526579}
+.map-credit a{color:inherit}
+.deck-controls{height:84px;border-top:1px solid var(--line);display:flex;gap:28px;align-items:center;justify-content:space-between;padding:0 36px;background:var(--bg);position:relative}
+.deck-progress{height:3px;background:var(--blue);position:absolute;bottom:0;left:0;transition:width .5s var(--ease)}
+.timeline{display:flex;align-items:center;justify-content:space-between;flex:1;min-width:0;gap:3px;max-width:960px}
+.timeline button{position:relative;padding:10px 5px;min-width:32px;color:var(--muted);border:0;background:none;font-size:12px;display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums}
+.timeline button>span:first-child{padding:3px 0;min-width:24px;border-bottom:2px solid var(--line)}
+.timeline button.active{color:var(--blue)}
+.timeline button.active>span:first-child{border-color:var(--blue);font-weight:600}
+.timeline-label{display:none;white-space:nowrap}
+.timeline .active .timeline-label{display:inline}
+.slide-position{display:flex;align-items:center;gap:24px;flex-shrink:0}
+#slide-count{font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.arrow-controls{display:flex;gap:9px}
+.code-panel{background:var(--deep);color:#f2f6ff;border-radius:10px;overflow:hidden;font-size:13px;line-height:1.65}
+.code-header{padding:10px 16px;border-bottom:1px solid #39506d;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;color:#c6d5ed}
+.code-header>span{display:flex;gap:8px;align-items:center}
+.code-header svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.7}
+.code-header a{color:#c6d5ed;text-decoration:none}
+pre{margin:0;overflow-x:auto;padding:15px 16px;font:12px/1.65 ui-monospace,'SFMono-Regular',Consolas,monospace;tab-size:4}
+.code-line{display:flex;min-height:1.65em}
+.line-number{width:27px;flex-shrink:0;color:#8fa8cd;user-select:none;font-size:10px}
+.code-comment{color:#a4bbd9}
+.notes-panel,.contents-panel{position:fixed;z-index:50;background:var(--white);box-shadow:-12px 8px 40px #172c4324;overflow-y:auto}
+.notes-panel{right:0;top:0;bottom:0;width:min(460px,100%);padding:30px}
+.drawer-heading{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:30px}
+.notes-panel h3{color:var(--blue);margin-bottom:20px}
+#notes-copy p{font-size:17px;line-height:1.7;margin-bottom:15px}
+.notes-hint{border-top:1px solid var(--line);margin-top:24px;padding-top:18px;color:var(--muted);font-size:13px}
+.contents-panel{bottom:84px;left:20px;width:min(430px,calc(100% - 40px));max-height:calc(100dvh - 130px);border-radius:12px;padding:24px}
+#contents-list{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+#contents-list button{border:0;background:none;text-align:left;padding:12px 8px;display:flex;gap:12px;border-radius:6px;color:var(--ink);font-size:15px}
+#contents-list button>span{color:var(--muted);font-variant-numeric:tabular-nums;font-size:12px;align-self:center}
+#contents-list button.active{background:var(--tint);color:var(--blue)}
+.load-error{position:fixed;inset:20%;background:white;padding:40px;z-index:100;border:1px solid var(--line)}

@@ -1,0 +1,9 @@
+.git
+.env*
+.vercel
+.impeccable
+python
+docs
+PRODUCT.md
+DESIGN.md
+README.md

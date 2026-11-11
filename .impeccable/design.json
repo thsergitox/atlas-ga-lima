@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-11T23:43:03.104692+00:00",
+  "title": "Design System: Atlas GA · Lima",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Azul cobalto"
+      },
+      "deep": {
+        "role": "primary",
+        "displayName": "Azul profundo"
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Oro de operación"
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "Verde de resultado"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta"
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Texto secundario"
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Fondo frío"
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Blanco"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Línea fría"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Titular",
+        "purpose": "Títulos de diapositiva."
+      },
+      "body": {
+        "displayName": "Lectura",
+        "purpose": "Explicación y contenido general."
+      },
+      "code": {
+        "displayName": "Código",
+        "purpose": "Fragmentos de implementación con números de línea."
+      }
+    },
+    "shadows": [
+      {
+        "name": "drawer",
+        "value": "-12px 8px 40px #172c4324",
+        "purpose": "Notas e índice flotantes."
+      },
+      {
+        "name": "museum-tooltip",
+        "value": "0 5px 18px #172c431a",
+        "purpose": "Detalle flotante del museo."
+      },
+      {
+        "name": "active-route-filter",
+        "value": "drop-shadow(0 3px 3px #204ed51c)",
+        "purpose": "Filtro SVG de la ruta activa."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Curva del progreso de diapositivas."
+      },
+      {
+        "name": "button-state",
+        "value": "background .2s, color .2s",
+        "purpose": "Cambios de estado de botones."
+      },
+      {
+        "name": "deck-progress",
+        "value": "width .5s cubic-bezier(.16,1,.3,1)",
+        "purpose": "Avance de la línea inferior."
+      },
+      {
+        "name": "marker-state",
+        "value": "fill .3s, stroke .3s",
+        "purpose": "Estados de marcadores SVG."
+      },
+      {
+        "name": "reduced-motion",
+        "value": ".01ms",
+        "purpose": "Duración de animaciones y transiciones con prefers-reduced-motion: reduce; una iteración."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide-min",
+        "value": "1550px"
+      },
+      {
+        "name": "compact-desktop-max",
+        "value": "1100px"
+      },
+      {
+        "name": "stacked-max",
+        "value": "900px"
+      },
+      {
+        "name": "mobile-max",
+        "value": "520px"
+      },
+      {
+        "name": "short-desktop-height-max",
+        "value": "760px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Acción principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción que ejecuta el paso o inicia la exposición.",
+      "html": "<button class=\"ds-primary\">Comenzar exposición</button>",
+      "css": ".ds-primary{font-family:Source,'Segoe UI',sans-serif;border:0;display:inline-flex;justify-content:center;align-items:center;gap:12px;padding:14px 20px;font-weight:600;font-size:16px;line-height:1.5;min-height:48px;border-radius:7px;cursor:pointer;transition:background .2s,color .2s;background:var(--blue);color:white}.ds-primary:hover{background:#173fae}.ds-primary:focus-visible{outline:3px solid var(--gold);outline-offset:4px}.ds-primary:disabled{cursor:default;opacity:.4}"
+    },
+    {
+      "name": "Acción secundaria",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Acción complementaria en el panel de operación.",
+      "html": "<button class=\"ds-secondary\">Ver matriz</button>",
+      "css": ".ds-secondary{font-family:Source,'Segoe UI',sans-serif;border:0;display:inline-flex;justify-content:center;align-items:center;gap:12px;padding:14px 20px;font-weight:600;font-size:16px;line-height:1.5;min-height:48px;border-radius:7px;cursor:pointer;transition:background .2s,color .2s;background:var(--tint);color:var(--blue)}.ds-secondary:hover{background:#dce6fc}.ds-secondary:focus-visible{outline:3px solid var(--gold);outline-offset:4px}.ds-secondary:disabled{cursor:default;opacity:.4}"
+    },
+    {
+      "name": "Botón de icono",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "Navegación por flechas y controles compactos.",
+      "html": "<button class=\"ds-icon\" aria-label=\"Siguiente\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m9 6 6 6-6 6\"/></svg></button>",
+      "css": ".ds-icon{width:42px;height:42px;display:grid;place-items:center;background:none;border:1px solid var(--line);color:var(--ink);border-radius:7px;cursor:pointer;transition:background .2s,color .2s}.ds-icon svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}.ds-icon:hover{background:var(--tint)}.ds-icon:focus-visible{outline:3px solid var(--gold);outline-offset:4px}"
+    },
+    {
+      "name": "Selección",
+      "kind": "input",
+      "refersTo": "field-select",
+      "description": "Campo nativo para elegir registros o parámetros.",
+      "html": "<select class=\"ds-select\" aria-label=\"Museo\"><option>MALI</option><option>Museo Larco</option></select>",
+      "css": ".ds-select{font-family:Source,'Segoe UI',sans-serif;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:6px 9px;border-radius:5px;font-size:13px;min-height:36px}.ds-select:focus-visible{outline:3px solid var(--gold);outline-offset:4px}"
+    },
+    {
+      "name": "Rango",
+      "kind": "input",
+      "description": "Control nativo con acento azul para cortes y generaciones.",
+      "html": "<input class=\"ds-range\" type=\"range\" min=\"1\" max=\"9\" value=\"4\" aria-label=\"Corte\">",
+      "css": ".ds-range{accent-color:var(--blue);height:24px;min-width:0;cursor:pointer}.ds-range:focus-visible{outline:3px solid var(--gold);outline-offset:4px}"
+    },
+    {
+      "name": "Navegación de pasos",
+      "kind": "nav",
+      "description": "Números de diapositiva con identificación del paso activo.",
+      "html": "<nav class=\"ds-timeline\" aria-label=\"Diapositivas\"><button><span>01</span></button><button class=\"ds-active\" aria-current=\"step\"><span>02</span><span class=\"ds-label\">El algoritmo</span></button><button><span>03</span></button></nav>",
+      "css": ".ds-timeline{display:flex;align-items:center;justify-content:space-between;gap:3px;max-width:960px}.ds-timeline button{font-family:Source,'Segoe UI',sans-serif;padding:10px 5px;min-width:32px;color:var(--muted);border:0;background:none;font-size:12px;display:flex;align-items:center;gap:8px;font-variant-numeric:tabular-nums;border-radius:7px;cursor:pointer;transition:background .2s,color .2s}.ds-timeline button>span:first-child{padding:3px 0;min-width:24px;border-bottom:2px solid var(--line)}.ds-timeline .ds-active{color:var(--blue)}.ds-timeline .ds-active>span:first-child{border-color:var(--blue);font-weight:600}.ds-timeline button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}"
+    },
+    {
+      "name": "Panel de operación",
+      "kind": "card",
+      "refersTo": "stage-panel",
+      "description": "Superficie plana para la demostración y sus métricas.",
+      "html": "<section class=\"ds-stage\"><div class=\"ds-heading\"><span>Una ruta candidata</span><span>10 museos</span></div><div class=\"ds-metric\">0.0997 <small>Fitness</small></div></section>",
+      "css": ".ds-stage{font-family:Source,'Segoe UI',sans-serif;background:var(--white);padding:18px 22px;border-radius:12px;font-size:14px;color:var(--ink)}.ds-heading{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px;font-size:12px;color:var(--muted)}.ds-heading>span:first-child{font-weight:600;color:var(--ink)}.ds-metric{font:600 clamp(18px,1.8vw,27px) Bricolage,serif;font-variant-numeric:tabular-nums;letter-spacing:-.025em;color:var(--blue)}.ds-metric small{font:400 12px Source,sans-serif;letter-spacing:0}"
+    },
+    {
+      "name": "Cromosoma de ruta",
+      "kind": "custom",
+      "refersTo": "gene",
+      "description": "Celdas de genes con estados de inicio, segmento e intercambio.",
+      "html": "<div class=\"ds-genes\"><span class=\"ds-gene ds-fixed\">1</span><span class=\"ds-gene\">4</span><span class=\"ds-gene ds-middle\">5</span><span class=\"ds-gene ds-middle\">6</span><span class=\"ds-gene ds-swapped\">7</span></div>",
+      "css": ".ds-genes{display:flex;gap:5px;min-width:0}.ds-gene{font-family:Source,'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:center;flex:1;min-width:20px;max-width:52px;height:33px;border-radius:5px;background:#eaf0fc;color:#2045b0;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}.ds-fixed{background:var(--blue);color:white}.ds-middle{background:#fbefcf;color:#6d4d13}.ds-swapped{background:var(--gold);color:#4e3406}"
+    },
+    {
+      "name": "Código fuente",
+      "kind": "card",
+      "refersTo": "code-panel",
+      "description": "Bloque oscuro con referencia de fuente y lectura horizontal.",
+      "html": "<section class=\"ds-code\"><div class=\"ds-code-header\">Python · evaluación</div><pre><span class=\"ds-comment\"># Distancia de una ruta</span>\ndistance = 0</pre></section>",
+      "css": ".ds-code{background:var(--deep);color:#f2f6ff;border-radius:10px;overflow:hidden;font:13px/1.65 Source,sans-serif}.ds-code-header{padding:10px 16px;border-bottom:1px solid #39506d;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;color:#c6d5ed}.ds-code pre{margin:0;overflow-x:auto;padding:15px 16px;font:12px/1.65 ui-monospace,\"SFMono-Regular\",Consolas,monospace;tab-size:4}.ds-comment{color:#a4bbd9}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Laboratorio cartográfico",
+    "overview": "Atlas GA conserva su identidad azul y sitúa el mapa en el centro de la explicación. La presentación combina titulares amplios, lectura sobria y controles compactos para relacionar rutas, matemática y código. El fondo frío mantiene continuidad entre cabecera, contenido y navegación; las superficies blancas reúnen las operaciones.\n\nLa geografía permanece estable mientras cambia el recorrido. Las señales de color identifican estados concretos del algoritmo, con números, etiquetas y controles que conservan el significado durante la exposición.",
+    "keyCharacteristics": [
+      "Azul como señal de ruta y acción activa.",
+      "Tipografía expresiva en títulos y sobria en explicación.",
+      "Mapa geográfico con marcadores numerados y rutas superpuestas.",
+      "Paneles blancos compactos para operaciones, métricas y cromosomas."
+    ],
+    "rules": [
+      {
+        "name": "The State Meaning Rule",
+        "body": "El color de una operación representa el estado mostrado; no atribuye una procedencia individual que los datos no registran.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stable Geography Rule",
+        "body": "Las transformaciones cambian el orden de la ruta, mientras los marcadores conservan sus coordenadas.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** conservar el cobalto para la ruta y la acción activa.",
+      "**Do** acompañar los estados de operación con números, etiquetas o métricas.",
+      "**Do** mantener el foco de oro visible en controles operables.",
+      "**Do** permitir lectura y navegación cuando la presentación se apila en móvil."
+    ],
+    "donts": [
+      "**Don't** mover los museos para ilustrar un cambio de orden de visita.",
+      "**Don't** colorear supervivientes por un origen individual que la traza no contiene.",
+      "**Don't** aplicar sombras a todos los paneles de operación.",
+      "**Don't** depender de fuentes remotas durante la exposición."
+    ]
+  }
+}

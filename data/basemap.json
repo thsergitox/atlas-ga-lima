@@ -1,0 +1,315 @@
+{
+  "zoom": 13,
+  "bounds": {
+    "west": -77.1,
+    "east": -76.975,
+    "north": -12.024,
+    "south": -12.172
+  },
+  "tiles": [
+    {
+      "x": 2341,
+      "y": 4371,
+      "file": "assets/map/osm-13-2341-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2341/4371.png"
+    },
+    {
+      "x": 2341,
+      "y": 4372,
+      "file": "assets/map/osm-13-2341-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2341/4372.png"
+    },
+    {
+      "x": 2341,
+      "y": 4373,
+      "file": "assets/map/osm-13-2341-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2341/4373.png"
+    },
+    {
+      "x": 2341,
+      "y": 4374,
+      "file": "assets/map/osm-13-2341-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2341/4374.png"
+    },
+    {
+      "x": 2341,
+      "y": 4375,
+      "file": "assets/map/osm-13-2341-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2341/4375.png"
+    },
+    {
+      "x": 2342,
+      "y": 4371,
+      "file": "assets/map/osm-13-2342-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2342/4371.png"
+    },
+    {
+      "x": 2342,
+      "y": 4372,
+      "file": "assets/map/osm-13-2342-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2342/4372.png"
+    },
+    {
+      "x": 2342,
+      "y": 4373,
+      "file": "assets/map/osm-13-2342-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2342/4373.png"
+    },
+    {
+      "x": 2342,
+      "y": 4374,
+      "file": "assets/map/osm-13-2342-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2342/4374.png"
+    },
+    {
+      "x": 2342,
+      "y": 4375,
+      "file": "assets/map/osm-13-2342-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2342/4375.png"
+    },
+    {
+      "x": 2343,
+      "y": 4371,
+      "file": "assets/map/osm-13-2343-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2343/4371.png"
+    },
+    {
+      "x": 2343,
+      "y": 4372,
+      "file": "assets/map/osm-13-2343-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2343/4372.png"
+    },
+    {
+      "x": 2343,
+      "y": 4373,
+      "file": "assets/map/osm-13-2343-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2343/4373.png"
+    },
+    {
+      "x": 2343,
+      "y": 4374,
+      "file": "assets/map/osm-13-2343-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2343/4374.png"
+    },
+    {
+      "x": 2343,
+      "y": 4375,
+      "file": "assets/map/osm-13-2343-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2343/4375.png"
+    },
+    {
+      "x": 2344,
+      "y": 4371,
+      "file": "assets/map/osm-13-2344-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2344/4371.png"
+    },
+    {
+      "x": 2344,
+      "y": 4372,
+      "file": "assets/map/osm-13-2344-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2344/4372.png"
+    },
+    {
+      "x": 2344,
+      "y": 4373,
+      "file": "assets/map/osm-13-2344-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2344/4373.png"
+    },
+    {
+      "x": 2344,
+      "y": 4374,
+      "file": "assets/map/osm-13-2344-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2344/4374.png"
+    },
+    {
+      "x": 2344,
+      "y": 4375,
+      "file": "assets/map/osm-13-2344-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2344/4375.png"
+    },
+    {
+      "x": 2338,
+      "y": 4371,
+      "file": "assets/map/osm-13-2338-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2338/4371.png"
+    },
+    {
+      "x": 2338,
+      "y": 4372,
+      "file": "assets/map/osm-13-2338-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2338/4372.png"
+    },
+    {
+      "x": 2338,
+      "y": 4373,
+      "file": "assets/map/osm-13-2338-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2338/4373.png"
+    },
+    {
+      "x": 2338,
+      "y": 4374,
+      "file": "assets/map/osm-13-2338-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2338/4374.png"
+    },
+    {
+      "x": 2338,
+      "y": 4375,
+      "file": "assets/map/osm-13-2338-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2338/4375.png"
+    },
+    {
+      "x": 2339,
+      "y": 4371,
+      "file": "assets/map/osm-13-2339-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2339/4371.png"
+    },
+    {
+      "x": 2339,
+      "y": 4372,
+      "file": "assets/map/osm-13-2339-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2339/4372.png"
+    },
+    {
+      "x": 2339,
+      "y": 4373,
+      "file": "assets/map/osm-13-2339-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2339/4373.png"
+    },
+    {
+      "x": 2339,
+      "y": 4374,
+      "file": "assets/map/osm-13-2339-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2339/4374.png"
+    },
+    {
+      "x": 2339,
+      "y": 4375,
+      "file": "assets/map/osm-13-2339-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2339/4375.png"
+    },
+    {
+      "x": 2340,
+      "y": 4371,
+      "file": "assets/map/osm-13-2340-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2340/4371.png"
+    },
+    {
+      "x": 2340,
+      "y": 4372,
+      "file": "assets/map/osm-13-2340-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2340/4372.png"
+    },
+    {
+      "x": 2340,
+      "y": 4373,
+      "file": "assets/map/osm-13-2340-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2340/4373.png"
+    },
+    {
+      "x": 2340,
+      "y": 4374,
+      "file": "assets/map/osm-13-2340-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2340/4374.png"
+    },
+    {
+      "x": 2340,
+      "y": 4375,
+      "file": "assets/map/osm-13-2340-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2340/4375.png"
+    },
+    {
+      "x": 2345,
+      "y": 4371,
+      "file": "assets/map/osm-13-2345-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2345/4371.png"
+    },
+    {
+      "x": 2345,
+      "y": 4372,
+      "file": "assets/map/osm-13-2345-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2345/4372.png"
+    },
+    {
+      "x": 2345,
+      "y": 4373,
+      "file": "assets/map/osm-13-2345-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2345/4373.png"
+    },
+    {
+      "x": 2345,
+      "y": 4374,
+      "file": "assets/map/osm-13-2345-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2345/4374.png"
+    },
+    {
+      "x": 2345,
+      "y": 4375,
+      "file": "assets/map/osm-13-2345-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2345/4375.png"
+    },
+    {
+      "x": 2346,
+      "y": 4371,
+      "file": "assets/map/osm-13-2346-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2346/4371.png"
+    },
+    {
+      "x": 2346,
+      "y": 4372,
+      "file": "assets/map/osm-13-2346-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2346/4372.png"
+    },
+    {
+      "x": 2346,
+      "y": 4373,
+      "file": "assets/map/osm-13-2346-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2346/4373.png"
+    },
+    {
+      "x": 2346,
+      "y": 4374,
+      "file": "assets/map/osm-13-2346-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2346/4374.png"
+    },
+    {
+      "x": 2346,
+      "y": 4375,
+      "file": "assets/map/osm-13-2346-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2346/4375.png"
+    },
+    {
+      "x": 2347,
+      "y": 4371,
+      "file": "assets/map/osm-13-2347-4371.png",
+      "source": "https://tile.openstreetmap.org/13/2347/4371.png"
+    },
+    {
+      "x": 2347,
+      "y": 4372,
+      "file": "assets/map/osm-13-2347-4372.png",
+      "source": "https://tile.openstreetmap.org/13/2347/4372.png"
+    },
+    {
+      "x": 2347,
+      "y": 4373,
+      "file": "assets/map/osm-13-2347-4373.png",
+      "source": "https://tile.openstreetmap.org/13/2347/4373.png"
+    },
+    {
+      "x": 2347,
+      "y": 4374,
+      "file": "assets/map/osm-13-2347-4374.png",
+      "source": "https://tile.openstreetmap.org/13/2347/4374.png"
+    },
+    {
+      "x": 2347,
+      "y": 4375,
+      "file": "assets/map/osm-13-2347-4375.png",
+      "source": "https://tile.openstreetmap.org/13/2347/4375.png"
+    }
+  ],
+  "attribution": "\u00a9 OpenStreetMap contributors",
+  "sources": [
+    "https://www.openstreetmap.org/copyright"
+  ]
+}
