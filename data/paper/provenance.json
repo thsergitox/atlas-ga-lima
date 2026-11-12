@@ -1,0 +1,27 @@
+[
+  {
+    "file": "Places.mat",
+    "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat",
+    "sha256": "d252ca16aeb9272c7731e5194d6908219fea846b505c6a2c1194a3a706289482"
+  },
+  {
+    "file": "Travel_Dis.mat",
+    "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Travel_Dis.mat",
+    "sha256": "581b8652bc993d39b7b582e2d4620af808c894e2e2208ad94eef7c8a7e2b1517"
+  },
+  {
+    "file": "Travel_Times.mat",
+    "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Travel_Times.mat",
+    "sha256": "c213a1b65d25b0ccac587775da6150baa53d70cca6ee14a75b238542c80c3d25"
+  },
+  {
+    "file": "Travel_Costs.mat",
+    "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Travel_Costs.mat",
+    "sha256": "099d01a7548602598105e08830d8aecff4582bae91d24b892d212641f6aff0b5"
+  },
+  {
+    "file": "ind.mat",
+    "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/ind.mat",
+    "sha256": "067d5470c2eaf0d9cd0e8f3c85aa4fc5d88bde14aa14b6c3b6e51c095122c03c"
+  }
+]

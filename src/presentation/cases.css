@@ -1,0 +1,32 @@
+.case-picker{display:flex;align-items:center;gap:12px;position:relative}
+.case-picker label{font-size:13px;color:var(--muted)}
+.case-picker select{min-width:220px;font-size:14px;font-weight:600;border-color:#b4c4df;background:var(--white);color:var(--blue);min-height:40px}
+#case-status:not(:empty){position:absolute;top:45px;left:0;right:0;background:white;padding:8px;font-size:12px;z-index:30}
+.genes.long{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px}
+.genes.long .gene{max-width:none;min-width:0;height:24px;font-size:12px}
+.museum-list{max-height:150px;overflow-y:auto;scrollbar-width:thin;padding-right:5px}
+.flag-matrix{width:260px}
+.flag-row{display:grid;grid-template-columns:16px repeat(var(--flag-size),minmax(0,1fr))}
+.flag-row i{width:auto;height:7px}
+.hero-fact{font-size:clamp(25px,2.8vw,40px)}
+.timeline{gap:0}
+.slide-codigo .map-host,.slide-codigo .map-caption,.slide-codigo .map-credit{display:none}
+.slide-codigo .visual{background:var(--deep)}
+.slide-codigo .stage{height:100%;max-height:none;margin:0;overflow:hidden;flex:1}
+.stage .complete-code{height:100%;display:flex;flex-direction:column;padding:0;border-radius:0;background:var(--deep);color:#f2f6ff}
+.complete-code-heading{padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid #39506d;color:#c6d5ed;font-size:12px}
+.complete-code-heading>div{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:end}
+.complete-code-heading a{color:#c6d5ed;font-size:12px;text-decoration:none}
+.complete-code-heading .secondary{background:#2b466c;color:white}
+.code-sections{display:flex;gap:7px;padding:10px 18px;border-bottom:1px solid #39506d;flex-wrap:wrap}
+.code-sections button{background:#243d5d;color:#d5e3ff;border:0;padding:6px 9px;font-size:11px;min-height:32px}
+#complete-python{position:relative;flex:1;min-height:0;overflow:auto;font-size:12px;padding:20px 18px;scrollbar-color:#6381aa var(--deep)}
+#complete-python .line-number{width:35px}
+#complete-python .code-line{min-width:max-content}
+#complete-python .code-highlight{background:#365281}
+.code-command{padding:14px 18px;border-top:1px solid #39506d;font-size:11px;display:flex;gap:12px;justify-content:space-between;color:#c6d5ed;flex-wrap:wrap}
+.code-command code{color:#f2f6ff;font-size:12px}
+@media(max-width:1100px){.case-picker label{display:none}.timeline-label{display:none!important}.flag-matrix{width:220px}}
+@media(max-width:900px){.case-picker select{min-width:190px;font-size:13px}.slide-codigo .visual{height:820px}.flag-matrix{width:240px}.genes.long .gene{height:27px}}
+@media(max-width:520px){.masthead{gap:8px;padding:0 12px}.brand{font-size:19px;gap:6px}.brand svg{width:24px;height:24px}.case-picker select{min-width:0;width:148px;max-width:148px;font-size:11px;padding:5px;min-height:36px}.header-actions{gap:5px}.quiet{font-size:11px}.masthead .icon-button{width:28px}.hero-fact{font-size:26px}.flag-matrix{width:155px}.flag-row{grid-template-columns:11px repeat(var(--flag-size),minmax(0,1fr));gap:2px}.flag-row i{width:auto;height:6px}.genes.long .gene{height:27px;font-size:12px}.museum-list{max-height:190px}.complete-code-heading{align-items:start;flex-direction:column;padding:14px}.complete-code-heading>div{justify-content:start;gap:12px}#complete-python{font-size:10px;padding:14px 10px}.code-sections{padding:9px 12px;gap:5px}.code-sections button{font-size:10px}.code-command{padding:12px;font-size:10px}.slide-codigo .visual{height:900px}.slide-problema h1{font-size:50px}}
+@media(max-height:760px) and (min-width:901px){.slide-cruce .genes.long .gene{height:22px}.slide-cruce .cut-controls{margin:12px 0}}

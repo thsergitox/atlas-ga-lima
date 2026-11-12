@@ -20,6 +20,14 @@ colors:
   segment-bg: "#fbefcf"
   segment-ink: "#6d4d13"
   swapped-ink: "#4e3406"
+  case-line: "#b4c4df"
+  code-text: "#f2f6ff"
+  code-muted: "#c6d5ed"
+  code-line: "#39506d"
+  code-action: "#2b466c"
+  code-section: "#243d5d"
+  code-section-text: "#d5e3ff"
+  code-highlight: "#365281"
 typography:
   display:
     fontFamily: "Bricolage, Georgia, serif"
@@ -95,6 +103,12 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.field}"
     padding: "6px 9px"
+  field-case-select:
+    backgroundColor: "{colors.white}"
+    textColor: "{colors.blue}"
+    rounded: "{rounded.field}"
+    padding: "6px 9px"
+    height: "40px"
   stage-panel:
     backgroundColor: "{colors.white}"
     rounded: "{rounded.panel}"
@@ -104,6 +118,11 @@ components:
     textColor: "{colors.gene-ink}"
     rounded: "{rounded.field}"
     height: "33px"
+  gene-long:
+    backgroundColor: "{colors.tint}"
+    textColor: "{colors.gene-ink}"
+    rounded: "{rounded.field}"
+    height: "24px"
   gene-fixed:
     backgroundColor: "{colors.blue}"
     textColor: "{colors.white}"
@@ -115,8 +134,19 @@ components:
     textColor: "{colors.swapped-ink}"
   code-panel:
     backgroundColor: "{colors.deep}"
-    textColor: "#f2f6ff"
+    textColor: "{colors.code-text}"
     rounded: "{rounded.code}"
+  complete-code:
+    backgroundColor: "{colors.deep}"
+    textColor: "{colors.code-text}"
+    rounded: "0"
+    padding: "0"
+    height: "100%"
+  code-section:
+    backgroundColor: "{colors.code-section}"
+    textColor: "{colors.code-section-text}"
+    rounded: "{rounded.button}"
+    padding: "6px 9px"
 ---
 
 # Design System: Atlas GA · Lima
@@ -158,6 +188,8 @@ La paleta combina azul cobalto, tinta profunda y neutrales fríos, con oro y ver
 - **Fondo frío** (`bg`), **blanco** (`white`) y **suelo del mapa** (`map-ground`): separación tonal de regiones.
 - **Línea fría** (`line`): divisores y bordes de controles.
 - **Texto de genes** (`gene-ink`, `swapped-ink`): contraste sobre sus fondos respectivos.
+- **Lectura de código** (`code-text`, `code-muted`, `code-line`): texto, acciones y divisores sobre azul profundo; `code-action` distingue la copia y `code-section`/`code-section-text` los saltos de sección. `code-highlight` señala la definición elegida.
+- **Borde del selector de caso** (`case-line`): delimita el campo blanco de cabecera.
 
 **The State Meaning Rule.** El color de una operación representa el estado mostrado; no atribuye una procedencia individual que los datos no registran.
 
@@ -176,6 +208,8 @@ El escritorio usa dos columnas: explicación a la izquierda y mapa con demostrac
 Los paneles de demostración se apoyan en el borde inferior del mapa; su altura máxima habitual es `61%`. El contenido no tapa las atribuciones cartográficas. La matriz, los genes y las métricas se agrupan según la operación; la cuadrícula de métricas tiene cuatro columnas.
 
 A partir de `1550px` crecen los márgenes, el texto y los paneles. Entre `901px` y `1100px` se compactan controles y se ocultan etiquetas secundarias. Con altura máxima de `760px` en escritorio se reducen cabecera, pie y densidad interna. Hasta `900px`, explicación y mapa se apilan, el documento fluye y el pie queda adherido al borde inferior. Hasta `520px` desaparece la línea de pasos, siguen visibles el índice y las flechas, y los controles de operación pueden envolver a otra fila.
+
+El código completo ocupa toda la región visual, sin mapa ni panel flotante. Conserva cabecera y comando a ambos extremos y desplaza el listado en ambos ejes. En el diseño apilado la región mide `820px` de alto; hasta `520px`, `900px`, con cabecera de acciones apilada y saltos de sección en varias filas.
 
 ## Elevation & Depth
 
@@ -197,6 +231,8 @@ Los cambios de fondo y texto duran `.2s`. El foco visible común es un contorno 
 
 La selección usa fondo frío, borde de línea y esquinas de campo. Los rangos conservan el control nativo con acento cobalto y altura de `24px`. Sus etiquetas y salidas numéricas acompañan el dato que modifican; las salidas destacan en azul.
 
+El selector de caso en cabecera usa superficie blanca, texto cobalto de `14px` y peso `600`, ancho mínimo de `220px` y altura mínima de `40px`. Hasta `1100px` se oculta su etiqueta visible; hasta `900px` el mínimo pasa a `190px` y el texto a `13px`. Hasta `520px` mide `148px` de ancho, altura mínima de `36px`, texto de `11px` y relleno de `5px`. Mantiene el nombre accesible del campo.
+
 ### Navigation
 
 La navegación inferior mantiene el paso activo en azul y subraya su número. En escritorio solo el paso activo expone su título. El índice abre una superficie flotante de dos columnas; el paso seleccionado usa fondo azul pálido. El progreso se representa mediante una línea de `3px` y una transición de ancho de `.5s` con la curva `cubic-bezier(.16,1,.3,1)`.
@@ -207,11 +243,15 @@ Los paneles blancos reúnen una operación y sus controles. Mantienen relleno y 
 
 ### Genes and Map
 
-Los genes son celdas flexibles y numeradas. El inicio fijo usa azul sólido; el segmento y los genes intercambiados emplean estados distintos de oro. En las filas compactas de población se reducen las alturas y el inicio fijo adopta un azul más claro.
+Los genes son celdas flexibles y numeradas. Las rutas de más de doce genes usan diez columnas de ancho flexible, separación de `3px` y texto de `12px`: Lima se lee en dos filas de diez. Las celdas largas miden `24px` de alto en escritorio y `27px` hasta `900px`; en cruce y escritorio de altura reducida miden `22px`. El inicio fijo usa azul sólido; el segmento y los genes intercambiados emplean estados distintos de oro. En las filas compactas de población se reducen las alturas y el inicio fijo adopta un azul más claro.
 
-Los museos mantienen su posición geográfica. El punto inicial tiene relleno azul; los demás, blanco con borde azul. Puntero, foco y selección resaltan el museo en oro y permiten mostrar su nombre. La ruta actual es azul continua; la ruta anterior es gris discontinua. El control de nombres muestra su estado presionado con el mismo azul de acción.
+Los museos mantienen su posición geográfica. El encuadre se calcula para cada conjunto de coordenadas. Cuando las burbujas numeradas se separan para evitar colisiones, una línea guía las conecta con el punto geográfico real; la ruta sigue este último. El punto inicial tiene relleno azul; los demás, blanco con borde azul. Puntero, foco y selección resaltan el museo en oro y permiten mostrar su nombre. La ruta actual es azul continua; la ruta anterior es gris discontinua. El control de nombres muestra su estado presionado con el mismo azul de acción.
 
 **The Stable Geography Rule.** Las transformaciones cambian el orden de la ruta, mientras los marcadores conservan sus coordenadas.
+
+### Complete Code
+
+El listado integral extiende la superficie azul profunda del código hasta los bordes de la región visual, sin radio ni relleno exterior. La cabecera reúne recuento de líneas, descargas y copia; los saltos a Fitness, Población, COX, Mutación, Torneo y Ciclo completo forman una segunda franja. El comando ocupa la franja inferior. Cabecera y secciones usan divisores finos; los botones de sección tienen texto de `11px`, altura mínima de `32px` y relleno de `6px 9px`. El listado conserva números de línea, texto monoespaciado y desplazamiento propio. El salto resalta la definición seleccionada; copia comunica éxito o alternativa de descarga. El foco mantiene el contorno de oro común.
 
 La preferencia de movimiento reducido limita animaciones y transiciones a `.01ms` y una sola iteración.
 

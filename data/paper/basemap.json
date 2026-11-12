@@ -1,0 +1,186 @@
+{
+  "zoom": 11,
+  "tiles": [
+    {
+      "x": 1186,
+      "y": 765,
+      "file": "assets/map/istanbul-11-1186-765.png",
+      "source": "https://tile.openstreetmap.org/11/1186/765.png"
+    },
+    {
+      "x": 1186,
+      "y": 766,
+      "file": "assets/map/istanbul-11-1186-766.png",
+      "source": "https://tile.openstreetmap.org/11/1186/766.png"
+    },
+    {
+      "x": 1186,
+      "y": 767,
+      "file": "assets/map/istanbul-11-1186-767.png",
+      "source": "https://tile.openstreetmap.org/11/1186/767.png"
+    },
+    {
+      "x": 1186,
+      "y": 768,
+      "file": "assets/map/istanbul-11-1186-768.png",
+      "source": "https://tile.openstreetmap.org/11/1186/768.png"
+    },
+    {
+      "x": 1186,
+      "y": 769,
+      "file": "assets/map/istanbul-11-1186-769.png",
+      "source": "https://tile.openstreetmap.org/11/1186/769.png"
+    },
+    {
+      "x": 1187,
+      "y": 765,
+      "file": "assets/map/istanbul-11-1187-765.png",
+      "source": "https://tile.openstreetmap.org/11/1187/765.png"
+    },
+    {
+      "x": 1187,
+      "y": 766,
+      "file": "assets/map/istanbul-11-1187-766.png",
+      "source": "https://tile.openstreetmap.org/11/1187/766.png"
+    },
+    {
+      "x": 1187,
+      "y": 767,
+      "file": "assets/map/istanbul-11-1187-767.png",
+      "source": "https://tile.openstreetmap.org/11/1187/767.png"
+    },
+    {
+      "x": 1187,
+      "y": 768,
+      "file": "assets/map/istanbul-11-1187-768.png",
+      "source": "https://tile.openstreetmap.org/11/1187/768.png"
+    },
+    {
+      "x": 1187,
+      "y": 769,
+      "file": "assets/map/istanbul-11-1187-769.png",
+      "source": "https://tile.openstreetmap.org/11/1187/769.png"
+    },
+    {
+      "x": 1188,
+      "y": 765,
+      "file": "assets/map/istanbul-11-1188-765.png",
+      "source": "https://tile.openstreetmap.org/11/1188/765.png"
+    },
+    {
+      "x": 1188,
+      "y": 766,
+      "file": "assets/map/istanbul-11-1188-766.png",
+      "source": "https://tile.openstreetmap.org/11/1188/766.png"
+    },
+    {
+      "x": 1188,
+      "y": 767,
+      "file": "assets/map/istanbul-11-1188-767.png",
+      "source": "https://tile.openstreetmap.org/11/1188/767.png"
+    },
+    {
+      "x": 1188,
+      "y": 768,
+      "file": "assets/map/istanbul-11-1188-768.png",
+      "source": "https://tile.openstreetmap.org/11/1188/768.png"
+    },
+    {
+      "x": 1188,
+      "y": 769,
+      "file": "assets/map/istanbul-11-1188-769.png",
+      "source": "https://tile.openstreetmap.org/11/1188/769.png"
+    },
+    {
+      "x": 1189,
+      "y": 765,
+      "file": "assets/map/istanbul-11-1189-765.png",
+      "source": "https://tile.openstreetmap.org/11/1189/765.png"
+    },
+    {
+      "x": 1189,
+      "y": 766,
+      "file": "assets/map/istanbul-11-1189-766.png",
+      "source": "https://tile.openstreetmap.org/11/1189/766.png"
+    },
+    {
+      "x": 1189,
+      "y": 767,
+      "file": "assets/map/istanbul-11-1189-767.png",
+      "source": "https://tile.openstreetmap.org/11/1189/767.png"
+    },
+    {
+      "x": 1189,
+      "y": 768,
+      "file": "assets/map/istanbul-11-1189-768.png",
+      "source": "https://tile.openstreetmap.org/11/1189/768.png"
+    },
+    {
+      "x": 1189,
+      "y": 769,
+      "file": "assets/map/istanbul-11-1189-769.png",
+      "source": "https://tile.openstreetmap.org/11/1189/769.png"
+    },
+    {
+      "x": 1190,
+      "y": 765,
+      "file": "assets/map/istanbul-11-1190-765.png",
+      "source": "https://tile.openstreetmap.org/11/1190/765.png"
+    },
+    {
+      "x": 1190,
+      "y": 766,
+      "file": "assets/map/istanbul-11-1190-766.png",
+      "source": "https://tile.openstreetmap.org/11/1190/766.png"
+    },
+    {
+      "x": 1190,
+      "y": 767,
+      "file": "assets/map/istanbul-11-1190-767.png",
+      "source": "https://tile.openstreetmap.org/11/1190/767.png"
+    },
+    {
+      "x": 1190,
+      "y": 768,
+      "file": "assets/map/istanbul-11-1190-768.png",
+      "source": "https://tile.openstreetmap.org/11/1190/768.png"
+    },
+    {
+      "x": 1190,
+      "y": 769,
+      "file": "assets/map/istanbul-11-1190-769.png",
+      "source": "https://tile.openstreetmap.org/11/1190/769.png"
+    },
+    {
+      "x": 1191,
+      "y": 765,
+      "file": "assets/map/istanbul-11-1191-765.png",
+      "source": "https://tile.openstreetmap.org/11/1191/765.png"
+    },
+    {
+      "x": 1191,
+      "y": 766,
+      "file": "assets/map/istanbul-11-1191-766.png",
+      "source": "https://tile.openstreetmap.org/11/1191/766.png"
+    },
+    {
+      "x": 1191,
+      "y": 767,
+      "file": "assets/map/istanbul-11-1191-767.png",
+      "source": "https://tile.openstreetmap.org/11/1191/767.png"
+    },
+    {
+      "x": 1191,
+      "y": 768,
+      "file": "assets/map/istanbul-11-1191-768.png",
+      "source": "https://tile.openstreetmap.org/11/1191/768.png"
+    },
+    {
+      "x": 1191,
+      "y": 769,
+      "file": "assets/map/istanbul-11-1191-769.png",
+      "source": "https://tile.openstreetmap.org/11/1191/769.png"
+    }
+  ],
+  "attribution": "\u00a9 OpenStreetMap contributors"
+}

@@ -1,4 +1,4 @@
-import { genes, metrics, svgIcon, format } from './components.js';
+import { genes, metricsFor, svgIcon, format } from './components.js';
 
 export function evolution(ctx) {
   const { stage, map, experiment } = ctx;
@@ -22,7 +22,7 @@ export function evolution(ctx) {
     stage.querySelector('#generation-value').textContent = `${generation + 1} / 100`;
     stage.querySelector('#generation').value = generation + 1;
     stage.querySelector('#evolution-genes').innerHTML = genes(state.route);
-    stage.querySelector('#evolution-metrics').innerHTML = metrics(state.route, experiment.matrices);
+    stage.querySelector('#evolution-metrics').innerHTML = metricsFor(ctx, state.route);
   }
   function tick() { if (generation >= 99) { stop(); return; } generation++; render(); timer = setTimeout(tick, 900); }
   stage.querySelector('#evolution-play').onclick = () => {

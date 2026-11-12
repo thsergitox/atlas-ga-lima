@@ -92,6 +92,96 @@
       "lat": -12.1546379,
       "lon": -77.0226424,
       "source": "https://www.openstreetmap.org/way/383861976"
+    },
+    {
+      "id": 11,
+      "name": "Museo de la Nación",
+      "short": "Museo de la Nación",
+      "district": "San Borja",
+      "lat": -12.086744,
+      "lon": -77.0018865,
+      "source": "https://www.openstreetmap.org/way/391699962"
+    },
+    {
+      "id": 12,
+      "name": "Museo Oro del Perú",
+      "short": "Oro del Perú",
+      "district": "Surco",
+      "lat": -12.1085037,
+      "lon": -76.9662426,
+      "source": "https://www.openstreetmap.org/node/4451167282"
+    },
+    {
+      "id": 13,
+      "name": "Museo de la Inmigración Japonesa",
+      "short": "Inmigración Japonesa",
+      "district": "Jesús María",
+      "lat": -12.0876959,
+      "lon": -77.0548991,
+      "source": "https://www.openstreetmap.org/node/1932068328"
+    },
+    {
+      "id": 14,
+      "name": "Museo de Arte de San Marcos (UNMSM)",
+      "short": "Arte San Marcos",
+      "district": "Centro",
+      "lat": -12.054372,
+      "lon": -77.0320582,
+      "source": "https://www.openstreetmap.org/node/1932068304"
+    },
+    {
+      "id": 15,
+      "name": "Museo Nacional de la Cultura Peruana",
+      "short": "Cultura Peruana",
+      "district": "Centro",
+      "lat": -12.0479085,
+      "lon": -77.0431177,
+      "source": "https://www.openstreetmap.org/way/1109179923"
+    },
+    {
+      "id": 16,
+      "name": "Casa Museo José Carlos Mariátegui",
+      "short": "Casa Mariátegui",
+      "district": "Centro",
+      "lat": -12.0638765,
+      "lon": -77.038975,
+      "source": "https://www.openstreetmap.org/node/1932068149"
+    },
+    {
+      "id": 17,
+      "name": "Museo de Neuropatología",
+      "short": "Neuropatología",
+      "district": "Barrios Altos",
+      "lat": -12.0460741,
+      "lon": -77.0159246,
+      "source": "https://www.openstreetmap.org/way/437501488"
+    },
+    {
+      "id": 18,
+      "name": "Museo de Sitio El Mirador del Cerro San Cristóbal",
+      "short": "San Cristóbal",
+      "district": "Rímac",
+      "lat": -12.0342852,
+      "lon": -77.017667,
+      "source": "https://www.openstreetmap.org/way/117755697"
+    },
+    {
+      "id": 19,
+      "name": "Museo Señor de los Milagros",
+      "short": "Señor de los Milagros",
+      "district": "Centro",
+      "lat": -12.0451544,
+      "lon": -77.0376031,
+      "source": "https://www.openstreetmap.org/node/4228842200"
+    },
+    {
+      "id": 20,
+      "name": "Museo del Palacio Arzobispal de Lima",
+      "short": "Palacio Arzobispal",
+      "district": "Centro",
+      "lat": -12.0461279,
+      "lon": -77.0296299,
+      "source": "https://www.openstreetmap.org/way/435559310"
     }
   ]
 }

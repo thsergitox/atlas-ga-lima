@@ -1,103 +1,81 @@
 const upstream = 'https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/';
-export const lessons = [
-  {
-    id: 'problema', label: 'El problema', title: 'Diez museos.\n¿En qué orden?',
-    lead: 'Los mismos lugares. Miles de rutas posibles. Un algoritmo que aprende a combinarlas.',
-    insight: 'Una exposición del algoritmo genético de Şehab y Turan, llevada a Lima.',
-    notes: 'Abrir con una pregunta a la audiencia: si visitamos los mismos museos, ¿por qué importa el orden? Cambiar la ruta y señalar los saltos entre distritos. El mapa no mueve edificios: cambia el orden de las visitas. La primera parada es MALI. Con diez lugares y un inicio fijo hay 9! = 362 880 permutaciones. Es una ruta abierta: nueve tramos, sin retorno al inicio.'
-  },
-  {
-    id: 'pipeline', label: 'Paper y código', title: 'Una ruta recorre\ntodo el programa.',
-    lead: 'El paper plantea el problema. El código concreta sus decisiones. Lima nos permite observar cada paso.',
-    insight: 'La implementación combina torneo modificado, Copy Order Crossover y mutación por intercambios vecinos.',
-    source: upstream + 'GA.py#L59-L150', file: 'GA.py', lines: '59–150',
-    code: 'ind = _load_initial_population()\nfor g in range(nGen):\n    # selección → COX → mutación\n    ind = SortPop(ind + indoff)\n    ind = ind[:nRoute]',
-    notes: 'Artículo: An enhanced genetic algorithm solution for itinerary recommendation considering various constraints, Şehab y Turan, PeerJ Computer Science 10:e2340, 2024, DOI 10.7717/peerj-cs.2340. Las matrices del artículo parten de 98 destinos en Estambul; el caso seleccionado usa 12 museos. El port de Arbues conserva archivos MATLAB y los operadores. Esta web agrega una adaptación local de diez museos, sin presentar sus datos como resultados del artículo. Se conserva la web anterior.'
-  },
-  {
-    id: 'dataset', label: 'Dataset', title: 'Primero los datos.\nDespués la ruta.',
-    lead: 'Cada museo tiene un ID y una coordenada. De cada par construimos distancia, tiempo y costo.',
-    insight: 'Coordenadas de OpenStreetMap. Distancias geodésicas y tiempos y costos de un modelo académico, sin tráfico real.',
-    formula: String.raw`D_{ij}=2R\arcsin\sqrt{\sin^2\frac{\Delta\varphi}{2}+\cos\varphi_i\cos\varphi_j\sin^2\frac{\Delta\lambda}{2}}`,
-    file: 'python/dataset.py', lines: 'matrices', local: 'python/dataset.py',
-    code: 'for origin in places:\n    for destination in places:\n        d = haversine(origin, destination)\n        # guardar D[i][j], T[i][j], C[i][j]',
-    notes: 'Se consultó Nominatim/OpenStreetMap el 11 de noviembre de 2026. Los registros conservan enlaces al objeto OSM de origen. R=6371 km. Cada matriz es 10×10 y su diagonal es cero. Diferencia respecto al paper: allí Bing Maps entrega distancias y tiempos viales; aquí Haversine entrega distancia en línea geodésica, no por calles. Para d≤1 km: caminar a 4.5 km/h y costo cero. Para d>1: tiempo=4+60d/18 minutos; costo=max(8,4+2.5d) soles simulados. Los parámetros son supuestos didácticos, no tarifas de Lima. El mapa muestra conexiones rectas entre paradas. No se modelan entradas, horarios ni duración de visitas.'
-  },
-  {
-    id: 'poblacion', label: 'Población inicial', title: 'Un cromosoma\nes un itinerario.',
-    lead: 'Un gen representa un museo. Cambiar el orden de los genes cambia las conexiones del mapa.',
-    insight: 'Creamos 100 permutaciones. MALI permanece primero; los otros nueve museos aparecen exactamente una vez.',
-    formula: String.raw`x=(1,\pi_2,\ldots,\pi_{10}),\quad |\Omega|=9!=362\,880`,
-    file: 'python/operators.py', lines: 'initial_population', local: 'python/operators.py',
-    code: 'tail = list(range(2, n + 1))\nrandom.shuffle(tail)\npopulation.append([1] + tail)',
-    notes: 'Esta adaptación excluye el inicio de la cola antes de permutar. El archivo initial_pop.py del port original elige n−1 lugares entre 1…n y antepone 6: puede repetir 6 y omitir otro museo. El ind.mat distribuido sí contiene rutas válidas. La modificación de Lima es explícita, no se cambia silenciosamente el código original. Las 100 rutas son candidatas del GA; esto no reduce el espacio matemático a 100, sino el número de soluciones que se mantienen en cada generación. Pulsar un individuo y seguir su ruta.'
-  },
-  {
-    id: 'fitness', label: 'Fitness', title: '¿Qué hace buena\na una ruta?',
-    lead: 'Menor distancia y tiempo, con más presupuesto restante. Una sola aptitud permite comparar itinerarios.',
-    insight: 'Se normalizan las matrices completas. El numerador es la fracción de presupuesto restante del código Python.',
-    formula: String.raw`f(x)=\frac{(B-C(x))/B}{\sum_{k=1}^{9}\left(\widehat D_{x_k,x_{k+1}}+\widehat T_{x_k,x_{k+1}}\right)}`,
-    source: upstream + 'Fitness.py#L24-L39', file: 'Fitness.py', lines: '24–39',
-    code: 'n = TravelCost(x)\nd = 0\nfor i in range(x.size - 1):\n    d += Ndmat[x[i]-1, x[i+1]-1] \\\n       + Ntmat[x[i]-1, x[i+1]-1]\nf = ((budget - n) / budget) / d',
-    notes: 'Primero explicar unidades: D en km, T en minutos, C y B en soles en Lima. Norm(A)=(A−min(A))/(max(A)−min(A)), aplicada sobre todos los elementos de cada matriz, no a cada ruta ni a cada fila. La diagonal cero hace min=0 en estas matrices. La ecuación 11 del paper se escribe (B−C)/(D+T), junto con una discusión de normalización. El código ejecutable usa (B−C)/B y suma entradas de D y T ya normalizadas; mostramos esta última versión. Si C>B, el fitness es negativo: el port no descarta automáticamente la ruta. El presupuesto es solo de traslados, no de una jornada de visitas. Cambiar B y leer el resultado sin confundir penalización con restricción dura.'
-  },
-  {
-    id: 'seleccion', label: 'Selección', title: 'Dos buenos padres.\nDos rutas distintas.',
-    lead: 'Sorteamos el 20 % de la población y ordenamos por fitness. El primer padre gana el torneo.',
-    insight: 'Para el segundo padre se busca una ruta diferente; si el torneo no basta, se recorre la población.',
-    formula: String.raw`k=\lfloor0.2N\rfloor=20,\quad p_1=\arg\max_{x\in S} f(x)`,
-    source: upstream + 'GA.py#L95-L120', file: 'GA.py', lines: '95–120',
-    code: 'tournamentSize = math.floor(nRoute * 0.2)\ntournament = np.random.permutation(nRoute)[:tournamentSize]\ncand = SortPop(c)\np1, p2 = cand[0], cand[1]\nwhile np.array_equal(p1["Plan"], p2["Plan"]):\n    # buscar otro plan en torneo y población',
-    notes: 'El muestreo del torneo es sin reemplazo dentro de un torneo; un individuo puede participar en torneos posteriores. No es selección por ruleta: no se usa f/sum(f). El port toma los dos mejores de un mismo torneo y modifica la búsqueda si sus planes coinciden. Si toda la población es idéntica, intenta mutar con μ=0.9 y mantiene esa tasa para las siguientes mutaciones. Aun así, una mutación puede no cambiar nada: el mecanismo intenta diversificar y no garantiza padres distintos en ese caso extremo. La lista visible muestra los seis mejores de los veinte sorteados. El mapa sigue el padre seleccionado.'
-  },
-  {
-    id: 'cruce', label: 'Cruce COX', title: 'Conservar el centro.\nHeredar el orden.',
-    lead: 'Dos cortes separan cada padre en tres bloques. El centro se copia; cada extremo se ordena como aparece en el otro padre.',
-    insight: 'Se producen DOS hijos. Los cortes son comunes, no se mezclan IDs ni se repiten museos.',
-    formula: String.raw`h_1=\operatorname{ord}_{p_2}(L_1)\;\Vert\;M_1\;\Vert\;\operatorname{ord}_{p_2}(R_1)`,
-    source: upstream + 'COX.py#L12-L56', file: 'COX.py', lines: '12–56',
-    code: '# Equivalente legible a COX.py\nleft = sorted(p1[:a], key=p2.index)\nright = sorted(p1[b:], key=p2.index)\nh1 = left + p1[a:b] + right\nh2 = copy_order(p2, p1, a, b)',
-    notes: 'Mostrar primero ambos padres. El color oro marca el bloque central que se queda en su propio hijo. Para el hijo 1, tomar los IDs del extremo izquierdo de p1 y buscarlos en p2: solo se cambia su orden, no su pertenencia. Repetir para el extremo derecho, separado del izquierdo. El hijo 2 invierte el papel de los padres. Esta operación es COX, no OX ni un cruce binario de un punto. La fórmula es notación explicativa equivalente al código, no una ecuación numerada del paper. Los cortes a,b se interpretan como índices de slicing de Python: el centro es [a:b]. El primer ID se conserva porque ambos padres parten del mismo museo. El cruce puede dar un hijo igual o peor; después hay que evaluar.'
-  },
-  {
-    id: 'mutacion', label: 'Mutación', title: 'Un intercambio.\nOtro recorrido.',
-    lead: 'Cada fila activa intercambia dos genes vecinos. Los museos permanecen donde están; las rutas cambian suavemente.',
-    insight: 'El código genera una matriz 10 × 10. Solo una fila completamente verdadera activa su intercambio.',
-    formula: String.raw`P(\text{swap en }i)=\mu^{10},\qquad (x_i,x_{i+1})\leftarrow(x_{i+1},x_i)`,
-    source: upstream + 'Mutation.py#L4-L22', file: 'Mutation.py', lines: '4–22',
-    code: 'flag = np.random.rand(n, n) < mu\nfor i in range(1, n - 1):\n    if np.all(flag[i, :] == 1):\n        x[i], x[i+1] = x[i+1], x[i]',
-    notes: 'La primera posición nunca se muta. Para n=10 se comprueban i=1…8, es decir, ocho posibles swaps. La probabilidad por fila es μ^10, NO μ. Con μ=0.1 da 10^-10; con μ=0.9 da 0.3486784401. El número esperado de swaps es 8μ^10. El control arranca en μ=0.9 para hacer visible la diversificación que usa el propio port, no como tasa inicial de la corrida. Cada sorteo genera realmente 100 uniformes. Si no hay filas activas, se muestra explícitamente que no ocurrió mutación. Se recorren los intercambios en orden ascendente: un gen puede moverse más de una posición. Mostrar cada paso, comparar fitness antes/después, y explicar que mutar no implica mejorar.'
-  },
-  {
-    id: 'reemplazo', label: 'Reemplazo', title: 'Compiten los padres\ny sus descendientes.',
-    lead: 'Se evalúan los hijos, se unen ambas poblaciones y se conservan las 100 mejores rutas.',
-    insight: 'Es reemplazo elitista (μ + λ). La mejor aptitud no baja porque los padres siguen siendo candidatos.',
-    formula: String.raw`P_{t+1}=\operatorname{Top}_{100}(P_t\cup O_t),\quad f^*_{t+1}\geq f^*_t`,
-    source: upstream + 'GA.py#L130-L150', file: 'GA.py', lines: '130–150',
-    code: 'indoff[M]["Fit"] = ObjectFunction(\n    indoff[M]["Plan"], budget)\nind = SortPop(ind + indoff)\nind = ind[:nRoute]',
-    notes: 'N=100 padres, pOff=1 produce 100 hijos, por lo que se ordenan 200 candidatos y se retienen 100. En la notación (μ+λ), μ es tamaño parental y NO la tasa de mutación; esta coincidencia de letras se explica para evitar confusión. La curva monótona es consecuencia del reemplazo elitista y del registro del mejor histórico, no de que cada mutación mejore. El elitismo puede reducir diversidad: es la razón de la búsqueda de padres distintos y el aumento de μ de mutación. El port no elimina duplicados de la población.'
-  },
-  {
-    id: 'evolucion', label: 'Evolución', title: 'Cien generaciones.\nUna traza real.',
-    lead: 'Avanza por una ejecución Python de la adaptación. El mapa y la curva corresponden a la misma generación.',
-    insight: 'La gráfica usa valores exportados por el algoritmo; no es una curva inventada para ilustrar convergencia.',
-    formula: String.raw`f^*_t=\max_{0\leq s\leq t}\max_{x\in P_s} f(x)`,
-    file: 'python/run_lima.py', lines: 'execute', local: 'python/run_lima.py',
-    code: 'population = sorted(\n    population + mutated,\n    key=score, reverse=True)[:size]\nbest = population[0].copy()\nhistory.append({"route": best,\n    **evaluate(best, data, budget)})',
-    notes: 'Esta es una ejecución real de la adaptación en Python, guardada en data/experiment.json. No se fijó semilla. Los parámetros se mantienen en 100 rutas, 100 generaciones, pOff=1, tasa inicial 0.1 y diversificación a 0.9 al detectar homogeneidad, como el port. El presupuesto local 180 soles es una elección didáctica explícita. El mapa muestra el mejor histórico. Una meseta puede corresponder al mejor encontrado o a convergencia prematura; la curva sola no demuestra optimalidad global. Los controles reproducen la traza guardada para que la exposición sea estable. Reiniciar la reproducción no ejecuta otra corrida; el comando Python de fuentes sí lo hace.'
-  },
-  {
-    id: 'resultado', label: 'Resultado', title: 'La misma Lima.\nUna ruta más eficiente.',
-    lead: 'Comparamos la mejor ruta inicial con la mejor encontrada al terminar esta ejecución.',
-    insight: 'Mejor encontrada bajo nuestro modelo. No equivale a una recomendación vial ni a una prueba de óptimo global.',
-    file: 'python/run_lima.py', lines: 'resultado', local: 'python/run_lima.py',
-    code: 'initial = population[0].copy()\n# ejecutar 100 generaciones\nfinal = history[-1]\n# comparar la misma función objetivo',
-    notes: 'Comparar fitness de forma explícita y leer unidades de distancia, tiempo y costo. La mejora respecto a la mejor ruta de la población inicial es una comparación más exigente que contra una ruta arbitraria. Menor fitness no se interpreta como porcentaje de distancia: son magnitudes distintas. El resultado depende del dataset, las fórmulas de tiempo/costo, presupuesto y aleatoriedad. No contempla horarios, entradas ni visitas. Conectar la conclusión con la pregunta inicial: el orden de exactamente los mismos diez museos cambia el costo de los nueve tramos.'
-  },
-  {
-    id: 'fuentes', label: 'Fuentes y límites', title: 'Qué viene del paper.\nQué hicimos en Lima.',
-    lead: 'Una exposición defendible distingue el artículo, el código ejecutable y las decisiones del caso local.',
-    insight: 'Paper y código enlazados por paso; dataset, matrices y traza disponibles para descargar.',
-    notes: 'Cerrar con tres niveles. Paper: problema, normalización, torneo modificado y COX. Port Python: implementación exacta, incluidas peculiaridades de inicialización y μ^n. Lima: diez coordenadas OSM, inicio MALI, matrices Haversine y modelo de tiempo/costo, presupuesto didáctico, adaptación legible equivalente y traza registrada. Citar la diferencia entre ecuación del artículo y Fitness.py. Mostrar licencias MIT del port y ODbL de OpenStreetMap. La cartografía base es © OpenStreetMap contributors. El sitio sirve fuentes, fórmulas y teselas localmente para no depender de la red durante la exposición.'
-  }
-];
+
+export function getLessons(p) {
+  const { n, start, startName, budget, currency } = p;
+  const paper = p.id === 'paper';
+  const source = (file, lines) => ({ file, source: upstream + file + '#L' + lines });
+  const local = file => ({ file: 'python/' + file, local: 'python/' + file });
+  const context = paper
+    ? 'Este caso usa las coordenadas Places.mat, matrices Travel_Dis.mat, Travel_Times.mat y Travel_Costs.mat y los cien individuos de ind.mat del repositorio original, sin sustituirlos por valores simulados. El presupuesto es 2000 TL, como el ejemplo del port. Las matrices son históricas y pueden ser asimétricas. La traza es una nueva ejecución Python del ciclo equivalente al escenario S6; no se atribuye a los resultados numéricos publicados del paper. El archivo Places.mat solo contiene IDs y coordenadas; se mantienen los IDs sin inventar nombres para los otros destinos.'
+    : 'Lima es una adaptación académica de veinte museos con coordenadas OSM verificables. D se calcula con Haversine (R=6371 km), no por calles. Si D≤1 km, T=60D/4.5 y C=0. Si D>1 km, T=4+60D/18 y C=max(8,4+2.5D). Son supuestos didácticos, no tráfico ni tarifas reales. B=360 soles es el presupuesto supuesto de traslados para este caso de veinte paradas; no incluye entradas ni visitas.';
+  return [
+    { id: 'problema', label: 'El problema', title: `${n} ${paper ? 'destinos' : 'museos'}.\n¿En qué orden?`,
+      lead: 'Los mismos lugares. Millones de órdenes posibles. Un algoritmo que aprende a combinarlos.',
+      insight: p.dataNote,
+      notes: `Cambiar la ruta y señalar los saltos geográficos. El mapa cambia conexiones; las ubicaciones siguen fijas. Hay ${n} lugares, ${n - 1} tramos y un inicio fijo: ${startName}, ID ${start}. No hay retorno al inicio. El espacio tiene (${n}−1)! permutaciones. ${context}` },
+    { id: 'pipeline', label: 'Paper y código', title: 'Una ruta recorre\ntodo el programa.',
+      lead: 'Datos, representación, evaluación y operadores: el mismo pipeline para ambos casos.', insight: p.dataNote,
+      ...source('GA.py', '59-L150'),
+      code: 'ind = _load_initial_population()\nfor g in range(nGen):\n    # selección → COX → mutación\n    ind = SortPop(ind + indoff)\n    ind = ind[:nRoute]',
+      notes: `Şehab y Turan (2024), PeerJ Computer Science 10:e2340, DOI 10.7717/peerj-cs.2340. El artículo compara doce escenarios: S6 usa 100 generaciones, 100 rutas, torneo modificado y COX. La metodología está en pp. 8–21. Los datos disponibles parten de 98 destinos y el caso turístico elegido usa doce. El selector conserva el paso actual para comparar el mismo concepto entre Lima y Estambul. ${context}` },
+    { id: 'dataset', label: 'Dataset', title: 'Primero los datos.\nDespués la ruta.',
+      lead: `${n} registros y tres matrices ${n} × ${n}: distancia, tiempo y costo para cada par de destinos.`, insight: p.dataNote,
+      formula: paper ? String.raw`D,T,C\in\mathbb{R}^{12\times12},\quad D_{ij}\ne D_{ji}\;\text{en general}` : String.raw`D_{ij}=2R\arcsin\sqrt{\sin^2\frac{\Delta\varphi}{2}+\cos\varphi_i\cos\varphi_j\sin^2\frac{\Delta\lambda}{2}}`,
+      ...local(paper ? 'export_paper.py' : 'dataset.py'),
+      code: paper ? 'Places = loadmat("Places.mat")["Places"]\nD = loadmat("Travel_Dis.mat")["Travel_Dis"]\nT = loadmat("Travel_Times.mat")["Travel_Times"]\nC = loadmat("Travel_Costs.mat")["Travel_Costs"]' : 'for origin in places:\n    for destination in places:\n        d = haversine(origin, destination)\n        # guardar D[i][j], T[i][j], C[i][j]',
+      notes: `${context} Las unidades son km, minutos y ${currency}. La diagonal es cero. La vista muestra conexiones entre destinos; no indicaciones viales. Las matrices de Estambul son viales según el artículo; las de Lima son geodésicas/modeladas. Seleccionar origen y destino para inspeccionar cualquier entrada y observar si el viaje inverso cambia.` },
+    { id: 'poblacion', label: 'Población inicial', title: 'Un cromosoma\nes un itinerario.',
+      lead: `Cada gen identifica un lugar. Son ${n} genes distintos y el ID ${start} permanece primero.`,
+      insight: paper ? 'Cargamos las 100 rutas distribuidas en ind.mat. Conservamos exactamente los IDs originales.' : 'Generamos 100 permutaciones válidas; se excluye MALI de la cola antes de mezclarla.',
+      formula: String.raw`x=(${start},\pi_2,\ldots,\pi_{${n}}),\quad |\Omega|=${n - 1}!`,
+      ...local(paper ? 'export_paper.py' : 'operators.py'),
+      code: paper ? 'raw = loadmat("ind.mat")["ind"]\ninitial = [row["Plan"].ravel().astype(int).tolist()\n           for row in raw.flat]\n# 100 rutas, inicio 6' : 'tail = [i for i in range(1, n + 1)\n        if i != start]\nrandom.shuffle(tail)\npopulation.append([start] + tail)',
+      notes: `Cada ruta tiene exactamente una visita a cada ID de 1 a ${n}. El inicio es ${startName}. Mantener cien candidatos no reduce el espacio combinatorio a cien: es el tamaño de la población exploradora. El initial_pop.py original puede repetir el inicio6 al anteponerlo a una permutación que lo contiene; el ind.mat distribuido sí es válido. Lima evita ese problema excluyendo el inicio de la cola. Estambul carga directamente la población distribuida, comprobada sin duplicados.` },
+    { id: 'fitness', label: 'Fitness', title: '¿Qué hace buena\na una ruta?',
+      lead: 'Menor distancia y tiempo, con más presupuesto restante. Una aptitud común compara las rutas.',
+      insight: `B = ${budget} ${currency}. Normalizamos las matrices completas; el costo se descuenta como fracción del presupuesto.`,
+      formula: String.raw`f(x)=\frac{(B-C(x))/B}{\sum_{k=1}^{${n - 1}}\left(\widehat D_{x_k,x_{k+1}}+\widehat T_{x_k,x_{k+1}}\right)}`,
+      ...source('Fitness.py', '24-L39'),
+      code: 'n = TravelCost(x)\nd = 0\nfor i in range(x.size - 1):\n    d += Ndmat[x[i]-1, x[i+1]-1] \\\n       + Ntmat[x[i]-1, x[i+1]-1]\nf = ((budget - n) / budget) / d',
+      notes: `Norm(A)=(A−min(A))/(max(A)−min(A)) se aplica sobre todos los elementos, no por fila ni a los totales de cada individuo. Ambas matrices tienen diagonal cero, por lo que min=0. El código implementa ((B−C)/B)/sum(Dhat+That), mientras la ecuación11 del artículo se escribe (B−C)/(D+T) junto a su discusión de normalización. La web explica el código ejecutable. Si C>B, fitness es negativo; no hay descarte automático. Cambiar B en este laboratorio no altera la corrida guardada. La moneda de este caso es ${currency}.` },
+    { id: 'seleccion', label: 'Selección', title: 'Dos buenos padres.\nDos rutas distintas.',
+      lead: 'Sorteamos el 20 % de la población y ordenamos por fitness. El primer padre gana el torneo.', insight: 'El segundo padre se busca con un plan distinto. Si el torneo no basta, se recorre la población.',
+      formula: String.raw`k=\lfloor0.2N\rfloor=20,\quad p_1=\arg\max_{x\in S} f(x)`,
+      ...source('GA.py', '95-L120'),
+      code: 'tournamentSize = math.floor(nRoute * 0.2)\ntournament = np.random.permutation(nRoute)[:tournamentSize]\ncand = SortPop(c)\np1, p2 = cand[0], cand[1]\nwhile np.array_equal(p1["Plan"], p2["Plan"]):\n    # buscar otro plan en torneo y población',
+      notes: 'El muestreo es sin reemplazo dentro de un torneo, pero un individuo puede volver a competir en torneos posteriores. No es ruleta. Se toman los dos mejores de un torneo; si coinciden, se intenta otro padre. Si toda la población coincide, se intenta mutar con μ=.9 y esa tasa se mantiene. Incluso esa mutación puede no cambiar la ruta: no garantiza diversidad. Se muestran los seis mejores de los veinte sorteados; el mapa sigue el padre elegido.' },
+    { id: 'cruce', label: 'Cruce COX', title: 'Conservar el centro.\nHeredar el orden.',
+      lead: 'Dos cortes separan tres bloques. El centro se copia; cada extremo se ordena como aparece en el otro padre.', insight: 'Los mismos cortes producen DOS hijos. Cada uno sigue siendo una permutación válida.',
+      formula: String.raw`h_1=\operatorname{ord}_{p_2}(L_1)\;\Vert\;M_1\;\Vert\;\operatorname{ord}_{p_2}(R_1)`,
+      ...source('COX.py', '12-L56'),
+      code: '# Equivalente legible a COX.py\nleft = sorted(p1[:a], key=p2.index)\nright = sorted(p1[b:], key=p2.index)\nh1 = left + p1[a:b] + right\nh2 = copy_order(p2, p1, a, b)',
+      notes: 'El oro marca el centro heredado de su propio padre. El extremo izquierdo de p1 conserva sus IDs, pero se ordena según su aparición en p2; el derecho se trata por separado. El hijo2 invierte los padres. No se mezclan los extremos ni se intercambian centros: eso sería otro operador. Los cortes son índices de slicing Python y el centro es [a:b]. Como ambos padres tienen el mismo inicio, este se conserva. Un hijo puede mejorar, empeorar o quedar igual. La notación ord es explicativa y no una ecuación numerada del paper.' },
+    { id: 'mutacion', label: 'Mutación', title: 'Un intercambio.\nOtro recorrido.',
+      lead: 'Una fila activa intercambia dos genes vecinos. Los lugares no se mueven; cambian las conexiones.',
+      insight: `La matriz es ${n} × ${n}. Cada una de las ${n - 2} filas candidatas necesita todos sus indicadores verdaderos.`,
+      formula: String.raw`P(\text{swap en }i)=\mu^{${n}},\qquad (x_i,x_{i+1})\leftarrow(x_{i+1},x_i)`,
+      ...source('Mutation.py', '4-L22'),
+      code: 'flag = np.random.rand(n, n) < mu\nfor i in range(1, n - 1):\n    if np.all(flag[i, :] == 1):\n        x[i], x[i+1] = x[i+1], x[i]',
+      notes: `Hay ${n - 2} swaps candidatos. La fila tiene ${n} Bernoulli independientes, por eso P=μ^${n}, no μ. E[swaps]=(${n}−2)μ^${n}. El primer gen no se mueve. Se recorren filas en orden y un mismo gen puede moverse varias veces. El modo visible inicia en μ=.9 para mostrar la diversificación original; la corrida inicia en .1. La demostración guardada es un sorteo adicional, separado de la traza evolutiva. Cada sorteo nuevo en navegador usa ${n * n} uniformes y puede dar cero cambios. Mutar no implica mejorar.` },
+    { id: 'reemplazo', label: 'Reemplazo', title: 'Compiten los padres\ny sus descendientes.',
+      lead: 'Evaluamos los hijos, unimos las poblaciones y conservamos las 100 mejores rutas.', insight: 'Elitismo: los padres siguen compitiendo. La mejor aptitud histórica no disminuye.',
+      formula: String.raw`P_{t+1}=\operatorname{Top}_{100}(P_t\cup O_t),\quad f^*_{t+1}\geq f^*_t`,
+      ...source('GA.py', '130-L150'), code: 'indoff[M]["Fit"] = ObjectFunction(\n    indoff[M]["Plan"], budget)\nind = SortPop(ind + indoff)\nind = ind[:nRoute]',
+      notes: 'Cien padres y cien hijos producen doscientos candidatos, de los cuales sobreviven cien. Los bloques son cien rutas, sin atribuirles procedencia no registrada. La curva del mejor histórico es monótona por el elitismo, no porque todos los hijos mejoren. El reemplazo puede reducir diversidad; el algoritmo no elimina automáticamente duplicados.' },
+    { id: 'evolucion', label: 'Evolución', title: 'Cien generaciones.\nUna traza real.',
+      lead: `Recorre una ejecución Python del caso ${p.shortCity}. El mapa y la curva muestran la misma generación.`, insight: paper ? 'Matrices y población originales; resultados de una nueva ejecución, no los de la tabla 7 del artículo.' : 'La curva corresponde a una ejecución real con veinte museos y presupuesto didáctico de 360 soles.',
+      formula: String.raw`f^*_t=\max_{0\leq s\leq t}\max_{x\in P_s}f(x)`, ...local('evolution.py'),
+      code: 'population = sorted(\n    population + mutated,\n    key=score, reverse=True)[:size]\nbest = population[0].copy()\nhistory.append({"route": best,\n    **evaluate(best, data, budget)})',
+      notes: `Cien rutas y cien generaciones, pOff=1, μ inicial=.1 y diversificación=.9 al no encontrar planes distintos. La curva muestra fitness, no porcentajes de distancia. Una meseta no prueba un óptimo global. Los controles reproducen la traza guardada; reiniciar la reproducción no ejecuta otra corrida. ${context}` },
+    { id: 'resultado', label: 'Resultado', title: 'Los mismos lugares.\nUn orden más eficiente.',
+      lead: 'Compara la mejor ruta de la población inicial con la mejor encontrada al terminar esta ejecución.', insight: p.dataNote,
+      ...local('evolution.py'), code: 'initial = population[0].copy()\n# ejecutar 100 generaciones\nfinal = history[-1]\n# comparar la misma función objetivo',
+      notes: `La mejora compara fitness con la mejor ruta inicial, no con una ruta arbitraria. Distancia, minutos y costo son magnitudes diferentes; una mejora porcentual de fitness no equivale a reducción de distancia. El algoritmo entrega la mejor ruta encontrada bajo sus datos, sin prueba de óptimo global. Son ${n} paradas, ${n - 1} tramos y presupuesto ${budget} ${currency}. ${context}` },
+    { id: 'codigo', label: 'Código completo', title: 'Todo el algoritmo.\nUna sola lectura.',
+      lead: 'El código completo conecta inicialización, fitness, torneo, COX, mutación y reemplazo.', insight: 'Archivo Python ejecutable con la biblioteca estándar. Puedes copiarlo o descargarlo junto con los datos del caso seleccionado.',
+      notes: 'Esta diapositiva muestra el archivo completo sin puntos suspensivos ni funciones ocultas: incluye importaciones, todas las funciones del algoritmo y el punto de entrada. Es una versión legible equivalente al port, compartida por ambos casos. Se genera desde los mismos módulos que producen las trazas. Ejecutar python algorithm.py experiment.json inicia una nueva corrida con las matrices y la población inicial guardadas en el JSON del caso; no exige SciPy ni instalación. La conversión original de los .mat sí usa SciPy, pero ya se distribuyen los JSON. El botón de descarga de datos respeta Lima/Estambul.' },
+    { id: 'fuentes', label: 'Fuentes y límites', title: 'Paper, código\ny adaptación.',
+      lead: 'Cada caso tiene sus datos, su moneda y sus supuestos. La comparación necesita esa distinción.', insight: p.dataNote,
+      notes: `Se conserva el paper de Şehab y Turan, el port de Arbues y sus licencias. Los datos originales .mat y sus hashes están disponibles en Estambul. Lima usa veinte objetos OSM y modelos de traslado; los tiempos/costos no son mediciones. Las teselas son OSM locales, y las fuentes y KaTeX se sirven localmente. ${context}` }
+  ];
+}

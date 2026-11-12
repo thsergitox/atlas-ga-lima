@@ -1,4 +1,6 @@
-import { lessons } from './lessons.js';
+import { getLessons } from './lessons.js';
+import { loadCase } from './cases.js';
+import { completeCode } from './code-stage.js';
 import { codeBlock, announce, svgIcon } from './components.js';
 import { createMap } from '../map/route-map.js';
 import { intro, pipeline, dataset, population, fitness, replacement, result } from './basic-stages.js';
@@ -9,7 +11,8 @@ import { evolution } from './evolution-stage.js';
 import { sources } from './sources-stage.js';
 
 const $ = selector => document.querySelector(selector);
-const stages = [intro, pipeline, dataset, population, fitness, selection, crossing, mutation, replacement, evolution, result, sources];
+const stages = [intro, pipeline, dataset, population, fitness, selection, crossing, mutation, replacement, evolution, result, completeCode, sources];
+let lessons = [];
 let index = 0;
 let cleanup = () => {};
 let context;
@@ -23,7 +26,7 @@ function renderCopy(lesson) {
   $('#slide-title').innerHTML = lesson.title.replace('\n', '<br>');
   $('#slide-lead').textContent = lesson.lead;
   $('#lesson-detail').innerHTML = index === 0
-    ? `<div class="hero-actions"><button class="primary" data-go="1">Comenzar exposición ${svgIcon('arrow')}</button><span>12 diapositivas<br> Un algoritmo, paso a paso</span></div><p class="hero-fact">9! = 362 880 <span>órdenes posibles con MALI como inicio</span></p>`
+    ? `<div class="hero-actions"><button class="primary" data-go="1">Comenzar exposición ${svgIcon('arrow')}</button><span>${lessons.length} diapositivas<br> Un algoritmo, dos casos</span></div><p class="hero-fact">${context.profile.searchSpace} <span>órdenes posibles con ${context.profile.startName} como inicio</span></p>`
     : `<p class="insight">${lesson.insight}</p>${renderFormula(lesson)}`;
   $('#lesson-bottom').innerHTML = lesson.code ? codeBlock(lesson) : `<div class="hero-reference"><span>Basado en Şehab y Turan (2024)</span><a href="https://doi.org/10.7717/peerj-cs.2340" target="_blank" rel="noreferrer">PeerJ Computer Science · e2340 ↗</a></div>`;
   if (lesson.formula && window.katex) {
@@ -41,7 +44,7 @@ function renderNavigation() {
     button.classList.toggle('active', current);
     if (current) button.setAttribute('aria-current', 'step'); else button.removeAttribute('aria-current');
   }
-  document.title = `${lessons[index].label} · Atlas GA Lima`;
+  document.title = `${lessons[index].label} · Atlas GA · ${context.profile.shortCity}`;
 }
 
 function renderNotes() {
@@ -57,10 +60,10 @@ function go(nextIndex, focus = false) {
   cleanup();
   index = Math.max(0, Math.min(lessons.length - 1, nextIndex));
   $('#presentation').className = `presentation slide-${lessons[index].id}`;
-  $('#map-title').textContent = index === 0 ? 'Lima, Perú' : lessons[index].label + ' · Lima';
+  $('#map-title').textContent = index === 0 ? context.profile.city : lessons[index].label + ' · ' + context.profile.shortCity;
   renderCopy(lessons[index]); renderNavigation(); renderNotes();
   cleanup = stages[index](context) || (() => {});
-  history.replaceState(null, '', `#${lessons[index].id}`);
+  history.replaceState(null, '', `?caso=${context.profile.id}#${lessons[index].id}`);
   $('#map-tooltip').hidden = true;
   context.map.highlight(null);
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -95,6 +98,7 @@ function bindControls() {
   $('#contents-button').onclick = () => toggleContents();
   $('#close-contents').onclick = () => { toggleContents(false); $('#contents-button').focus(); };
   $('#fullscreen').onclick = fullscreen;
+  $('#case-select').onchange = event => switchCase(event.target.value);
   $('#map-labels').onclick = event => {
     const show = event.target.getAttribute('aria-pressed') !== 'true';
     event.target.setAttribute('aria-pressed', show); context.map.labels(show);
@@ -111,7 +115,7 @@ function bindControls() {
       if (!$('#contents').hidden) { toggleContents(false); $('#contents-button').focus(); }
       $('#map-tooltip').hidden = true; return;
     }
-    if (event.target.closest('input,select,textarea,[contenteditable]') || event.ctrlKey || event.altKey || event.metaKey) return;
+    if (event.target.closest('input,select,textarea,[contenteditable],pre') || event.ctrlKey || event.altKey || event.metaKey) return;
     if (['ArrowRight', 'PageDown'].includes(event.key) || (event.key === ' ' && !event.target.closest('button,a,[role="button"]'))) { event.preventDefault(); go(index + 1, true); }
     if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); go(index - 1, true); }
     if (event.key === 'Home') go(0, true);
@@ -133,21 +137,40 @@ function bindControls() {
   });
 }
 
-async function start() {
-  try {
-    const [museums, basemap, experiment] = await Promise.all(['data/museums.json', 'data/basemap.json', 'data/experiment.json'].map(async path => {
-      const response = await fetch(path);
-      if (!response.ok) throw new Error(`No se pudo cargar ${path}`);
-      return response.json();
-    }));
-    context = { museums: museums.places, experiment, stage: $('#stage'), map: createMap($('#map'), museums.places, basemap) };
-    $('#timeline').innerHTML = lessons.map((lesson, i) => `<button data-slide="${i}" title="${i + 1}. ${lesson.label}" aria-label="Ir a ${lesson.label}"><span>${String(i + 1).padStart(2, '0')}</span><span class="timeline-label">${lesson.label}</span></button>`).join('');
-    $('#contents-list').innerHTML = lessons.map((lesson, i) => `<button data-slide="${i}"><span>${String(i + 1).padStart(2, '0')}</span>${lesson.label}</button>`).join('');
-    bindControls();
-    const requested = lessons.findIndex(lesson => `#${lesson.id}` === location.hash);
-    go(requested >= 0 ? requested : 0);
-  } catch (error) {
-    console.error(error); $('#load-error').hidden = false;
-  }
+function renderIndex() {
+  $('#timeline').innerHTML = lessons.map((lesson, i) => `<button data-slide="${i}" title="${i + 1}. ${lesson.label}" aria-label="Ir a ${lesson.label}"><span>${String(i + 1).padStart(2, '0')}</span><span class="timeline-label">${lesson.label}</span></button>`).join('');
+  $('#contents-list').innerHTML = lessons.map((lesson, i) => `<button data-slide="${i}"><span>${String(i + 1).padStart(2, '0')}</span>${lesson.label}</button>`).join('');
 }
-start();
+
+async function switchCase(id, initial = false) {
+  const selector = $('#case-select');
+  selector.disabled = true;
+  cleanup();
+  announce('Cargando el caso seleccionado.');
+  try {
+    const data = await loadCase(id);
+    context?.map.destroy();
+    context = { ...data, stage: $('#stage'), map: createMap($('#map'), data.museums, data.basemap, data.profile) };
+    lessons = getLessons(data.profile);
+    selector.value = data.profile.id;
+    $('#map-labels').setAttribute('aria-pressed', 'false');
+    renderIndex();
+    if (initial) {
+      const requested = lessons.findIndex(lesson => `#${lesson.id}` === location.hash);
+      index = requested >= 0 ? requested : 0;
+    }
+    go(index);
+    $('#case-status').textContent = '';
+  } catch (error) {
+    console.error(error);
+    if (initial) $('#load-error').hidden = false;
+    else {
+      selector.value = context.profile.id;
+      $('#case-status').textContent = 'No se cargó el caso. Vuelve a seleccionarlo.';
+      announce('No se pudo cambiar de caso. Vuelve a intentarlo.');
+    }
+  } finally { selector.disabled = false; }
+}
+
+bindControls();
+switchCase(new URLSearchParams(location.search).get('caso') || 'lima', true);

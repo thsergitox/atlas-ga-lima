@@ -2,12 +2,12 @@
 import random
 
 
-def initial_population(size, n):
+def initial_population(size, n, start=1):
     population = []
     for _ in range(size):
-        tail = list(range(2, n + 1))
+        tail = [place for place in range(1, n + 1) if place != start]
         random.shuffle(tail)
-        population.append([1] + tail)
+        population.append([start] + tail)
     return population
 
 

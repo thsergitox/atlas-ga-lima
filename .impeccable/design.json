@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-11T23:43:03.104692+00:00",
+  "generatedAt": "2026-11-12T04:03:55.781815+00:00",
   "title": "Design System: Atlas GA · Lima",
   "extensions": {
     "colorMeta": {
@@ -39,6 +39,38 @@
       "line": {
         "role": "neutral",
         "displayName": "Línea fría"
+      },
+      "case-line": {
+        "role": "neutral",
+        "displayName": "Borde del selector de caso"
+      },
+      "code-text": {
+        "role": "neutral",
+        "displayName": "Lectura de código"
+      },
+      "code-muted": {
+        "role": "neutral",
+        "displayName": "Lectura secundaria de código"
+      },
+      "code-line": {
+        "role": "neutral",
+        "displayName": "Divisor de código"
+      },
+      "code-action": {
+        "role": "primary",
+        "displayName": "Acción sobre código"
+      },
+      "code-section": {
+        "role": "primary",
+        "displayName": "Fondo de salto de sección"
+      },
+      "code-section-text": {
+        "role": "neutral",
+        "displayName": "Texto de salto de sección"
+      },
+      "code-highlight": {
+        "role": "primary",
+        "displayName": "Definición seleccionada"
       }
     },
     "typographyMeta": {
@@ -148,12 +180,12 @@
       "css": ".ds-icon{width:42px;height:42px;display:grid;place-items:center;background:none;border:1px solid var(--line);color:var(--ink);border-radius:7px;cursor:pointer;transition:background .2s,color .2s}.ds-icon svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}.ds-icon:hover{background:var(--tint)}.ds-icon:focus-visible{outline:3px solid var(--gold);outline-offset:4px}"
     },
     {
-      "name": "Selección",
+      "name": "Selector de caso",
       "kind": "input",
-      "refersTo": "field-select",
-      "description": "Campo nativo para elegir registros o parámetros.",
-      "html": "<select class=\"ds-select\" aria-label=\"Museo\"><option>MALI</option><option>Museo Larco</option></select>",
-      "css": ".ds-select{font-family:Source,'Segoe UI',sans-serif;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:6px 9px;border-radius:5px;font-size:13px;min-height:36px}.ds-select:focus-visible{outline:3px solid var(--gold);outline-offset:4px}"
+      "refersTo": "field-case-select",
+      "description": "Selección de Lima o Estambul en la cabecera.",
+      "html": "<select class=\"ds-case\" aria-label=\"Caso de estudio\"><option>Lima · 20 museos</option><option>Paper · Estambul (12)</option></select>",
+      "css": ".ds-case{font-family:Source,'Segoe UI',sans-serif;background:var(--white);border:1px solid #b4c4df;color:var(--blue);padding:6px 9px;border-radius:5px;font-size:14px;font-weight:600;min-width:220px;min-height:40px}.ds-case:focus-visible{outline:3px solid var(--gold);outline-offset:4px}@media(max-width:900px){.ds-case{min-width:190px;font-size:13px}}@media(max-width:520px){.ds-case{min-width:0;width:148px;max-width:148px;font-size:11px;padding:5px;min-height:36px}}"
     },
     {
       "name": "Rango",
@@ -174,16 +206,16 @@
       "kind": "card",
       "refersTo": "stage-panel",
       "description": "Superficie plana para la demostración y sus métricas.",
-      "html": "<section class=\"ds-stage\"><div class=\"ds-heading\"><span>Una ruta candidata</span><span>10 museos</span></div><div class=\"ds-metric\">0.0997 <small>Fitness</small></div></section>",
+      "html": "<section class=\"ds-stage\"><div class=\"ds-heading\"><span>Una ruta candidata</span><span>20 museos</span></div><div class=\"ds-metric\">0.0997 <small>Fitness</small></div></section>",
       "css": ".ds-stage{font-family:Source,'Segoe UI',sans-serif;background:var(--white);padding:18px 22px;border-radius:12px;font-size:14px;color:var(--ink)}.ds-heading{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px;font-size:12px;color:var(--muted)}.ds-heading>span:first-child{font-weight:600;color:var(--ink)}.ds-metric{font:600 clamp(18px,1.8vw,27px) Bricolage,serif;font-variant-numeric:tabular-nums;letter-spacing:-.025em;color:var(--blue)}.ds-metric small{font:400 12px Source,sans-serif;letter-spacing:0}"
     },
     {
       "name": "Cromosoma de ruta",
       "kind": "custom",
       "refersTo": "gene",
-      "description": "Celdas de genes con estados de inicio, segmento e intercambio.",
-      "html": "<div class=\"ds-genes\"><span class=\"ds-gene ds-fixed\">1</span><span class=\"ds-gene\">4</span><span class=\"ds-gene ds-middle\">5</span><span class=\"ds-gene ds-middle\">6</span><span class=\"ds-gene ds-swapped\">7</span></div>",
-      "css": ".ds-genes{display:flex;gap:5px;min-width:0}.ds-gene{font-family:Source,'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:center;flex:1;min-width:20px;max-width:52px;height:33px;border-radius:5px;background:#eaf0fc;color:#2045b0;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}.ds-fixed{background:var(--blue);color:white}.ds-middle{background:#fbefcf;color:#6d4d13}.ds-swapped{background:var(--gold);color:#4e3406}"
+      "description": "Celdas de genes con estados de operación; rutas largas en diez columnas.",
+      "html": "<div class=\"ds-genes ds-genes-long\"><span class=\"ds-gene ds-fixed\">1</span><span class=\"ds-gene\">2</span><span class=\"ds-gene\">3</span><span class=\"ds-gene\">4</span><span class=\"ds-gene ds-middle\">5</span><span class=\"ds-gene ds-middle\">6</span><span class=\"ds-gene ds-swapped\">7</span><span class=\"ds-gene\">8</span><span class=\"ds-gene\">9</span><span class=\"ds-gene\">10</span><span class=\"ds-gene\">11</span><span class=\"ds-gene\">12</span><span class=\"ds-gene\">13</span><span class=\"ds-gene\">14</span><span class=\"ds-gene\">15</span><span class=\"ds-gene\">16</span><span class=\"ds-gene\">17</span><span class=\"ds-gene\">18</span><span class=\"ds-gene\">19</span><span class=\"ds-gene\">20</span></div>",
+      "css": ".ds-genes{display:flex;gap:5px;min-width:0}.ds-gene{font-family:Source,'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:center;flex:1;min-width:20px;max-width:52px;height:33px;border-radius:5px;background:#eaf0fc;color:#2045b0;font-weight:600;font-size:15px;font-variant-numeric:tabular-nums}.ds-fixed{background:var(--blue);color:white}.ds-middle{background:#fbefcf;color:#6d4d13}.ds-swapped{background:var(--gold);color:#4e3406}.ds-genes-long{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px}.ds-genes-long .ds-gene{max-width:none;min-width:0;height:24px;font-size:12px}@media(max-width:900px){.ds-genes-long .ds-gene{height:27px}}"
     },
     {
       "name": "Código fuente",
@@ -192,6 +224,14 @@
       "description": "Bloque oscuro con referencia de fuente y lectura horizontal.",
       "html": "<section class=\"ds-code\"><div class=\"ds-code-header\">Python · evaluación</div><pre><span class=\"ds-comment\"># Distancia de una ruta</span>\ndistance = 0</pre></section>",
       "css": ".ds-code{background:var(--deep);color:#f2f6ff;border-radius:10px;overflow:hidden;font:13px/1.65 Source,sans-serif}.ds-code-header{padding:10px 16px;border-bottom:1px solid #39506d;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;color:#c6d5ed}.ds-code pre{margin:0;overflow-x:auto;padding:15px 16px;font:12px/1.65 ui-monospace,\"SFMono-Regular\",Consolas,monospace;tab-size:4}.ds-comment{color:#a4bbd9}"
+    },
+    {
+      "name": "Código completo",
+      "kind": "custom",
+      "refersTo": "complete-code",
+      "description": "Listado integral con acciones, saltos de sección y comando de ejecución.",
+      "html": "<section class=\"ds-complete\"><div class=\"ds-complete-heading\"><span>Python completo</span><button class=\"ds-copy\" type=\"button\">Copiar código</button></div><nav class=\"ds-code-sections\" aria-label=\"Secciones del código\"><button type=\"button\">Fitness</button><button type=\"button\">Ciclo completo</button></nav><pre tabindex=\"0\" aria-label=\"Código Python completo\"><code><span class=\"ds-code-highlight\">def execute(data):</span>\n    history = []</code></pre><div class=\"ds-command\"><code>python algorithm.py experiment.json</code></div></section>",
+      "css": ".ds-complete{display:flex;flex-direction:column;height:100%;background:var(--deep);color:#f2f6ff;font:12px/1.5 Source,\"Segoe UI\",sans-serif;border-radius:0}.ds-complete-heading{padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid #39506d;color:#c6d5ed}.ds-copy{background:#2b466c;color:white;font:600 13px/1.5 Source,sans-serif;border:0;border-radius:7px;min-height:38px;padding:8px 12px;cursor:pointer;transition:background .2s,color .2s}.ds-copy:hover{background:#dce6fc}.ds-code-sections{display:flex;gap:7px;padding:10px 18px;border-bottom:1px solid #39506d;flex-wrap:wrap}.ds-code-sections button{background:#243d5d;color:#d5e3ff;border:0;padding:6px 9px;font:11px/1.5 Source,sans-serif;min-height:32px;border-radius:7px;cursor:pointer;transition:background .2s,color .2s}.ds-complete button:focus-visible,.ds-complete pre:focus-visible{outline:3px solid var(--gold);outline-offset:4px}.ds-complete pre{flex:1;min-height:0;overflow:auto;margin:0;font:12px/1.65 ui-monospace,\"SFMono-Regular\",Consolas,monospace;padding:20px 18px}.ds-code-highlight{display:block;background:#365281;min-width:max-content}.ds-command{padding:14px 18px;border-top:1px solid #39506d;font-size:11px;color:#c6d5ed}.ds-command code{font-size:12px;color:#f2f6ff}@media(max-width:520px){.ds-complete-heading{align-items:start;flex-direction:column;padding:14px}.ds-complete pre{font-size:10px;padding:14px 10px}.ds-code-sections{padding:9px 12px;gap:5px}.ds-code-sections button{font-size:10px}.ds-command{padding:12px;font-size:10px}}"
     }
   ],
   "narrative": {

@@ -30,7 +30,7 @@ export function mutate(route, mu) {
   return { mu, flags, before: [...route], after: current, steps };
 }
 
-export function totals(route, matrices, budget = 180) {
+export function totals(route, matrices, budget) {
   const result = { distance: 0, time: 0, cost: 0 };
   for (let i = 0; i < route.length - 1; i++) {
     for (const key of ['distance', 'time', 'cost']) {

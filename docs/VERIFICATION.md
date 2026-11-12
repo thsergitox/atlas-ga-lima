@@ -1,30 +1,30 @@
-# Verificación de la entrega
+# Verificación de la actualización
 
-11 de noviembre de 2026. No se ejecutaron comandos de build, no se creó un entorno de pruebas ni se fijó una semilla.
+11 de noviembre de 2026. Sin builds locales, semillas ni un entorno de tests creado para esta tarea.
 
-## Correspondencia matemática
+## Dos datasets
 
-- 840 casos de COX: 30 pares de permutaciones y todos los 28 pares de cortes válidos para diez genes. Hijos de la adaptación Python coinciden con COX.py original, sustituyendo únicamente los sorteos de cortes para comparar el mismo caso.
-- 80 casos de mutación: veinte matrices de uniformes para cada μ en {0,0.1,0.9,1}. Se suministraron los mismos uniformes a la adaptación y al Mutation.py original. Resultados idénticos, inicio fijo y permutación válida.
-- El ejemplo de siete genes y cortes 3,5 coincide con ambos hijos COX de la tabla 5 del paper.
-- Tres matrices 10×10, simétricas, diagonales cero.
-- Cien generaciones registradas: rutas válidas, métricas recalculadas coincidentes y fitness histórico no decreciente.
-- JavaScript recalcula distancia, tiempo, costo y fitness de los cien registros Python: error máximo absoluto cero.
+- Lima: 20 registros OSM, tres matrices 20×20, inicio 1/MALI y presupuesto didáctico 360 soles.
+- Estambul: 12 registros, tres matrices 12×12 originales, inicio 6/Pelit, presupuesto 2000 TL. Los cinco .mat (incluido ind.mat) son byte a byte idénticos al port de Arbues; sus hashes están publicados. SciPy confirma que las matrices JSON coinciden exactamente y conservan la asimetría.
+- Ambas poblaciones iniciales contienen 100permutaciones válidas y ambas trazas contienen 100generaciones. Cada ruta conserva el inicio y contiene todos los IDs una sola vez. Fitness recalculado coincidente y mejor histórico no decreciente.
+- JavaScript recalcula distancia, tiempo, costo y fitness de los 200 estados Python: error máximo absoluto cero.
 
-## Navegador
+## Operadores y código completo
 
-Escritorio 1440×900, portátil 1280×720 y móvil de 390 px. Navegación y once diapositivas interiores comprobadas sin desborde horizontal, recortes de panel o errores de carga. Inicio revisado en todos los tamaños. Capturas inspeccionadas con mapas reales y textos asentados.
+Para n=20 y n=12 se compararon 1980 casos COX (diez pares por tamaño, todos los cortes válidos) y 80 mutaciones contra las copias originales NumPy, suministrando los mismos cortes o uniformes a ambos métodos. Se conservaron permutación e inicio.
 
-Controles comprobados: nueva ruta, nombres de museos, navegación por flechas, notas y Escape, índice, presupuesto fuera de límite, nuevo torneo, ambos hijos COX, cambios de cortes, matriz de mutación visible/oculta, siguiente intercambio, nuevo sorteo sin cambios con μ=0.1, reproducción/pausa y reinicio de evolución, generación 100, comparación inicial/final y movimiento reducido. Consola sin errores.
+`data/algorithm.py` contiene todas las funciones y el punto de entrada, generado desde los módulos que producen las trazas. Se ejecutó con el JSON de Lima y el de Estambul, completando 100 generaciones válidas para cada uno, usando únicamente biblioteca estándar. Copia al portapapeles, descarga .py, descarga de datos del caso y navegación interna a funciones comprobadas. El teclado en el editor desplaza el código sin cambiar de diapositiva.
 
-Correcciones de revisión independiente: restablecer «Aplicar COX» tras modificar ambos cortes, y eliminar el color por procedencia sin respaldo de los 100 supervivientes. Comprobación posterior confirmó ambas correcciones. Dictamen del revisor: ship sobre las correcciones evaluadas.
+## Navegador y revisión
 
-## Archivos
+Se recorrieron 78 combinaciones: 13 diapositivas × 2 casos × 3 tamaños (1440×900,1280×720,390px). Sin errores de carga ni desbordes horizontales. Un desborde interno de 12 px del COX de veinte genes en portátil se resolvió con un ajuste local de altura; comprobación final: 372 px de contenido en 372 px de panel. También se comprobó ancho 360 px.
 
-Once módulos JavaScript con sintaxis válida. Python analizado con ast.parse. Los operadores de referencia conservados son copias sin cambios. Detector de interfaz ejecutado una vez: cero hallazgos. Cincuenta teselas PNG incluyen origen incrustado; escaneo de procedencia: cero archivos sin origen.
+El selector conserva la diapositiva y actualiza mapa, cantidad de genes, fórmulas, indicadores de mutación, moneda y presupuesto. Alternancias Lima→Estambul→Lima muestran respectivamente 400/144/400 indicadores, sin acumular mapas. μ=.9 muestra 12.16 % por fila para Lima y 28.24 % para Estambul; μ=.1 da explícitamente sorteo sin cambios cuando corresponde. La primera posición permanece fija.
 
-Las teselas CARTO se descartaron durante desarrollo porque devolvían una imagen de requisito de API key con HTTP 200. Los PNG que se entregan son de tile.openstreetmap.org y fueron comprobados visualmente. El código y los datos originales del repositorio clonado permanecen intactos.
+Capturas asentadas de escritorio, portátil y móvil inspeccionadas. Revisor independiente: ship, sin problemas materiales. Identidad azul conservada; veinte genes en dos filas y código completo después de Resultado. La consola normal de la revisión no mostró errores.
 
-## Producción
+El detector se ejecutó una vez y señaló diferencias informativas con tokens incompletos del DESIGN.md anterior (colores tonales, tamaños pequeños y radios). Se conservaron los valores existentes; la documentación de los componentes nuevos se actualizó al final. No se reparó el diseño previo por efectos secundarios. Las 80 teselas PNG tienen origen incrustado; escaneo: cero sin procedencia. Los repositorios fuente originales permanecen intactos.
 
-Publicación por Vercel CLI en https://atlas-ga-lima.vercel.app, deployment `dpl_ArPL4fkUngvwJrCkWKoEtrsLcAyq`, estado READY. Respuesta pública HTTP 200. Verificados en la URL pública: doce diapositivas, cincuenta teselas, ausencia de errores de recursos/consola, siguiente mutación, restablecimiento COX y pantalla completa. Repositorio: https://github.com/thsergitox/atlas-ga-lima.
+## Publicación de la actualización
+
+Vercel CLI: https://atlas-ga-lima.vercel.app, deployment dpl_57w3W1daguPcVx2XxVwFwEDp1WZe, estado READY. En producción se comprobaron 20 marcadores/13 diapositivas para Lima; el cambio a Estambul conservó Mutación y mostró 12 marcadores/144 indicadores; código completo, JSON y .mat devolvieron HTTP 200. Descarga de datos del editor apunta al caso seleccionado.

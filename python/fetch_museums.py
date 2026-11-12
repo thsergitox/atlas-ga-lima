@@ -1,4 +1,4 @@
-"""Recuperar los diez registros OSM elegidos para esta exposición."""
+"""Recuperar los veinte registros OSM elegidos para esta exposición."""
 import datetime
 import json
 from pathlib import Path
@@ -16,6 +16,16 @@ TERMS = [
     ('Museo de Arte Contemporaneo', 'MAC Lima', 'Barranco'),
     ('Museo de La Electricidad', 'Electricidad', 'Barranco'),
     ('Museo Pedro de Osma', 'Pedro de Osma', 'Barranco'),
+    ('Museo de la Nación', 'Museo de la Nación', 'San Borja'),
+    ('Museo Oro del Perú', 'Oro del Perú', 'Surco'),
+    ('Museo de la Inmigración Japonesa', 'Inmigración Japonesa', 'Jesús María'),
+    ('Museo de Arte de San Marcos', 'Arte San Marcos', 'Centro'),
+    ('Museo Nacional de la Cultura Peruana', 'Cultura Peruana', 'Centro'),
+    ('Casa Museo José Carlos Mariátegui', 'Casa Mariátegui', 'Centro'),
+    ('Museo de Neuropatología', 'Neuropatología', 'Barrios Altos'),
+    ('Museo de Sitio El Mirador del Cerro San Cristóbal', 'San Cristóbal', 'Rímac'),
+    ('Museo Señor de los Milagros', 'Señor de los Milagros', 'Centro'),
+    ('Museo del Palacio Arzobispal', 'Palacio Arzobispal', 'Centro'),
 ]
 
 

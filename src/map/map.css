@@ -6,8 +6,8 @@
 .museum-marker{cursor:pointer;outline:none}
 .museum-marker>circle{fill:white;stroke:#204ed5;stroke-width:3;transition:fill .3s,stroke .3s}
 .museum-marker>text{font:600 22px Source,sans-serif;fill:#173b9f;pointer-events:none}
-.museum-marker[data-id="1"]>circle{fill:#204ed5;stroke:white;stroke-width:4}
-.museum-marker[data-id="1"]>text{fill:white}
+.museum-marker[data-start="true"]>circle{fill:#204ed5;stroke:white;stroke-width:4}
+.museum-marker[data-start="true"]>text{fill:white}
 .museum-marker:hover>circle,.museum-marker:focus>circle,.museum-marker.highlighted>circle{fill:#e4aa40;stroke:#80580e}
 .museum-marker.affected>circle{fill:#e4aa40;stroke:#80580e}
 .museum-marker .museum-label{font:600 21px Source,sans-serif;fill:#172c43;paint-order:stroke;stroke:#f7f8fa;stroke-width:6px;stroke-linejoin:round;display:none}
@@ -20,3 +20,5 @@
 .map-tooltip span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
 .basemap{filter:saturate(.15);opacity:.5}
 .marker-leader{stroke:#526579;stroke-width:1.5;fill:none}
+
+.museum-location{fill:#204ed5}
