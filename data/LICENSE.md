@@ -2,7 +2,7 @@
 
 ## Resultados viales de Lima
 
-`routes.geojson` contiene resultados de openrouteservice by HeiGIT, calculados sobre datos de OpenStreetMap. Se distribuyen bajo **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** según los términos de HeiGIT consultados el12de noviembre de2026.
+`routes.geojson` contiene resultados de openrouteservice by HeiGIT, calculados sobre datos de OpenStreetMap. Se distribuyen bajo **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** según los términos de HeiGIT consultados el12 de noviembre de2026.
 
 - Atribución: © openrouteservice by HeiGIT | © OpenStreetMap contributors.
 - Licencia: https://creativecommons.org/licenses/by-sa/4.0/

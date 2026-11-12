@@ -40,9 +40,9 @@ python3 python/run_lima.py
 python3 python/export_code.py
 ```
 
-Lima usa coordenadas OSM y380recorridos dirigidos de openrouteservice: distancias viales, tiempos estimados y geometrías GeoJSON del mismo recorrido. Perfil driving-car, sin tráfico en vivo. Los costos `max(8,4+2.5D)` y el presupuesto de360soles son hipótesis académicas, no tarifas comerciales ni una jornada de visitas validada. El histórico Haversine queda en `data/archive/haversine/`.
+Lima usa coordenadas OSM y380 recorridos dirigidos de openrouteservice: distancias viales, tiempos estimados y geometrías GeoJSON del mismo recorrido. Perfil driving-car, sin tráfico en vivo. Los costos `max(8,4+2.5D)` y el presupuesto de360 soles son hipótesis académicas, no tarifas comerciales ni una jornada de visitas validada. El histórico Haversine queda en `data/archive/haversine/`.
 
-El endpoint vigente es `https://api.heigit.org/openrouteservice/v2/directions/driving-car/geojson`. El dominio anterior tiene una cuota reducida y ya no corresponde al panel. La adquisición se limita a menos de40consultas/min y conserva progreso en `.cache/ors/`. La clave solo se usa localmente, nunca en la web. Una vez preparado, el sitio reproduce los mapas y operadores sin consultar la API. En Dataset se exploran las matrices y se invierte cualquier par; Fuentes permite descargar los380trazados y su procedencia.
+El endpoint vigente es `https://api.heigit.org/openrouteservice/v2/directions/driving-car/geojson`. El dominio anterior tiene una cuota reducida y ya no corresponde al panel. La adquisición se limita a menos de40 consultas/min y conserva progreso en `.cache/ors/`. La clave solo se usa localmente, nunca en la web. Una vez preparado, el sitio reproduce los mapas y operadores sin consultar la API. En Dataset se exploran las matrices y se invierte cualquier par; Fuentes permite descargar los380 trazados y su procedencia.
 
 ## Datos originales del paper
 
@@ -69,7 +69,7 @@ Ejecuta cien generaciones con sus matrices y población inicial guardadas, sin S
 ## Fuentes y verificación
 
 - [Paper, DOI 10.7717/peerj-cs.2340](https://doi.org/10.7717/peerj-cs.2340).
-- [Port de Arbues](https://github.com/Arbues/ga-itinerary-planning-pc3), revisión e84ed98c8ecd65bf269da847ee26147f1f282d70.
+- [Port de Arbues](https://github.com/Arbues/ga-itinerary-planning-pc3), revisión e84 ed98 c8 ecd65 bf269 da847 ee26147 f1 f282 d70.
 - [MATLAB original](https://github.com/MuhammedSehab/GA-for-Itinerary-Planning).
 - `docs/AUDIT.md`, `docs/DATA.md`, `docs/VERIFICATION.md`: correspondencia, supuestos y evidencia.
 

@@ -2,86 +2,86 @@
 name: Atlas GA · Lima
 description: Laboratorio cartográfico para explicar algoritmos genéticos con rutas de museos.
 colors:
-  blue: "#204ed5"
-  deep: "#142c49"
-  ink: "#172c43"
+  blue: "#204 ed5"
+  deep: "#142 c49"
+  ink: "#172 c43"
   muted: "#526579"
-  bg: "#f7f8fa"
+  bg: "#f7 f8 fa"
   white: "#fff"
-  line: "#d5dde6"
+  line: "#d5 dde6"
   green: "#176556"
-  gold: "#e4aa40"
-  tint: "#eaf0fc"
-  blue-light: "#cad8f6"
-  blue-hover: "#173fae"
-  tint-hover: "#dce6fc"
-  map-ground: "#edf1f5"
-  gene-ink: "#2045b0"
+  gold: "#e4 aa40"
+  tint: "#eaf0 fc"
+  blue-light: "#cad8 f6"
+  blue-hover: "#173 fae"
+  tint-hover: "#dce6 fc"
+  map-ground: "#edf1 f5"
+  gene-ink: "#2045 b0"
   segment-bg: "#fbefcf"
-  segment-ink: "#6d4d13"
-  swapped-ink: "#4e3406"
-  case-line: "#b4c4df"
-  code-text: "#f2f6ff"
-  code-muted: "#c6d5ed"
-  code-line: "#39506d"
-  code-action: "#2b466c"
-  code-section: "#243d5d"
-  code-section-text: "#d5e3ff"
+  segment-ink: "#6 d4 d13"
+  swapped-ink: "#4 e3406"
+  case-line: "#b4 c4 df"
+  code-text: "#f2 f6 ff"
+  code-muted: "#c6 d5 ed"
+  code-line: "#39506 d"
+  code-action: "#2 b466 c"
+  code-section: "#243 d5 d"
+  code-section-text: "#d5 e3 ff"
   code-highlight: "#365281"
 typography:
   display:
     fontFamily: "Bricolage, Georgia, serif"
-    fontSize: "clamp(35px, 3.4vw, 64px)"
+    fontSize: "clamp(35 px, 3.4 vw, 64 px)"
     fontWeight: 600
     lineHeight: 1.08
-    letterSpacing: "-.035em"
+    letterSpacing: "-.035 em"
   headline:
     fontFamily: "Bricolage, Georgia, serif"
-    fontSize: "28px"
+    fontSize: "28 px"
     fontWeight: 600
     lineHeight: 1.2
-    letterSpacing: "-.02em"
+    letterSpacing: "-.02 em"
   title:
     fontFamily: "Bricolage, Georgia, serif"
-    fontSize: "21px"
+    fontSize: "21 px"
     fontWeight: 600
     lineHeight: 1.3
   body:
     fontFamily: "Source, 'Segoe UI', sans-serif"
-    fontSize: "18px"
+    fontSize: "18 px"
     fontWeight: 400
     lineHeight: 1.5
   code:
     fontFamily: "ui-monospace, 'SFMono-Regular', Consolas, monospace"
-    fontSize: "12px"
+    fontSize: "12 px"
     lineHeight: 1.65
   button:
     fontFamily: "Source, 'Segoe UI', sans-serif"
-    fontSize: "16px"
+    fontSize: "16 px"
     fontWeight: 600
     lineHeight: 1.5
 rounded:
-  field: "5px"
-  button: "7px"
-  tooltip: "8px"
-  code: "10px"
-  panel: "12px"
+  field: "5 px"
+  button: "7 px"
+  tooltip: "8 px"
+  code: "10 px"
+  panel: "12 px"
 spacing:
-  compact: "8px"
-  control-gap: "12px"
-  inset: "16px"
-  panel-y: "18px"
-  action-x: "20px"
-  stage-x: "22px"
-  section: "24px"
-  stage-bottom: "28px"
+  compact: "8 px"
+  control-gap: "12 px"
+  inset: "16 px"
+  panel-y: "18 px"
+  action-x: "20 px"
+  stage-x: "22 px"
+  section: "24 px"
+  stage-bottom: "28 px"
 components:
   button-primary:
     backgroundColor: "{colors.blue}"
     textColor: "{colors.white}"
     typography: "{typography.button}"
     rounded: "{rounded.button}"
-    padding: "14px 20px"
+    padding: "14 px 20 px"
   button-primary-hover:
     backgroundColor: "{colors.blue-hover}"
   button-secondary:
@@ -89,40 +89,40 @@ components:
     textColor: "{colors.blue}"
     typography: "{typography.button}"
     rounded: "{rounded.button}"
-    padding: "14px 20px"
+    padding: "14 px 20 px"
   button-secondary-hover:
     backgroundColor: "{colors.tint-hover}"
   button-icon:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
     rounded: "{rounded.button}"
-    width: "42px"
-    height: "42px"
+    width: "42 px"
+    height: "42 px"
   field-select:
     backgroundColor: "{colors.bg}"
     textColor: "{colors.ink}"
     rounded: "{rounded.field}"
-    padding: "6px 9px"
+    padding: "6 px 9 px"
   field-case-select:
     backgroundColor: "{colors.white}"
     textColor: "{colors.blue}"
     rounded: "{rounded.field}"
-    padding: "6px 9px"
-    height: "40px"
+    padding: "6 px 9 px"
+    height: "40 px"
   stage-panel:
     backgroundColor: "{colors.white}"
     rounded: "{rounded.panel}"
-    padding: "18px 22px"
+    padding: "18 px 22 px"
   gene:
     backgroundColor: "{colors.tint}"
     textColor: "{colors.gene-ink}"
     rounded: "{rounded.field}"
-    height: "33px"
+    height: "33 px"
   gene-long:
     backgroundColor: "{colors.tint}"
     textColor: "{colors.gene-ink}"
     rounded: "{rounded.field}"
-    height: "24px"
+    height: "24 px"
   gene-fixed:
     backgroundColor: "{colors.blue}"
     textColor: "{colors.white}"
@@ -146,7 +146,7 @@ components:
     backgroundColor: "{colors.code-section}"
     textColor: "{colors.code-section-text}"
     rounded: "{rounded.button}"
-    padding: "6px 9px"
+    padding: "6 px 9 px"
 ---
 
 # Design System: Atlas GA · Lima
@@ -274,7 +274,7 @@ La preferencia de movimiento reducido limita animaciones y transiciones a `.01ms
 
 ## Recorridos viales y matrices · 12 de noviembre de 2026
 
-Lima representa las polilíneas de cada par dirigido de openrouteservice, sin interpolar sus vértices a través de edificios. Los lugares conservan sus puntos geográficos. Una transición de850ms dibuja los tramos nuevos en oro hacia cobalto; los compartidos permanecen y los anteriores se distinguen en gris discontinuo. La comparación explícita mantiene las conexiones anteriores para explicarlas. Al reducir movimiento, el estado cambia de inmediato. La leyenda identifica actual/anterior y cuenta las conexiones nuevas y retiradas; no se consultan servicios durante las animaciones.
+Lima representa las polilíneas de cada par dirigido de openrouteservice, sin interpolar sus vértices a través de edificios. Los lugares conservan sus puntos geográficos. Una transición de850 ms dibuja los tramos nuevos en oro hacia cobalto; los compartidos permanecen y los anteriores se distinguen en gris discontinuo. La comparación explícita mantiene las conexiones anteriores para explicarlas. Al reducir movimiento, el estado cambia de inmediato. La leyenda identifica actual/anterior y cuenta las conexiones nuevas y retiradas; no se consultan servicios durante las animaciones.
 
 La misma interfaz de mapa sirve al caso Estambul con conexiones esquemáticas explícitamente rotuladas: sus matrices originales no incluyen geometrías. No se atribuye trazado vial a esas rectas.
 
