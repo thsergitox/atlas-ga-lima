@@ -4,6 +4,7 @@ import { addMapControls } from './leaflet-controls.js';
 import { createMarkers } from './markers.js';
 import { createRouteGeometry } from './route-geometry.js';
 import { createRouteLayers } from './route-layers.js';
+import { createMapExpansion } from './map-expansion.js';
 
 export function createMap(host, museums, basemap, profile, collection = null, information = {}) {
   host.replaceChildren();
@@ -23,12 +24,15 @@ export function createMap(host, museums, basemap, profile, collection = null, in
   addBasemap(map, basemap);
   const fit = (animate = motion) => map.fitBounds(bounds, { paddingTopLeft: [35, 30], paddingBottomRight: [65, 35], animate, maxZoom: 15 });
   addMapControls(map, () => fit());
+  const expansion = createMapExpansion(host, map, profile.shortCity, geometry.routed);
   const markers = createMarkers(map, museums, information, profile.start);
   const layers = createRouteLayers(map);
   let disposed = false, resizePending = false;
   const refresh = () => {
     if (disposed || !host.clientWidth || !host.clientHeight) return;
-    map.invalidateSize({ animate: false, pan: false }); fit(false);
+    const view = expansion.resizeView();
+    map.invalidateSize({ animate: false, pan: false });
+    if (view) map.setView(view.center, view.zoom, { animate: false }); else fit(false);
   };
   const resize = new ResizeObserver(() => {
     if (!host.clientWidth || !host.clientHeight) return;
@@ -49,6 +53,7 @@ export function createMap(host, museums, basemap, profile, collection = null, in
   return { show, dismiss() { markers.close(); }, labels: markers.labels, highlight: markers.highlight,
     destroy() {
       disposed = true;
+      expansion.destroy();
       resize.disconnect(); markers.destroy(); layers.destroy();
       // Leaflet 1.9 finishes CSS zoom with a delayed callback; keep its detached pane alive until zoomend.
       if (zooming) map.once('zoomend', () => map.remove()); else map.remove();

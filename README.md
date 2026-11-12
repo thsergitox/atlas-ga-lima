@@ -17,6 +17,8 @@ Flechas: navegar. `F`: pantalla completa. `N`: notas. `Esc`: cerrar notas/índic
 
 Cada marcador abre una ficha con reseña, ubicación y fuente. El mapa tiene +/−, encuadre y desplazamiento al arrastrar. Leaflet ofrece rueda, doble clic y gestos táctiles, además de +/− y encuadre. Con el mapa enfocado, las flechas desplazan y +/− cambian el zoom; esas teclas no cambian de diapositiva. Escape cierra la ficha y devuelve el foco al marcador.
 
+**Ampliar mapa** abre una vista casi completa y **Pantalla completa** usa la pantalla del navegador. Ambas conservan el zoom, las rutas y las fichas del mismo mapa. **Volver a diapositiva** restaura su posición; Escape permite salir de la vista ampliada. Si el navegador no permite pantalla completa, queda disponible la ampliación. La atribución de rutas y mapa permanece visible.
+
 COX permite elegir cortes y ver sus dos hijos. Mutación muestra los intercambios y su matriz de indicadores (20×20 o 12×12); μ=.9 es la demostración de diversificación, mientras la corrida inicia en .1. Evolución reproduce cien generaciones Python guardadas, sin fabricar curvas. El código completo permite copiar/descargar un archivo ejecutable con todas las funciones y el punto de entrada.
 
 ## Abrir localmente

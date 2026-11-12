@@ -117,7 +117,7 @@ function bindControls() {
       if (!$('#contents').hidden) { toggleContents(false); $('#contents-button').focus(); }
       context?.map.dismiss(); return;
     }
-    if (event.target.closest('input,select,textarea,[contenteditable],pre,#map,.museum-card') || event.ctrlKey || event.altKey || event.metaKey) return;
+    if (event.target.closest('input,select,textarea,[contenteditable],pre,#map,.museum-card,.map-expansion') || event.ctrlKey || event.altKey || event.metaKey) return;
     if (['ArrowRight', 'PageDown'].includes(event.key) || (event.key === ' ' && !event.target.closest('button,a,[role="button"]'))) { event.preventDefault(); go(index + 1, true); }
     if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); go(index - 1, true); }
     if (event.key === 'Home') go(0, true);
