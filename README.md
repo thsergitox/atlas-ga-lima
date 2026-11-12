@@ -20,7 +20,11 @@ Cada marcador abre una ficha con reseña, ubicación y fuente. El mapa tiene +/�
 
 **Ampliar mapa** abre una vista casi completa y conserva el zoom, las rutas y las fichas del mismo mapa. **Volver a diapositiva** restaura su posición; Escape permite salir de la vista ampliada. La atribución permanece visible. Por petición del usuario se retiró el botón de pantalla completa propio del mapa; la presentación conserva su control general. La cabecera mide 52 px en escritorio y el mapa tiene prioridad sobre el panel desplazable del paso.
 
-En **Notas** se puede abrir el guion completo. [guion.md](guion.md) es su fuente descargable; `docs/render_guide.py` genera la versión de lectura con Python Markdown. Explica los trece pasos y responde preguntas sobre Bing/ORS, distancias, costos, mutación y comparación. Para actualizarlo: `python3 docs/render_guide.py`. Es conversión de documentación, sin compilación de la aplicación.
+En **Notas** se puede abrir el guion completo, actualizado con el PDF del equipo. Se reparte entre tres personas: slides 1–4 (897 palabras), 5–7 (901) y 8–13 (908); glosario y preguntas son anexos compartidos. Las fórmulas se muestran con KaTeX local. Los ejemplos de pestañas de una rama local se explican como apoyo textual, sin prometer controles ausentes.
+
+Editar `docs/guide-opening.md`, `guide-person-1.md` a `guide-person-3.md` y `guide-questions.md`; después ejecutar `python3 docs/render_guide.py`. Se generan [guion.md](guion.md), descargable, y `guion.html`, con matemáticas protegidas del procesamiento Markdown. Es conversión de documentación, sin compilación de la aplicación.
+
+Cada tramo activo tiene un color único sobre un contorno blanco para separarlo del mapa. Al avanzar, los tramos que permanecen conservan su color; los anteriores retirados se dibujan grises discontinuos. Al señalar una línea aparece su número y el par de destinos. Los colores identifican conexiones, no fitness ni costos.
 
 COX permite elegir cortes y ver sus dos hijos. Mutación muestra los intercambios y su matriz de indicadores (20×20 o 12×12); μ=.9 es la demostración de diversificación, mientras la corrida inicia en .1. Evolución reproduce cien generaciones Python guardadas, sin fabricar curvas. El código completo permite copiar/descargar un archivo ejecutable con todas las funciones y el punto de entrada.
 

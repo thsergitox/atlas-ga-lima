@@ -20,6 +20,7 @@ export function createMap(host, museums, basemap, profile, collection = null, in
   map.on('zoomstart', () => { zooming = true; });
   map.on('zoomend', () => { zooming = false; });
   map.createPane('previous-routes').style.zIndex = 390;
+  map.createPane('route-outlines').style.zIndex = 395;
   map.createPane('active-routes').style.zIndex = 400;
   addBasemap(map, basemap);
   const fit = (animate = motion) => map.fitBounds(bounds, { paddingTopLeft: [35, 30], paddingBottomRight: [65, 35], animate, maxZoom: 15 });

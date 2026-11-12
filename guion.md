@@ -1,116 +1,323 @@
-# Qué hicimos y cómo explicarlo
+# Guion detallado · Atlas GA
 
-Guion de apoyo para presentar Atlas GA. Primero puede leerse el recorrido de las diapositivas; después, estudiar las preguntas. Las cifras corresponden a los archivos distribuidos con esta web. Otra ejecución aleatoria puede producir otros resultados.
+Algoritmo genético para planificar itinerarios turísticos, basado en Şehab y Turan (2024), su port a Python y el PDF de guion entregado por el equipo.
 
-## La explicación en un minuto
+## Reparto para tres personas
 
-“Estudiamos el algoritmo genético de itinerarios de Şehab y Turan y su port a Python. Construimos una presentación que conecta cada operación del código con sus fórmulas, cromosomas y cambios de recorrido. El algoritmo decide el orden de visita de un conjunto fijo de lugares, considerando distancia, tiempo y costo respecto de un presupuesto.
+El bloque de cada persona reúne discurso, fórmulas, demostración y precauciones. El reparto se equilibra por extensión y dificultad, no solo por cantidad de diapositivas. Glosario y preguntas son material de consulta compartido, fuera del tiempo asignado a cada bloque.
 
-Trabajamos con tres casos. Conservamos los datos originales de doce destinos de Estambul; después consultamos openrouteservice para obtener nuevas distancias, tiempos y geometrías sobre esas mismas coordenadas. Además, adaptamos el procedimiento a veinte museos de Lima. Así podemos explicar la metodología original y mostrar cómo cambia la evaluación cuando cambia la fuente de datos. Las corridas están guardadas para exponerlas; no presentamos sus resultados como los publicados por los autores ni como una garantía de óptimo global.”
+La carga cuenta palabras de texto, excluyendo fórmulas. El cálculo de lectura usa 130 palabras por minuto; sirve para ensayar, no para fijar la duración total de la exposición.
 
-## Qué significa cada caso
+| Persona | Diapositivas | Texto del bloque | Lectura orientativa |
+|---|---|---|---|
+| Persona 1 | 1–4 | 897 palabras | 6.9 min |
+| Persona 2 | 5–7 | 901 palabras | 6.9 min |
+| Persona 3 | 8–13 | 908 palabras | 7.0 min |
 
-| Caso en el selector | Lugares e inicio | Distancia y tiempo | Costo y presupuesto | Qué muestra el mapa |
+En cada paso, **En pantalla** indica qué señalar; **Decir** propone el discurso; **Fórmula y ejemplo** desarrolla el razonamiento; **Cuidado** delimita lo que puede afirmarse. Ensayen también las transiciones entre personas. Los tiempos de lectura son orientativos: las demostraciones y las preguntas requieren tiempo adicional.
+
+El PDF menciona pestañas de una rama local —Suma de celdas, Costo, Paper vs port y Demo numérica—. Sus explicaciones se incorporan aquí como ejemplos de apoyo. Las indicaciones “En pantalla” corresponden a los controles de la web publicada; no dependen de tener esas pestañas adicionales.
+
+## Glosario para preparar la exposición
+
+| Término | Significado en este trabajo |
+|---|---|
+| Destino o lugar | Un museo con coordenadas fijas. |
+| Itinerario o ruta | Orden de visita \(I=(i_1,\ldots,i_n)\). |
+| Ruta abierta | No vuelve al inicio: tiene \(n-1\) traslados. |
+| Permutación | Cada destino aparece exactamente una vez. |
+| Tramo \(i\to j\) | Traslado entre dos destinos; importa el sentido. |
+| Matrices \(D,T,C\) | Fila = origen, columna = destino; kilómetros, minutos y costo local. |
+| Asimetría | Puede cumplirse \(D_{ij}\ne D_{ji}\); se guardan ambas direcciones. |
+| Diagonal | \(D_{ii}=T_{ii}=C_{ii}=0\): no hay traslado. |
+| Presupuesto \(B\) | Dinero disponible para los traslados modelados. |
+| Normalizar | Escalar entradas: \(\widehat D_{ij}=D_{ij}/D_{\max}\), con diagonal cero. |
+| Fitness \(F\) | Calificación de una ruta; mayor es preferible dentro del mismo caso. |
+| Algoritmo genético (GA) | Búsqueda que mantiene, selecciona y modifica una población de candidatos. |
+| Gen e individuo | Gen = ID de un destino; individuo o cromosoma = ruta completa. |
+| Población y generación | Aquí, cien rutas; una generación completa selección, cruce, mutación y reemplazo. |
+| Padres e hijos | Rutas seleccionadas y candidatos producidos a partir de ellas. |
+| Torneo modificado | Selección entre candidatos sorteados, buscando dos planes distintos. |
+| COX | Copy Order Crossover: combina orden sin duplicar ni omitir destinos. |
+| Mutación y \(\mu\) | Intercambios vecinos gobernados por una matriz de indicadores. |
+| Elitismo | Padres e hijos compiten y se conservan los mejores. |
+| Meseta | Intervalo sin mejora del mejor fitness guardado. |
+| Bing Maps | Servicio que el paper declara para adquirir distancias y tiempos. |
+| ORS | openrouteservice: devuelve recorridos viales, distancia, duración y geometría. |
+| OpenStreetMap y Leaflet | OSM aporta datos geográficos y teselas; Leaflet muestra el mapa. |
+
+## Los tres casos
+
+| Caso | Lugares e inicio | Distancia y tiempo | Costo y presupuesto | Mapa |
 |---|---|---|---|---|
-| Lima · ORS (20 museos) | Veinte museos; inicio 1, MALI | Recorridos de openrouteservice (ORS), perfil automóvil | Costo simulado en soles; B = 360 | Polilíneas viales guardadas de ORS |
-| Estambul · datos del paper (12) | Coordenadas originales; inicio 6, Pelit | Matrices originales del repositorio | Matriz histórica en liras turcas; B = 2000 | Conexiones esquemáticas entre los puntos |
-| Estambul · ORS (12) | Las mismas doce coordenadas e inicio | Nuevas D/T de ORS, perfil automóvil | La misma matriz histórica y B = 2000 | Polilíneas viales guardadas de ORS |
+| Estambul · datos del paper | Doce destinos; inicio 6, Pelit | Matrices originales; el artículo declara Bing Maps | Histórico, \(B=2000\) TL | Conexiones esquemáticas |
+| Estambul · ORS | Las mismas doce coordenadas | ORS automóvil; 132 pares dirigidos | Misma matriz histórica y presupuesto | Geometrías viales guardadas |
+| Lima · ORS | Veinte museos; inicio 1, MALI | ORS automóvil; 380 pares dirigidos | Simulado en soles, \(B=360\) | Geometrías viales guardadas |
 
-**Paper significa artículo científico; Estambul es la ciudad del estudio.** No son dos algoritmos diferentes. Los dos casos de Estambul permiten contrastar fuentes de datos conservando coordenadas, inicio, presupuesto y las cien rutas iniciales. En ambos se hizo una nueva ejecución Python del ciclo equivalente al escenario S6.
+Paper significa artículo científico; Estambul es la ciudad del caso original. Los dos casos de Estambul usan el mismo conjunto de cien rutas iniciales. Cambiar de proveedor sustituye D/T, mientras que la evolución sigue siendo aleatoria: no atribuir toda diferencia de resultados únicamente a la fuente.
 
-El paper indica Bing Maps API y Excel/Visual Basic como procedimiento de obtención de sus matrices, en la sección de preparación de datos, página 8. En esta web, el caso original lee los archivos publicados; no hace una nueva consulta a Bing. Sus rectas en el mapa son una representación esquemática porque los archivos importados no contienen las geometrías de cada recorrido. **Una recta dibujada NO demuestra que la matriz se calculó con Haversine.** [Artículo, sección “Setting-up information matrices”](https://pmc.ncbi.nlm.nih.gov/articles/PMC11623113/).
 
-## Guion por diapositiva
+## Persona 1 · Problema, datos y representación
 
-### 1. Problema: mismos museos, distinto orden
+**Responsabilidad:** abrir la exposición y explicar de dónde salen los insumos. Diapositivas 1–4. Usar Estambul original para los ejemplos numéricos y alternar Lima u ORS cuando se indique.
 
-“El problema no consiste en mover los museos ni decidir dónde están. Sus coordenadas son fijas. Lo que cambia es el orden de visita. Si una ruta pasa por 1, 3 y 8, utiliza los recorridos dirigidos 1→3 y 3→8. Otro orden combina otros tramos y puede tener otra distancia, duración y costo.”
+### Diapositiva 1 · El problema
 
-Mostrar “Comparar otra ruta”: los marcadores permanecen en su sitio y cambian las conexiones. Con veinte lugares e inicio fijo quedan 19! órdenes posibles. Mantener una población de cien individuos limita cuántos exploramos simultáneamente, pero no reduce el número matemático de soluciones posibles.
+**En pantalla.** Marcadores, ruta candidata, métricas y botón Comparar otra ruta. Cada tramo actual tiene un color distinto; los anteriores son grises discontinuos. Al señalar una línea aparece el par de destinos. Los colores ayudan a seguir la secuencia, no representan costos ni calidad.
 
-### 2. Pipeline: datos primero, optimización después
+**Decir.** “Estudiamos el algoritmo genético de itinerarios de Şehab y Turan y su port a Python. El algoritmo decide el orden de visita de un conjunto fijo de museos considerando distancia, tiempo y costo frente a un presupuesto. La presentación conecta código, fórmulas y cambios del recorrido. Conservamos el caso original de Estambul, adquirimos rutas ORS para las mismas coordenadas y adaptamos el procedimiento a veinte museos de Lima.”
 
-“Separamos dos trabajos. Primero preparamos los lugares, recorridos y matrices. Después el algoritmo consulta esas matrices muchas veces para evaluar rutas. No llama a una API cada vez que cruza o muta. La web añade una tercera capa: representar y explicar las operaciones.”
+“Los museos no se mueven. Si visitamos 6, 9 y 5, usamos los tramos 6→9 y 9→5. Otro orden combina otras conexiones. Comparar otra ruta permite observar ese cambio manteniendo los puntos geográficos fijos.”
 
-El flujo es: coordenadas → adquisición de recorridos → matrices D/T/C → población inicial → evaluación → selección → COX → mutación → reemplazo → repetición. Python genera la corrida y su traza; JavaScript permite explorar operadores y reproduce la evolución guardada.
+**Fórmula y ejemplo.** Una ruta abierta suma únicamente tramos consecutivos:
 
-### 3. Dataset y matrices
+\[
+D(I)=\sum_{k=1}^{n-1}D_{i_k,i_{k+1}}.
+\]
 
-“Cada fila representa un origen y cada columna un destino. D[i,j] guarda kilómetros; T[i,j], minutos; C[i,j], costo monetario. Conservamos ambas direcciones porque ir de A a B puede diferir de volver de B a A.”
+Con inicio fijo quedan \((n-1)!\) órdenes: \(11!=39\,916\,800\) en Estambul y \(19!\approx1.216\times10^{17}\) en Lima. Cien rutas representan aproximadamente \(0.00025\,\%\) de los órdenes de Estambul. La población es una muestra que evoluciona; el espacio combinatorio no se reduce a cien soluciones.
 
-En Lima hay 20×20 = 400 celdas por matriz. La diagonal contiene veinte ceros: quedarse en el mismo lugar no necesita una consulta. Se necesitan 20×19 = **380 pares dirigidos**, no 400 consultas útiles. Estambul tiene 12×11 = **132 pares**. Cada respuesta Directions aporta distancia, duración y una geometría del mismo recorrido; esos valores alimentan las matrices y el mapa. D y T se convierten de metros a kilómetros y de segundos a minutos. No adquirimos estos archivos mediante el endpoint Matrix: construimos las matrices a partir de Directions para disponer también del trazado.
+**Cuidado.** Se decide el orden, no un subconjunto de museos. Los tiempos son de traslado; no validan una jornada con visitas, entradas y horarios. Decir “mejor encontrada”, no “óptimo demostrado”.
 
-Abrir una celda y después invertir el par. La geometría se guarda como una lista de coordenadas, no como una sola recta entre museos. ORS puede ajustar el acceso al punto vial cercano; el tramo peatonal entre ese acceso y la puerta no se añade a D/T.
+### Diapositiva 2 · Paper y código
 
-### 4. Población y cromosoma
+**En pantalla.** Referencia del paper, cadena Datos → Población → Fitness → Selección → COX → Mutación → Reemplazo y fragmento del ciclo.
 
-“Un individuo es una permutación de los IDs: cada destino aparece una vez. El inicio está fijo, y los demás IDs cambian de orden. La población contiene cien rutas candidatas; cien individuos no significa cien museos.”
+**Decir.** “Primero preparamos matrices y geometrías. Después el algoritmo consulta esas tablas para evaluar muchas rutas. No llama a una API cada vez que cruza o muta. Python genera una corrida real y guarda su traza; la web la reproduce y permite explorar operadores por separado.”
 
-Lima genera su población inicial permutando la cola sin repetir el inicio. Los dos casos de Estambul parten del mismo conjunto de cien rutas de ind.mat. La posición del gen determina cuándo se visita el destino; su valor identifica qué destino es.
+“La configuración corresponde al ciclo equivalente a S6: cien individuos, cien generaciones, torneo modificado y COX. En cada generación se eligen padres, se crean y mutan hijos, y padres e hijos compiten para formar la siguiente población.”
 
-### 5. Fitness: cómo se compara una ruta
+**Fórmula y ejemplo.** Datos → evaluación → selección → cruce → mutación → reemplazo, repetidos cien veces. ORS resuelve los recorridos entre pares; el genético busca el orden global. Preparar datos y optimizar son trabajos distintos.
 
-“Sumamos los valores de los tramos consecutivos para obtener D(r), T(r) y C(r). La evaluación implementada combina el margen relativo de presupuesto con la distancia y el tiempo normalizados. Un mayor fitness es preferible dentro del mismo caso y configuración.”
+**Cuidado.** Es una adaptación de un escenario del artículo, no una réplica de todos sus experimentos. Las curvas visibles corresponden a nuevas corridas guardadas, no a la tabla de resultados publicada por los autores.
 
-La fórmula ejecutada es:
+### Diapositiva 3 · Dataset y matrices
 
-`F(r) = ((B − C(r)) / B) / (D(r) / Dmáx + T(r) / Tmáx)`.
+**En pantalla.** Museos/Matriz, selector de métrica, origen y destino e Invertir recorrido. Mostrar una celda y luego su dirección inversa.
 
-Dmáx y Tmáx son los máximos globales de las matrices correspondientes, no los máximos de cada individuo. Al tener diagonal cero, normalizar cada entrada mediante min-max equivale a dividirla por el máximo. La suma normalizada de una ruta puede superar uno: normalizar las entradas no obliga a que su suma quede entre cero y uno.
+**Decir.** “Fila significa origen y columna destino. D guarda kilómetros, T minutos y C costo. La ruta suma solo las celdas de sus tramos. Guardamos los dos sentidos porque calles y accesos pueden producir valores diferentes.”
 
-Mover B en la demostración cambia el fitness; no recalcula ni altera las calles. Si C supera B, el numerador es negativo. El código penaliza esa ruta mediante fitness negativo; no la elimina automáticamente. El artículo presenta una expresión general y trata la normalización; para defender esta implementación debemos explicar la fórmula realmente ejecutada, sin ocultar esa diferencia de presentación.
+“El paper declara Bing Maps con Excel/Visual Basic. Nuestra versión actual obtiene de ORS distancia, tiempo y coordenadas de un mismo recorrido. Es longitud vial del trayecto devuelto: no calculamos distancia euclidiana, Manhattan ni Haversine entre los museos.”
 
-### 6. Selección: torneo modificado
+**Fórmula y ejemplo.** En los datos originales, \(6\to9\to5\to4\) suma \(31+4+9=44\) km. La dirección \(9\to6\) mide 32 km, frente a los 31 km de \(6\to9\).
 
-“De los cien individuos se toman veinte candidatos al azar, sin reemplazo dentro del torneo. Se ordenan por fitness y se elige el mejor como primer padre. Para el segundo se busca un plan diferente, primero en los candidatos y luego en la población.”
+\[
+N_{\mathrm{pares}}=n(n-1),\qquad
+D_{ij}=\frac{d_{ij}^{\mathrm{metros}}}{1000},\qquad
+T_{ij}=\frac{t_{ij}^{\mathrm{segundos}}}{60}.
+\]
 
-Si no aparece uno distinto, se usa una mutación de rescate con μ = 0.9 y ese nivel se mantiene en el ciclo. Es una búsqueda de diversidad, no una garantía: la mutación también puede dejar intacta la ruta. Este procedimiento es selección por torneo modificado, no ruleta proporcional.
+Hay 144 celdas y 132 pares fuera de la diagonal en Estambul; 400 celdas y 380 pares en Lima. Las diagonales se fijan en cero sin consultar. Usamos Directions y construimos las matrices a partir de sus respuestas, conservando también las geometrías.
 
-### 7. Cruzamiento COX
+**Ejemplo de costo del PDF.** El artículo propone caminar si \(d\le1\) km y, para un taxi, una tarifa de apertura, una parte por kilómetro y un mínimo:
 
-“Copy Order Crossover produce dos hijos a partir de dos padres y los mismos dos cortes. Cada hijo conserva el segmento central de su propio padre. Reordena por separado su extremo izquierdo y su extremo derecho según el orden en que esos genes aparecen en el otro padre.”
+\[
+C_{\mathrm{articulo}}(d)=
+\begin{cases}
+0,&d\le1,\\
+\max(8.51d+12.65,40),&d>1.
+\end{cases}
+\]
 
-Con cortes de Python a = 3 y b = 5, el intervalo central incluye los índices 3 y 4, y excluye el 5. Para P1 = [1,7,2,4,3,6,5] y P2 = [1,5,3,2,6,4,7], los hijos son [1,2,7,4,3,5,6] y [1,3,5,2,6,7,4]. Los IDs se conservan sin duplicarlos. Un hijo puede mejorar, empeorar o empatar: el operador crea candidatos y el fitness los evalúa.
+La expresión da 40 TL para 2 km y 55.20 TL para 5 km. **Hay una diferencia con los archivos:** las celdas originales de 1 km cuestan 40 TL y las de 5 km, 55 TL. El PDF usa el umbral efectivo \(d<1\); al exponer distinguimos la regla escrita del artículo, la fórmula ilustrativa y los valores históricos realmente leídos. No reescribimos la matriz para forzar coincidencia.
 
-Cambiar los cortes y alternar los dos hijos. Señalar el bloque central y cómo cambia el recorrido del mapa. No confundir este COX con cruzar cadenas binarias ni con ordenar ambos extremos juntos.
+Lima utiliza \(C_{ij}=\max(8,4+2.5D_{ij})\) soles fuera de la diagonal, como hipótesis didáctica. Estambul ORS conserva el costo histórico: ORS no nos entrega precios de taxi.
 
-### 8. Mutación y mapa
+**Cuidado.** Las rectas del caso original son esquemáticas, no evidencia de Haversine. Los tiempos ORS son de automóvil sin tráfico en vivo; el acceso peatonal desde la vía al museo queda excluido.
 
-“La mutación implementada crea una matriz n×n de indicadores aleatorios. Cada entrada es verdadera con probabilidad μ. Un intercambio vecino se activa cuando TODA su fila es verdadera. Se recorren los índices 1 hasta n−2; el primer gen queda fijo.”
+### Diapositiva 4 · Población y cromosoma
 
-Por independencia, la probabilidad por fila es `μ^n`. Hay n−2 intercambios candidatos, de modo que el número esperado de swaps es `(n−2)μ^n`. Para Lima con μ = 0.9, cada fila se activa con probabilidad aproximada 12.16 %; para Estambul, 28.24 %. No debe afirmarse “cada gen muta con 90 %”. Con μ = 0.1 y n = 20, la probabilidad por fila es 10⁻²⁰, extremadamente pequeña. Es una particularidad heredada del código revisado, no una tasa que hayamos corregido silenciosamente.
+**En pantalla.** Elegir una fila de la población y relacionar sus IDs con la ruta del mapa.
 
-Usar la demostración con μ = 0.9 y avanzar por los swaps registrados. Cambia la secuencia de IDs y se sustituyen conexiones; los puntos geográficos no se desplazan. Algunos swaps comparten genes y se aplican secuencialmente. El mapa anima el trazado de los tramos, no una supuesta mudanza de museos.
+**Decir.** “Un individuo es una permutación: cada destino aparece una vez y el inicio está fijo. La población contiene cien rutas, no cien museos. El valor del gen identifica el destino y su posición indica cuándo se visita. Los dos casos de Estambul parten de las mismas cien rutas; Lima baraja la cola sin repetir el inicio.”
 
-### 9. Reemplazo
+**Fórmula y ejemplo.** \(x=(6,\pi_2,\ldots,\pi_{12})\), con la cola una permutación de \(\{1,\ldots,12\}\setminus\{6\}\). Copiar mitades sin cuidado puede producir una ruta inválida: de [1,2,3,4] y [1,4,2,3], unir [1,2] con [2,3] genera [1,2,2,3], repite 2 y omite 4. Por eso necesitaremos operadores que conserven la validez.
 
-“Se producen cien descendientes. Juntamos los cien padres con los cien hijos mutados, ordenamos los doscientos candidatos y conservamos los cien mejores. Esto introduce elitismo.”
+**Transición.** “Ya conocemos los datos y cómo se representa una ruta. Ahora veremos cómo calificarla y elegir padres para producir candidatos nuevos.”
 
-Así, el mejor fitness no empeora entre generaciones bajo la misma evaluación. No implica que todos los hijos sean buenos ni que la población siga siendo diversa. El ciclo no elimina duplicados de manera general.
 
-### 10. Evolución
+## Persona 2 · Fitness, selección y cruzamiento
 
-“Observamos cien generaciones de una ejecución Python real guardada. La gráfica representa el mejor individuo de cada generación; sus mesetas indican que no encontramos una mejora durante esos pasos.”
+**Responsabilidad:** explicar cómo se comparan y combinan los candidatos. Diapositivas 5–7. Este bloque tiene menos slides porque concentra la normalización, la función objetivo y el ejemplo de COX.
 
-Una meseta no demuestra que alcanzamos el óptimo. Los controles de reproducción recorren esa traza; no vuelven a consultar ORS ni ejecutan una investigación estadística en el navegador. Las demostraciones interactivas de operadores sirven para entenderlos y pueden generar ejemplos distintos de la corrida guardada.
+### Diapositiva 5 · Fitness
 
-### 11. Resultado y comparación
+**En pantalla.** Fórmula, fragmento de Fitness.py, cromosoma, métricas y control de presupuesto. Mostrar Estambul original; mover B después de explicar el ejemplo guardado.
 
-“Comparamos el mejor individuo inicial con el mejor encontrado en esta corrida, usando las mismas matrices. En Estambul también comparamos dos rutas procedentes de corridas distintas: una optimizada con datos originales y otra con ORS. Para medirlas de forma comparable, reevaluamos ambas bajo D/T de ORS y la misma C histórica.”
+**Decir.** “La evaluación combina distancia, tiempo y dinero disponible. Primero sumamos los tramos de la ruta. Para combinar kilómetros y minutos, normalizamos cada entrada por el máximo global de su matriz. En el numerador usamos la fracción del presupuesto que queda. Mayor fitness es preferible dentro del mismo caso.”
 
-En esa evaluación común, la primera mide aproximadamente **83.34 km y 111.94 min**; la segunda, **81.98 km y 108.51 min**. Son resultados descriptivos de dos rutas guardadas. No prueban que ORS sea un mejor proveedor ni que cambiar de fuente haya causado una mejora: también hay aleatoriedad y fechas distintas. Las monedas, presupuestos, cantidades de lugares y normalizadores impiden comparar directamente el fitness de Lima con el de Estambul.
+**Fórmula y ejemplo.** La diagonal cero hace equivalente la normalización min-max a dividir por el máximo:
 
-### 12. Código completo
+\[
+\widehat D_{ij}=\frac{D_{ij}}{D_{\max}},\qquad
+\widehat T_{ij}=\frac{T_{ij}}{T_{\max}}.
+\]
 
-“El archivo descargable contiene la evaluación, la población, los operadores y el ciclo. El JSON aporta las matrices y la población inicial del caso. Puede ejecutarse con `python3 algorithm.py experiment.json`, sin instalar bibliotecas para ese archivo exportado.”
+La fórmula ejecutada por Python es:
 
-Relacionar las funciones con las diapositivas: evaluate, initial_population, tournament, crossover, mutate y execute. El código completo se exporta desde las funciones utilizadas en Python. No fijamos semilla; una nueva ejecución puede recorrer otros candidatos y obtener otra ruta. La traza guardada permite repetir la exposición exactamente.
+\[
+F(I)=\frac{(B-C(I))/B}{
+\displaystyle\sum_{k=1}^{n-1}\left(\widehat D_{i_k,i_{k+1}}+\widehat T_{i_k,i_{k+1}}\right)}
+=\frac{(B-C(I))/B}{D(I)/D_{\max}+T(I)/T_{\max}}.
+\]
 
-### 13. Fuentes y cierre
+“Los máximos pertenecen a toda la matriz, no a cada ruta. Cada entrada normalizada queda entre cero y uno; sumar once tramos puede superar uno. El fitness completo tampoco tiene garantizado ese intervalo y no expresa kilómetros ni un porcentaje de satisfacción.”
 
-“Nuestro aporte es una implementación explicable y una adaptación de datos: conectamos el artículo y el port Python con matrices verificables, geometrías y demostraciones visuales. Conservamos el caso original y hacemos explícitos los cambios de fuente y los supuestos. No proponemos un operador genético nuevo ni afirmamos que ya resolvimos todos los detalles de una jornada turística.”
+Para la mejor ruta inicial de Estambul original, \(D=115\), \(T=204\), \(C=1126\), \(B=2000\), \(D_{\max}=55\) y \(T_{\max}=52\):
 
-Mostrar procedencia, CSV, GeoJSON y repositorio. Cerrar distinguiendo tiempos de traslado de tiempos de visita, costos simulados de tarifas observadas y mejor solución encontrada de óptimo demostrado.
+\[
+F=\frac{(2000-1126)/2000}{115/55+204/52}
+=\frac{0.437}{2.091+3.923}\approx0.0727.
+\]
+
+La mejor final guardada tiene \(D=87\), \(T=149\) y \(C=854\):
+
+\[
+F=\frac{0.573}{87/55+149/52}\approx0.1288.
+\]
+
+**Apoyo numérico del PDF.** Estos valores son inventados para aislar efectos, no otra ruta observada. Con \(B=2000\), suma normalizada de distancia 4 y de tiempo 5:
+
+| Cambio | Cálculo | Fitness | Interpretación |
+|---|---|---|---|
+| Base, \(C=800\) | \(0.6/9\) | 0.0667 | Referencia |
+| Costo sube a 1200 | \(0.4/9\) | 0.0444 | Menor margen de presupuesto |
+| Distancia normalizada baja a 2 | \(0.6/7\) | 0.0857 | Mejora en régimen factible |
+| Costo sube a 2500 | \(-0.25/9\) | −0.0278 | Presupuesto excedido |
+
+**Cuidado importante.** Si \(C>B\), el numerador es negativo. Manteniendo ese costo, aumentar el denominador acerca F a cero: \(-0.25/10=-0.025>-0.0278\). Por ello, decir que reducir distancia siempre aumenta el fitness necesita el supuesto de margen positivo. Si el costo también cambia con la distancia, se debe evaluar la expresión completa. En Lima la mejor inicial cuesta unos 367.2 soles con \(B=360\), por lo que su fitness empieza negativo.
+
+El presupuesto funciona como penalización suave: no se descartan automáticamente rutas que lo exceden. La ecuación 11 del paper muestra \((B-C)/(D+T)\) y discute normalización; el port ejecuta el margen relativo \((B-C)/B\) con D/T normalizadas y C histórica o simulada. Explicamos el programa que realmente se ejecuta y hacemos explícita la diferencia con la expresión del artículo.
+
+**Demostración.** Mover el presupuesto. La distancia y las calles siguen iguales; solo cambia la calificación. Para ilustrar los cuatro casos numéricos se puede usar esta tabla del guion, sin depender de una pestaña adicional.
+
+### Diapositiva 6 · Selección por torneo modificado
+
+**En pantalla.** Veinte candidatos entre cien rutas, barras de fitness y Sortear otro torneo. Las barras se reescalan para admitir valores negativos.
+
+**Decir.** “Sorteamos veinte candidatos sin reemplazo dentro del torneo y los ordenamos por fitness. El mejor es el primer padre. Para el segundo buscamos un plan diferente: primero entre los demás candidatos y luego en toda la población. Lo importante es que no se trata de una ruleta proporcional.”
+
+\[
+k=\lfloor0.2N\rfloor=20,\qquad
+p_1=\operatorname*{arg\,max}_{x\in S}F(x),\quad |S|=20.
+\]
+
+**Cuidado.** Si no aparece un plan distinto, el código intenta una mutación de rescate con \(\mu=0.9\) y conserva ese valor en el resto de la corrida. No garantiza diversidad: el rescate puede no cambiar la ruta. Que el sorteo sea sin reemplazo dentro de un torneo no impide que un padre vuelva a participar en otro torneo.
+
+**Cómo leer la demostración.** Sortear otro torneo cambia los candidatos, no las matrices del problema. Comparar la cifra escrita junto a cada barra y señalar los padres elegidos. Una barra larga representa mayor fitness relativo entre los candidatos mostrados; su longitud reescalada no es una probabilidad de selección. Tampoco indica la proporción de museos visitados. Todos los individuos siguen conteniendo los mismos destinos.
+
+### Diapositiva 7 · Copy Order Crossover
+
+**En pantalla.** Dos padres, controles de cortes, Aplicar COX y alternancia entre Hijo 1/Hijo 2. Señalar el centro conservado y el mapa del hijo elegido.
+
+**Decir.** “COX produce dos hijos usando los mismos dos cortes. Cada hijo conserva el centro de su propio padre. Sus extremos se reordenan, por separado, según la posición de sus genes en el otro padre. Se conservan los destinos y se evita el problema de duplicar u omitir lugares.”
+
+Con cortes \(a,b\), el centro corresponde a los índices \(a,\ldots,b-1\) de Python:
+
+\[
+h_1=\operatorname{ord}_{p_2}(L_1)\,\Vert\,M_1\,\Vert\,\operatorname{ord}_{p_2}(R_1),
+\qquad
+h_2=\operatorname{ord}_{p_1}(L_2)\,\Vert\,M_2\,\Vert\,\operatorname{ord}_{p_1}(R_2).
+\]
+
+Para \(a=3,b=5\), padres [1,7,2,4,3,6,5] y [1,5,3,2,6,4,7]:
+
+| Hijo | Izquierda reordenada | Centro propio | Derecha reordenada | Resultado |
+|---|---|---|---|---|
+| 1 | [1,2,7] | [4,3] | [5,6] | [1,2,7,4,3,5,6] |
+| 2 | [1,3,5] | [2,6] | [7,4] | [1,3,5,2,6,7,4] |
+
+**Recorrer el primer hijo.** El centro propio es [4,3] y se copia intacto. El extremo izquierdo contiene [1,7,2]; buscar esos tres IDs en el segundo padre da el orden [1,2,7]. El extremo derecho conserva sus IDs [6,5], pero allí 5 aparece antes que 6, de modo que queda [5,6]. Concatenar los tres bloques produce el hijo de la tabla. Para el segundo hijo se intercambian los papeles de los padres y se mantienen los mismos cortes. Revisar que ambos tengan siete genes y cada ID aparezca una sola vez.
+
+**Cuidado.** No se mezclan los dos extremos en un único conjunto ni se trata de cruzamiento binario de un punto. Los hijos pueden mejorar, empeorar o empatar: COX genera candidatos y el fitness los evalúa.
+
+**Transición.** “Ya podemos elegir padres y obtener dos hijos válidos. Falta observar cómo mutan, quiénes sobreviven y qué permiten concluir los resultados.”
+
+
+## Persona 3 · Mutación, evolución y resultados
+
+**Responsabilidad:** completar el ciclo, demostrar cambios de ruta y cerrar con evidencia y límites. Diapositivas 8–13. Hay más slides porque varias son breves; el tiempo se concentra en mutación y comparación.
+
+### Diapositiva 8 · Mutación
+
+**En pantalla.** Ver matriz, selector de \(\mu\), probabilidad de activar una fila y Siguiente intercambio. Relacionar los genes intercambiados con los tramos de colores; las conexiones anteriores quedan grises discontinuas.
+
+**Decir.** “Se sortea una matriz de indicadores de tamaño n por n. Cada celda es verdadera con probabilidad μ. Un intercambio de destinos vecinos se activa solo cuando toda la fila es verdadera. El primer gen queda fijo; los museos conservan sus coordenadas. Lo que cambia es el orden, y con él las conexiones.”
+
+**Fórmula y ejemplo.** Por independencia de los indicadores:
+
+\[
+P(\mathrm{swap\ en\ fila}\ i)=\mu^n,\qquad
+\mathbb E[S]=(n-2)\mu^n.
+\]
+
+| Caso | Con \(\mu=0.9\), probabilidad por fila | Con \(\mu=0.1\) |
+|---|---|---|
+| Estambul, \(n=12\) | \(0.9^{12}\approx28.24\,\%\) | \(10^{-12}\) |
+| Lima, \(n=20\) | \(0.9^{20}\approx12.16\,\%\) | \(10^{-20}\) |
+
+Hay diez filas candidatas en Estambul y dieciocho en Lima. Los swaps se aplican secuencialmente y pueden compartir genes. El número esperado de intercambios no es un conteo garantizado en cada sorteo.
+
+**Demostración.** Avanzar un intercambio guardado. Señalar qué par desaparece y cuál se incorpora. Cada tramo activo tiene un color único; los tramos compartidos conservan su color entre estados consecutivos. Al pasar por una línea se identifica su origen y destino. El color ayuda a seguirla, pero no indica un fitness mejor o peor.
+
+**Cuidado.** μ = 0.9 no significa 90 % de swaps por gen. Con μ = 0.1 la mutación casi nunca actúa para estos tamaños: es una particularidad del código revisado. Un sorteo sin filas activas deja la ruta intacta; no se fabrica un cambio para la animación.
+
+### Diapositiva 9 · Reemplazo
+
+**En pantalla.** Cien padres más cien hijos, doscientos candidatos y cien supervivientes.
+
+**Decir.** “En cada generación, cincuenta parejas producen cien hijos, que después se mutan. Se unen a los cien padres, se ordenan los doscientos por fitness y se conservan los cien mejores. Esto es elitismo: el mejor padre puede sobrevivir aunque ningún hijo lo supere.”
+
+\[
+P_{t+1}=\operatorname{Top}_{100}(P_t\uplus O_t),\qquad f^*_{t+1}\ge f^*_t.
+\]
+
+El símbolo de unión con multiplicidad recuerda que el código concatena listas y permite duplicados. **Cuidado:** conservar la mejor aptitud no conserva necesariamente diversidad ni demuestra un óptimo global.
+
+### Diapositiva 10 · Evolución
+
+**En pantalla.** Gráfica, reproducción y selector de generación. El mapa y las métricas corresponden a la ruta guardada de ese paso.
+
+**Decir.** “Recorremos una ejecución Python real que ya está guardada. En Estambul original, el mejor fitness pasa aproximadamente de 0.073 a 0.129 y llega pronto a una meseta. Eso indica ausencia de mejoras encontradas durante esos pasos, no que hayamos probado todas las rutas.”
+
+\[
+f_t^*=\max_{0\le s\le t}\;\max_{x\in P_s}F(x).
+\]
+
+**Cuidado.** La curva no se inventa en JavaScript ni representa entrenamiento de una red neuronal. La no disminución se explica por el reemplazo elitista. Las demostraciones interactivas de operadores pueden producir ejemplos distintos de la corrida guardada.
+
+### Diapositiva 11 · Resultado y comparación
+
+**En pantalla.** Mejor inicial/Mejor encontrada. En Estambul ORS, abrir Paper vs ORS y señalar la nota que evalúa ambas rutas bajo las mismas matrices.
+
+**Decir.** “Primero comparamos el mejor individuo inicial con el mejor encontrado en cada corrida, usando sus propios datos. La inicial de Lima excede el presupuesto y tiene fitness negativo. Para comparar fuentes en Estambul tomamos las dos rutas finales y las reevaluamos bajo las mismas D/T de ORS y la misma C histórica.”
+
+| Caso, dentro de su propia corrida | Fitness inicial → final | Distancia (km) | Tiempo (min) | Costo local |
+|---|---|---|---|---|
+| Estambul original | 0.0727 → 0.1288 | 115 → 87 | 204 → 149 | 1126 → 854 TL |
+| Estambul ORS | 0.0792 → 0.1459 | 112.0 → 82.0 | 149.7 → 108.5 | 1126 → 829 TL históricos |
+| Lima ORS | −0.0016 → 0.0275 | 116.1 → 75.0 | 189.0 → 139.0 | 367.2 → 273.2 soles simulados |
+
+**Comparación común.** La ruta encontrada con datos originales mide 83.34 km y 111.94 min al evaluarla con ORS; la encontrada con ORS mide 81.98 km y 108.51 min. Sus costos históricos son 854 y 829 TL. Estas cifras describen dos rutas guardadas.
+
+**Cuidado.** Son corridas aleatorias con fechas y proveedores diferentes. No prueban que ORS sea mejor, que cambiar la fuente cause la mejora ni que se alcanzó el óptimo. Tampoco se comparan directamente los fitness de Lima y Estambul, porque difieren tamaño, moneda, presupuesto y normalizadores. Para investigar superioridad harían falta repeticiones controladas y análisis de variabilidad.
+
+### Diapositiva 12 · Código completo
+
+**En pantalla.** Secciones Fitness/Población/COX/Mutación/Torneo/Ciclo, copia del código, descarga Python y datos del caso.
+
+**Decir.** “El archivo contiene evaluate, initial_population, tournament, crossover, mutate y execute. Podemos relacionar cada función con una diapositiva. Se ejecuta con `python3 algorithm.py experiment.json` usando biblioteca estándar. Los datos y la población inicial provienen del JSON seleccionado.”
+
+**Cuidado.** No fijamos semilla: una ejecución nueva puede hallar otra ruta. Reproducir una traza guardada y repetir exactamente los resultados de una corrida nueva son afirmaciones diferentes.
+
+### Diapositiva 13 · Fuentes y límites
+
+**En pantalla.** Artículo, repositorio original, port Python, procedencia y descargas CSV/GeoJSON/JSON.
+
+**Decir.** “Nuestro aporte es una implementación explicable y una adaptación de datos. Conectamos el artículo y su código con matrices verificables, geometrías y demostraciones. Los operadores y el planteamiento se atribuyen a sus autores. Conservamos el caso original para distinguirlo de nuestras nuevas adquisiciones.”
+
+**Cierre.** “El tiempo de traslado no incluye visitas; el costo de Lima es simulado y el de Estambul es histórico. Presentamos una mejor solución encontrada, con sus supuestos y limitaciones, y no una garantía de la mejor jornada turística posible.”
+
 
 ## Preguntas para defender los datos y las distancias
 
@@ -213,6 +420,14 @@ La presentación, el vínculo entre código y visualización, el dataset adaptad
 ### ¿Se puede reproducir? ¿Por qué cambia al volver a ejecutar?
 
 Los CSV, JSON, GeoJSON, matrices originales y procedencia permiten inspeccionar los insumos. La traza guardada reproduce la exposición. Una ejecución nueva del genético es aleatoria y no fija semilla en este proyecto, por lo que puede variar. Reproducir la visualización guardada y obtener el mismo resultado en una nueva corrida son dos afirmaciones distintas.
+
+### ¿Cómo validó el paper su fitness con la entropía de barrios?
+
+El artículo compara ejemplos de itinerarios agrupados por barrios con otros más fragmentados. En su tabla 3 reporta entropía 2.2213 para R1–R5 y 3.5850 para R6–R10; \(\log_2 12\approx3.5850\). Lo utiliza como evidencia de relación entre fitness y agrupación en esos ejemplos, no como una demostración de optimalidad global. Nuestra corrida no incorpora una nueva función de entropía ni la usa como término adicional del fitness.
+
+### ¿La tarifa del PDF coincide exactamente con los archivos originales?
+
+Hay diferencias que deben separarse. El artículo escribe costo cero para \(d\le1\), pero la matriz publicada contiene costo 40 TL para tramos de 1 km. La fórmula ilustrativa da 55.20 TL para 5 km; las celdas originales de esa distancia guardan 55 TL. El algoritmo lee la matriz histórica intacta. No corregimos ni recalculamos sus celdas para hacerlas coincidir con el modelo escrito.
 
 ## Frases que conviene corregir al exponer
 

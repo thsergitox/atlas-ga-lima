@@ -1,7 +1,7 @@
 .map-host{flex:1;min-height:240px;position:relative;isolation:isolate;margin-top:88px;margin-bottom:16px;z-index:1}
 .leaflet-frame{position:absolute;inset:0}
 .map-host .leaflet-container{font-family:Source,sans-serif;background:#edf1f5}
-.route-active,.route-before{stroke-linecap:round;stroke-linejoin:round}
+.route-active,.route-before,.route-outline{stroke-linecap:round;stroke-linejoin:round}
 .route-active{filter:drop-shadow(0 2px 2px #172c4330)}
 .museum-marker{display:grid;place-items:center;background:var(--white);color:var(--blue);border:2px solid var(--blue);border-radius:50%;font:600 13px Source,sans-serif;box-shadow:0 2px 5px #172c4330;cursor:pointer}
 .museum-marker[data-start="true"]{background:var(--blue);color:var(--white);border-color:var(--white)}
@@ -21,6 +21,7 @@
 .route-legend{position:absolute;top:58px;left:25px;right:25px;z-index:2;display:flex;align-items:center;gap:12px;flex-wrap:wrap;pointer-events:none;font-size:11px;color:var(--muted)}
 .route-legend>span{display:flex;align-items:center;gap:6px}
 .legend-active,.legend-before{display:inline-block;width:19px;border-top:3px solid var(--blue)}
+.legend-active{height:3px;border:0;background:linear-gradient(90deg,#1b52c0 0 33%,#c01b22 33% 66%,#138831 66%)}
 .legend-before{border-top:2px dashed var(--muted)}
 #map-route-status{font-variant-numeric:tabular-nums;background:var(--bg);padding:3px 6px;border-radius:3px}
 @media(min-width:901px){.presentation:not(.slide-codigo) .stage{max-height:calc(100% - 390px)}}

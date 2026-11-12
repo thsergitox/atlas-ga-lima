@@ -1,7 +1,9 @@
 import * as L from '../../assets/vendor/leaflet/leaflet-src.esm.js';
+import { createRouteColors } from './route-colors.js';
 
 export function createRouteLayers(map) {
   const previous = L.layerGroup().addTo(map), active = L.layerGroup().addTo(map);
+  const outlines = L.layerGroup().addTo(map), assignColors = createRouteColors();
   const paths = new Map(), animations = new Set();
   let current = [];
   function stop() {
@@ -18,6 +20,7 @@ export function createRouteLayers(map) {
     const old = compare ?? current, oldKeys = new Set(old.map(e => e.key)), keys = new Set(edges.map(e => e.key));
     const removed = old.filter(e => !keys.has(e.key)), added = edges.filter(e => !oldKeys.has(e.key));
     const motion = animate && !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const colors = assignColors(edges);
     for (const edge of removed) {
       const line = L.polyline(edge.coordinates, { pane: 'previous-routes', className: 'route-before',
         color: '#526579', weight: 2, opacity: .7, dashArray: '5 6', interactive: false }).addTo(previous);
@@ -25,20 +28,28 @@ export function createRouteLayers(map) {
       if (motion && !compare) animatePath(line.getElement(), [{ opacity: .7 }, { opacity: 0 }], 500, () => previous.removeLayer(line));
       else if (!compare) previous.removeLayer(line);
     }
-    for (const [key, line] of paths) if (!keys.has(key)) { active.removeLayer(line); paths.delete(key); }
-    for (const edge of edges) {
-      let line = paths.get(edge.key);
-      if (!line) {
-        line = L.polyline(edge.coordinates, { pane: 'active-routes', className: 'route-active',
-          color: '#204ed5', weight: 3.5, opacity: 1, interactive: false, smoothFactor: .5 }).addTo(active);
-        paths.set(edge.key, line);
+    for (const [key, segment] of paths) if (!keys.has(key)) {
+      active.removeLayer(segment.line); outlines.removeLayer(segment.outline); paths.delete(key);
+    }
+    for (const [index, edge] of edges.entries()) {
+      const color = colors.get(edge.key);
+      let segment = paths.get(edge.key);
+      if (!segment) {
+        const outline = L.polyline(edge.coordinates, { pane: 'route-outlines', className: 'route-outline',
+          color: '#ffffff', weight: 7, opacity: .95, interactive: false, smoothFactor: .5 }).addTo(outlines);
+        const line = L.polyline(edge.coordinates, { pane: 'active-routes', className: 'route-active',
+          color, weight: 4, opacity: 1, smoothFactor: .5 }).addTo(active).bindTooltip('', { sticky: true });
+        segment = { line, outline }; paths.set(edge.key, segment);
       }
+      const { line } = segment;
+      line.setStyle({ color });
+      line.setTooltipContent(`Tramo ${index + 1}: ${edge.origin} → ${edge.destination}`);
       const path = line.getElement(); path.dataset.edge = edge.key;
+      path.setAttribute('aria-label', `Tramo ${index + 1}: ${edge.origin} a ${edge.destination}`);
       path.removeAttribute('pathLength'); path.style.removeProperty('stroke-dasharray');
       if (motion && !oldKeys.has(edge.key)) {
         path.setAttribute('pathLength', '1'); path.style.strokeDasharray = '1';
-        animatePath(path, [{ strokeDashoffset: '1', stroke: old.length ? '#e4aa40' : '#204ed5' },
-          { strokeDashoffset: '0', stroke: '#204ed5' }], 850, () => {
+        animatePath(path, [{ strokeDashoffset: '1' }, { strokeDashoffset: '0' }], 850, () => {
           path.removeAttribute('pathLength'); path.style.removeProperty('stroke-dasharray');
         });
       }
@@ -46,5 +57,5 @@ export function createRouteLayers(map) {
     current = edges;
     return { count: edges.length, added: old.length ? added.length : 0, removed: removed.length };
   }
-  return { show, destroy() { stop(); previous.clearLayers(); active.clearLayers(); } };
+  return { show, destroy() { stop(); previous.clearLayers(); active.clearLayers(); outlines.clearLayers(); } };
 }

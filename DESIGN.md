@@ -245,7 +245,7 @@ Los paneles blancos reúnen una operación y sus controles. Mantienen relleno y 
 
 Los genes son celdas flexibles y numeradas. Las rutas de más de doce genes usan diez columnas de ancho flexible, separación de `3px` y texto de `12px`: Lima se lee en dos filas de diez. Las celdas largas miden `24px` de alto en escritorio y `27px` hasta `900px`; en cruce y escritorio de altura reducida miden `22px`. El inicio fijo usa azul sólido; el segmento y los genes intercambiados emplean estados distintos de oro. En las filas compactas de población se reducen las alturas y el inicio fijo adopta un azul más claro.
 
-Los museos mantienen su posición geográfica. El encuadre se calcula para cada conjunto de coordenadas. Cuando las burbujas numeradas se separan para evitar colisiones, una línea guía las conecta con el punto geográfico real; la ruta sigue este último. El punto inicial tiene relleno azul; los demás, blanco con borde azul. Puntero, foco y selección resaltan el museo en oro y permiten mostrar su nombre. La ruta actual es azul continua; la ruta anterior es gris discontinua. El control de nombres muestra su estado presionado con el mismo azul de acción.
+Los museos mantienen sus coordenadas geográficas exactas en Leaflet. El punto inicial tiene relleno azul; los demás, blanco con borde azul. Puntero, foco y selección resaltan el museo en oro y permiten mostrar su nombre. Cada tramo actual usa un color categórico propio y contorno blanco; la ruta anterior es gris discontinua. El control de nombres muestra su estado presionado con el azul de acción.
 
 **The Stable Geography Rule.** Las transformaciones cambian el orden de la ruta, mientras los marcadores conservan sus coordenadas.
 
@@ -259,7 +259,7 @@ La preferencia de movimiento reducido limita animaciones y transiciones a `.01ms
 
 ### Do:
 
-- **Do** conservar el cobalto para la ruta y la acción activa.
+- **Do** conservar el cobalto para las acciones y la paleta categórica para identificar tramos.
 - **Do** acompañar los estados de operación con números, etiquetas o métricas.
 - **Do** mantener el foco de oro visible en controles operables.
 - **Do** permitir lectura y navegación cuando la presentación se apila en móvil.
@@ -274,7 +274,7 @@ La preferencia de movimiento reducido limita animaciones y transiciones a `.01ms
 
 ## Recorridos viales y matrices · 12 de noviembre de 2026
 
-Lima representa las polilíneas de cada par dirigido de openrouteservice, sin interpolar sus vértices a través de edificios. Los lugares conservan sus puntos geográficos. Una transición de850ms dibuja los tramos nuevos en oro hacia cobalto; los compartidos permanecen y los anteriores se distinguen en gris discontinuo. La comparación explícita mantiene las conexiones anteriores para explicarlas. Al reducir movimiento, el estado cambia de inmediato. La leyenda identifica actual/anterior y cuenta las conexiones nuevas y retiradas; no se consultan servicios durante las animaciones.
+Lima representa las polilíneas de cada par dirigido de openrouteservice, sin interpolar sus vértices a través de edificios. Los lugares conservan sus puntos geográficos. Una transición de 850 ms dibuja los tramos nuevos en su color categórico; los compartidos conservan color y los anteriores se distinguen en gris discontinuo. La comparación explícita mantiene las conexiones anteriores para explicarlas. Al reducir movimiento, el estado cambia de inmediato. La leyenda identifica actual/anterior y cuenta las conexiones nuevas y retiradas; no se consultan servicios durante las animaciones.
 
 La misma interfaz de mapa sirve al caso Estambul con conexiones esquemáticas explícitamente rotuladas: sus matrices originales no incluyen geometrías. No se atribuye trazado vial a esas rectas.
 
@@ -294,3 +294,9 @@ La esquina superior izquierda ofrece Ampliar mapa. La ampliación ocupa casi tod
 La cabecera pasa de 78 a 52 px en escritorio y la navegación de 84 a 60 px. La superficie del mapa gana altura: cabecera del mapa y leyenda compactas, panel de operaciones con máximo de 24dvh (entre 140 y 220 px) y desplazamiento propio. A 1440×900, Mutación muestra 456 px de mapa frente a los 285 anteriores. En móvil los bloques siguen apilados, el panel se despliega entero y el mapa mide entre 440 y 620 px según la altura de pantalla. Se conservan tamaño de texto, gestos y popups. El caso original se rotula Estambul · datos del paper para distinguirlo de Estambul · ORS.
 
 El guion es una página de lectura con Bricolage/Source locales y la misma paleta. Un índice lateral lleva a explicación inicial, casos, trece pasos, preguntas y fuentes; en móvil precede al texto. El ancho del texto es de 76ch como máximo; las tablas se desplazan dentro de su región. Markdown descargable y estilos de impresión. Acceso desde Notas, sin aumentar el alto de la cabecera.
+
+## Tramos individuales y guion para tres personas
+
+Por petición expresa, los hasta diecinueve tramos actuales tienen colores distintos. La paleta de veinte valores de `src/map/route-colors.js` es codificación de datos, independiente del azul de las acciones. Cada tono tiene contraste de al menos 4.55:1 con el contorno blanco de 7 px bajo la línea de 4 px. Los tramos compartidos entre estados conservan color; los nuevos usan tonos libres, sin duplicados dentro de la ruta. Una etiqueta al señalar identifica número/origen/destino. Se conserva la línea gris discontinua para tramos retirados. El color no expresa costo ni calidad.
+
+El guion adopta glosario y estructura del PDF: En pantalla, Decir, Fórmula y ejemplo, Cuidado. Persona 1 cubre 1–4, Persona 2 cubre 5–7 y Persona 3 cubre 8–13, con 897/901/908 palabras sin fórmulas; anexos compartidos. KaTeX y auto-render son locales. Las expresiones se protegen antes de Markdown y se restauran como texto escapado; las fórmulas extensas tienen desplazamiento propio y foco. No se altera el espaciado interno de la notación KaTeX. Las pestañas adicionales citadas en el PDF se presentan como ejemplos textuales del guion.
