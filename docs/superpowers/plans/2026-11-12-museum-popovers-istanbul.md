@@ -12,6 +12,6 @@
 - [x] Crear fichas accesibles e información con fuentes, separadas del controlador de presentación.
 - [x] Añadir cámara SVG con zoom, encuadre y pan; conservar geometría y controles de teclado.
 - [x] Integrar tercer caso y comparación en Resultado; revisar notas, fórmulas y descargas.
-- [ ] Verificar datos/sintaxis y navegador desktop/móvil/reduced motion; revisión independiente y despliegue autorizado.
+- [x] Verificar datos/sintaxis y navegador desktop/móvil/reduced motion; revisión independiente y despliegue autorizado.
 
 **Foco de revisión:** esquinas de pantalla/fichas largas; zoom durante mutación y cambio de slide/caso; teclado sin avanzar accidentalmente; rutas asimétricas completas; costos y métricas de comparación honestos.
