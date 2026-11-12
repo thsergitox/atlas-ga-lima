@@ -28,3 +28,26 @@ El detector se ejecutó una vez y señaló diferencias informativas con tokens i
 ## Publicación de la actualización
 
 Vercel CLI: https://atlas-ga-lima.vercel.app, deployment dpl_57w3W1daguPcVx2XxVwFwEDp1WZe, estado READY. En producción se comprobaron 20 marcadores/13 diapositivas para Lima; el cambio a Estambul conservó Mutación y mostró 12 marcadores/144 indicadores; código completo, JSON y .mat devolvieron HTTP 200. Descarga de datos del editor apunta al caso seleccionado.
+
+
+## Rutas viales de Lima · 12 de noviembre de 2026
+
+Se adquirieron380pares dirigidos con geometría:50.267vértices en `data/routes.geojson`. Las veinte diagonales son ceros locales. Las tres matrices20×20 y los CSV coinciden numéricamente; D está enkm yT enmin. Distancia y duración de cada celda coinciden con la respuesta que aporta su polilínea. Las geometrías quedan cubiertas por las teselas ya disponibles: no se descargaron más mapas.
+
+Se corrigió un error del endpoint de adquisición: `api.openrouteservice.org` está deprecado y limita la cuota al10%del plan. El panel del usuario muestra la cuota de `api.heigit.org`. La migración oficial está en https://ask.openrouteservice.org/t/deprecating-api-openrouteservice-org-in-favour-of-api-heigit-org/7912/ . Se conservaron200pares del dominio anterior y se adquirieron180del actual; una consulta adicional de control1→2 coincidió exactamente en distancia, duración, geometría y motor. Los380registros conservan una sola versión del motor y su endpoint original, sin guardar claves. El hash del GeoJSON coincide con la procedencia.
+
+La separación máxima entre punto OSM de museo y extremo vial es107,9m. Se documenta como acceso no incluido; no se inventa una geometría o duración peatonal. Perfil driving-car, sin tráfico en vivo. C=max(8,4+2.5D) sigue siendo simulado para todos los tramos de automóvil; B=360es una hipótesis.
+
+La corrida conserva100individuos iniciales,100generaciones y todas las rutas como permutaciones con inicio1. Se recalcularon101estados de Lima: coinciden sus métricas y el mejor histórico no decrece. Los202estados distribuidos entre Lima y Estambul coinciden exactamente entre Python y JavaScript (error máximo0). El archivo descargable se ejecutó para ambos casos con100generaciones válidas cada uno, sin dependencias ni semillas. Los cinco.mat originales de Estambul son idénticos al commit base.
+
+En esta corrida, la mejor ruta inicial tiene116,091km,188,962min y costo simulado367,2465soles: supera B y su fitness esnegativo. El resultado tiene74,9886km,139,0067min y273,1685soles; fitness0,02752816. La presentación compara Δfitness absoluto cuando la base no es positiva; el torneo reescala correctamente valores negativos y el gráfico usa límites que los contienen. No se cambia el presupuesto ni la corrida para ocultar esos casos.
+
+Se recorrieron78combinaciones (13diapositivas×2casos×3tamaños:1440×900,1280×720,390×844), sin errores de carga, mapas duplicados, desbordes horizontales ni consultas a la API desde el navegador. Marcadores20/12 y celdas400/144 correctos. Se comprobó selección, dos hijosCOX, mutación, reinicio, transición interrumpida y reproducción de generaciones. Una mutación registrada cambia tres pares manteniendo idénticas las posiciones de los marcadores. Las polilíneas de sus19tramos contienen24–270vértices cada una, no dos extremos rectos. Las animaciones concluyen y limpian sus atributos; movimiento reducido dibuja el estado final sin animaciones de ruta.
+
+La tabla admite selección y flechas sin cambiar de diapositiva. La inversión1→2/2→1 muestra5,188km/10,005min frente a5,7151km/9,745min. Diagonal sin desplazamiento. Los costos de Paper se rotulan como datos del dataset, sin llamarlos simulados por esta adaptación. La descarga del código completo respeta el caso seleccionado y ya no incluye el generador Haversine como parte del algoritmo actual.
+
+Se inspeccionaron capturas reales de escritorio, portátil y móvil. En móvil la región visual crece con el contenido para separar atribuciones y panel; en Dataset/matriz se midieron26,8px libres entre panel y créditos. No se presentan todos los resultados como una visita realizable en una jornada: se excluyen entradas, horarios y tiempos de visita.
+
+Revisión independiente del código: PASS sin Critical/Important. Sus dos observaciones factuales de Paper (conteo de celdas/diagonales y nombre accesible del costo) se corrigieron y verificaron. El detector se ejecutó una vez:106avisos de tokens y una advertencia por un borde3px en la leyenda. Ese borde representa la línea de la ruta, no un acento de tarjeta; se conserva. No se regeneró el sidecar de diseño fuera de alcance.
+
+Sintaxis Python/ES y `git diff --check` correctos. CSV modificados con finalesLF. Escaneo de todos los archivos publicables: la clave está ausente. `.env*` y `.cache/` están excluidos deGit y Vercel. Sin builds locales ni nuevas suites/entornos.

@@ -1,0 +1,2310 @@
+{
+  "provider": "openrouteservice by HeiGIT",
+  "profile": "driving-car",
+  "liveTraffic": false,
+  "coordinates": "GeoJSON [longitude, latitude]",
+  "acquiredFrom": "2026-11-12T14:48:21.566130+00:00",
+  "acquiredUntil": "2026-11-12T15:26:06.321280+00:00",
+  "directedPairs": 380,
+  "diagonal": "20 valores cero locales; no se consulta i→i",
+  "routesSha256": "c54e6c2bc137d3596f0721f25c6491d4f11d2c607c7b43fd477c9e451dbfe2bf",
+  "sourceEndpoints": {
+    "https://api.openrouteservice.org/v2/directions/driving-car/geojson": 200,
+    "https://api.heigit.org/openrouteservice/v2/directions/driving-car/geojson": 180
+  },
+  "migrationNote": "Cada par conserva el endpoint original de adquisición; sourceEndpoints cuenta los pares de cada dominio del mismo servicio ORS.",
+  "routesLicense": "CC-BY-SA-4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "termsUrl": "https://account.heigit.org/info/tos",
+  "attribution": "© openrouteservice by HeiGIT | © OpenStreetMap contributors",
+  "costModel": "Cii=0; Cij=max(8,4+2.5*Dij) soles. Hipótesis, no tarifa comercial.",
+  "budget": 360,
+  "units": {
+    "distance": "km",
+    "time": "min",
+    "cost": "PEN"
+  },
+  "accessNote": "La polilínea empieza/termina en la red accesible en automóvil. No se inventa un tramo hasta el punto OSM del museo; esos accesos no están incluidos en D/T.",
+  "accessGaps": [
+    {
+      "originId": 1,
+      "destinationId": 2,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 1,
+      "destinationId": 3,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 1,
+      "destinationId": 4,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 1,
+      "destinationId": 5,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 1,
+      "destinationId": 6,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 1,
+      "destinationId": 7,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 1,
+      "destinationId": 8,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 1,
+      "destinationId": 9,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 1,
+      "destinationId": 10,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 1,
+      "destinationId": 11,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 1,
+      "destinationId": 12,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 1,
+      "destinationId": 13,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 1,
+      "destinationId": 14,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 1,
+      "destinationId": 15,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 1,
+      "destinationId": 16,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 1,
+      "destinationId": 17,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 1,
+      "destinationId": 18,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 1,
+      "destinationId": 19,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 1,
+      "destinationId": 20,
+      "originGapMeters": 85.7,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 2,
+      "destinationId": 1,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 2,
+      "destinationId": 3,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 2,
+      "destinationId": 4,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 2,
+      "destinationId": 5,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 2,
+      "destinationId": 6,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 2,
+      "destinationId": 7,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 2,
+      "destinationId": 8,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 2,
+      "destinationId": 9,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 2,
+      "destinationId": 10,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 2,
+      "destinationId": 11,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 2,
+      "destinationId": 12,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 2,
+      "destinationId": 13,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 2,
+      "destinationId": 14,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 2,
+      "destinationId": 15,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 2,
+      "destinationId": 16,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 2,
+      "destinationId": 17,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 2,
+      "destinationId": 18,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 2,
+      "destinationId": 19,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 2,
+      "destinationId": 20,
+      "originGapMeters": 39.3,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 3,
+      "destinationId": 1,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 3,
+      "destinationId": 2,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 3,
+      "destinationId": 4,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 3,
+      "destinationId": 5,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 3,
+      "destinationId": 6,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 3,
+      "destinationId": 7,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 3,
+      "destinationId": 8,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 3,
+      "destinationId": 9,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 3,
+      "destinationId": 10,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 3,
+      "destinationId": 11,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 3,
+      "destinationId": 12,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 3,
+      "destinationId": 13,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 3,
+      "destinationId": 14,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 3,
+      "destinationId": 15,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 3,
+      "destinationId": 16,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 3,
+      "destinationId": 17,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 3,
+      "destinationId": 18,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 3,
+      "destinationId": 19,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 3,
+      "destinationId": 20,
+      "originGapMeters": 6.9,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 4,
+      "destinationId": 1,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 4,
+      "destinationId": 2,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 4,
+      "destinationId": 3,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 4,
+      "destinationId": 5,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 4,
+      "destinationId": 6,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 4,
+      "destinationId": 7,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 4,
+      "destinationId": 8,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 4,
+      "destinationId": 9,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 4,
+      "destinationId": 10,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 4,
+      "destinationId": 11,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 4,
+      "destinationId": 12,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 4,
+      "destinationId": 13,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 4,
+      "destinationId": 14,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 4,
+      "destinationId": 15,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 4,
+      "destinationId": 16,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 4,
+      "destinationId": 17,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 4,
+      "destinationId": 18,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 4,
+      "destinationId": 19,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 4,
+      "destinationId": 20,
+      "originGapMeters": 50.3,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 5,
+      "destinationId": 1,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 5,
+      "destinationId": 2,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 5,
+      "destinationId": 3,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 5,
+      "destinationId": 4,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 5,
+      "destinationId": 6,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 5,
+      "destinationId": 7,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 5,
+      "destinationId": 8,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 5,
+      "destinationId": 9,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 5,
+      "destinationId": 10,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 5,
+      "destinationId": 11,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 5,
+      "destinationId": 12,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 5,
+      "destinationId": 13,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 5,
+      "destinationId": 14,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 5,
+      "destinationId": 15,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 5,
+      "destinationId": 16,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 5,
+      "destinationId": 17,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 5,
+      "destinationId": 18,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 5,
+      "destinationId": 19,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 5,
+      "destinationId": 20,
+      "originGapMeters": 37.7,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 6,
+      "destinationId": 1,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 6,
+      "destinationId": 2,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 6,
+      "destinationId": 3,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 6,
+      "destinationId": 4,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 6,
+      "destinationId": 5,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 6,
+      "destinationId": 7,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 6,
+      "destinationId": 8,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 6,
+      "destinationId": 9,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 6,
+      "destinationId": 10,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 6,
+      "destinationId": 11,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 6,
+      "destinationId": 12,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 6,
+      "destinationId": 13,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 6,
+      "destinationId": 14,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 6,
+      "destinationId": 15,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 6,
+      "destinationId": 16,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 6,
+      "destinationId": 17,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 6,
+      "destinationId": 18,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 6,
+      "destinationId": 19,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 6,
+      "destinationId": 20,
+      "originGapMeters": 47.3,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 7,
+      "destinationId": 1,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 7,
+      "destinationId": 2,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 7,
+      "destinationId": 3,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 7,
+      "destinationId": 4,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 7,
+      "destinationId": 5,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 7,
+      "destinationId": 6,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 7,
+      "destinationId": 8,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 7,
+      "destinationId": 9,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 7,
+      "destinationId": 10,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 7,
+      "destinationId": 11,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 7,
+      "destinationId": 12,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 7,
+      "destinationId": 13,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 7,
+      "destinationId": 14,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 7,
+      "destinationId": 15,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 7,
+      "destinationId": 16,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 7,
+      "destinationId": 17,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 7,
+      "destinationId": 18,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 7,
+      "destinationId": 19,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 7,
+      "destinationId": 20,
+      "originGapMeters": 18.2,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 8,
+      "destinationId": 1,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 8,
+      "destinationId": 2,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 8,
+      "destinationId": 3,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 8,
+      "destinationId": 4,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 8,
+      "destinationId": 5,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 8,
+      "destinationId": 6,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 8,
+      "destinationId": 7,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 8,
+      "destinationId": 9,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 8,
+      "destinationId": 10,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 8,
+      "destinationId": 11,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 8,
+      "destinationId": 12,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 8,
+      "destinationId": 13,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 8,
+      "destinationId": 14,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 8,
+      "destinationId": 15,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 8,
+      "destinationId": 16,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 8,
+      "destinationId": 17,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 8,
+      "destinationId": 18,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 8,
+      "destinationId": 19,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 8,
+      "destinationId": 20,
+      "originGapMeters": 53.0,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 9,
+      "destinationId": 1,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 9,
+      "destinationId": 2,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 9,
+      "destinationId": 3,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 9,
+      "destinationId": 4,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 9,
+      "destinationId": 5,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 9,
+      "destinationId": 6,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 9,
+      "destinationId": 7,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 9,
+      "destinationId": 8,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 9,
+      "destinationId": 10,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 9,
+      "destinationId": 11,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 9,
+      "destinationId": 12,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 9,
+      "destinationId": 13,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 9,
+      "destinationId": 14,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 9,
+      "destinationId": 15,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 9,
+      "destinationId": 16,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 9,
+      "destinationId": 17,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 9,
+      "destinationId": 18,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 9,
+      "destinationId": 19,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 9,
+      "destinationId": 20,
+      "originGapMeters": 19.7,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 10,
+      "destinationId": 1,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 10,
+      "destinationId": 2,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 10,
+      "destinationId": 3,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 10,
+      "destinationId": 4,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 10,
+      "destinationId": 5,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 10,
+      "destinationId": 6,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 10,
+      "destinationId": 7,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 10,
+      "destinationId": 8,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 10,
+      "destinationId": 9,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 10,
+      "destinationId": 11,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 10,
+      "destinationId": 12,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 10,
+      "destinationId": 13,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 10,
+      "destinationId": 14,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 10,
+      "destinationId": 15,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 10,
+      "destinationId": 16,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 10,
+      "destinationId": 17,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 10,
+      "destinationId": 18,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 10,
+      "destinationId": 19,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 10,
+      "destinationId": 20,
+      "originGapMeters": 35.7,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 11,
+      "destinationId": 1,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 11,
+      "destinationId": 2,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 11,
+      "destinationId": 3,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 11,
+      "destinationId": 4,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 11,
+      "destinationId": 5,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 11,
+      "destinationId": 6,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 11,
+      "destinationId": 7,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 11,
+      "destinationId": 8,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 11,
+      "destinationId": 9,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 11,
+      "destinationId": 10,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 11,
+      "destinationId": 12,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 11,
+      "destinationId": 13,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 11,
+      "destinationId": 14,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 11,
+      "destinationId": 15,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 11,
+      "destinationId": 16,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 11,
+      "destinationId": 17,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 11,
+      "destinationId": 18,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 11,
+      "destinationId": 19,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 11,
+      "destinationId": 20,
+      "originGapMeters": 54.2,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 12,
+      "destinationId": 1,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 12,
+      "destinationId": 2,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 12,
+      "destinationId": 3,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 12,
+      "destinationId": 4,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 12,
+      "destinationId": 5,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 12,
+      "destinationId": 6,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 12,
+      "destinationId": 7,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 12,
+      "destinationId": 8,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 12,
+      "destinationId": 9,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 12,
+      "destinationId": 10,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 12,
+      "destinationId": 11,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 12,
+      "destinationId": 13,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 12,
+      "destinationId": 14,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 12,
+      "destinationId": 15,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 12,
+      "destinationId": 16,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 12,
+      "destinationId": 17,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 12,
+      "destinationId": 18,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 12,
+      "destinationId": 19,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 12,
+      "destinationId": 20,
+      "originGapMeters": 107.9,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 13,
+      "destinationId": 1,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 13,
+      "destinationId": 2,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 13,
+      "destinationId": 3,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 13,
+      "destinationId": 4,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 13,
+      "destinationId": 5,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 13,
+      "destinationId": 6,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 13,
+      "destinationId": 7,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 13,
+      "destinationId": 8,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 13,
+      "destinationId": 9,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 13,
+      "destinationId": 10,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 13,
+      "destinationId": 11,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 13,
+      "destinationId": 12,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 13,
+      "destinationId": 14,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 13,
+      "destinationId": 15,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 13,
+      "destinationId": 16,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 13,
+      "destinationId": 17,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 13,
+      "destinationId": 18,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 13,
+      "destinationId": 19,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 13,
+      "destinationId": 20,
+      "originGapMeters": 29.7,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 14,
+      "destinationId": 1,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 14,
+      "destinationId": 2,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 14,
+      "destinationId": 3,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 14,
+      "destinationId": 4,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 14,
+      "destinationId": 5,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 14,
+      "destinationId": 6,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 14,
+      "destinationId": 7,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 14,
+      "destinationId": 8,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 14,
+      "destinationId": 9,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 14,
+      "destinationId": 10,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 14,
+      "destinationId": 11,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 14,
+      "destinationId": 12,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 14,
+      "destinationId": 13,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 14,
+      "destinationId": 15,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 14,
+      "destinationId": 16,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 14,
+      "destinationId": 17,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 14,
+      "destinationId": 18,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 14,
+      "destinationId": 19,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 14,
+      "destinationId": 20,
+      "originGapMeters": 68.9,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 15,
+      "destinationId": 1,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 15,
+      "destinationId": 2,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 15,
+      "destinationId": 3,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 15,
+      "destinationId": 4,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 15,
+      "destinationId": 5,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 15,
+      "destinationId": 6,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 15,
+      "destinationId": 7,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 15,
+      "destinationId": 8,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 15,
+      "destinationId": 9,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 15,
+      "destinationId": 10,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 15,
+      "destinationId": 11,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 15,
+      "destinationId": 12,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 15,
+      "destinationId": 13,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 15,
+      "destinationId": 14,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 15,
+      "destinationId": 16,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 15,
+      "destinationId": 17,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 15,
+      "destinationId": 18,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 15,
+      "destinationId": 19,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 15,
+      "destinationId": 20,
+      "originGapMeters": 31.9,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 16,
+      "destinationId": 1,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 16,
+      "destinationId": 2,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 16,
+      "destinationId": 3,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 16,
+      "destinationId": 4,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 16,
+      "destinationId": 5,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 16,
+      "destinationId": 6,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 16,
+      "destinationId": 7,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 16,
+      "destinationId": 8,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 16,
+      "destinationId": 9,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 16,
+      "destinationId": 10,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 16,
+      "destinationId": 11,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 16,
+      "destinationId": 12,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 16,
+      "destinationId": 13,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 16,
+      "destinationId": 14,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 16,
+      "destinationId": 15,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 16,
+      "destinationId": 17,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 16,
+      "destinationId": 18,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 16,
+      "destinationId": 19,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 16,
+      "destinationId": 20,
+      "originGapMeters": 10.4,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 17,
+      "destinationId": 1,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 17,
+      "destinationId": 2,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 17,
+      "destinationId": 3,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 17,
+      "destinationId": 4,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 17,
+      "destinationId": 5,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 17,
+      "destinationId": 6,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 17,
+      "destinationId": 7,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 17,
+      "destinationId": 8,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 17,
+      "destinationId": 9,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 17,
+      "destinationId": 10,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 17,
+      "destinationId": 11,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 17,
+      "destinationId": 12,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 17,
+      "destinationId": 13,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 17,
+      "destinationId": 14,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 17,
+      "destinationId": 15,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 17,
+      "destinationId": 16,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 17,
+      "destinationId": 18,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 17,
+      "destinationId": 19,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 17,
+      "destinationId": 20,
+      "originGapMeters": 24.4,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 18,
+      "destinationId": 1,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 18,
+      "destinationId": 2,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 18,
+      "destinationId": 3,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 18,
+      "destinationId": 4,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 18,
+      "destinationId": 5,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 18,
+      "destinationId": 6,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 18,
+      "destinationId": 7,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 18,
+      "destinationId": 8,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 18,
+      "destinationId": 9,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 18,
+      "destinationId": 10,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 18,
+      "destinationId": 11,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 18,
+      "destinationId": 12,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 18,
+      "destinationId": 13,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 18,
+      "destinationId": 14,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 18,
+      "destinationId": 15,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 18,
+      "destinationId": 16,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 18,
+      "destinationId": 17,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 18,
+      "destinationId": 19,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 12.3
+    },
+    {
+      "originId": 18,
+      "destinationId": 20,
+      "originGapMeters": 11.3,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 19,
+      "destinationId": 1,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 19,
+      "destinationId": 2,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 19,
+      "destinationId": 3,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 19,
+      "destinationId": 4,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 19,
+      "destinationId": 5,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 19,
+      "destinationId": 6,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 19,
+      "destinationId": 7,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 19,
+      "destinationId": 8,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 19,
+      "destinationId": 9,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 19,
+      "destinationId": 10,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 19,
+      "destinationId": 11,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 19,
+      "destinationId": 12,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 19,
+      "destinationId": 13,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 19,
+      "destinationId": 14,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 19,
+      "destinationId": 15,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 19,
+      "destinationId": 16,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 19,
+      "destinationId": 17,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 19,
+      "destinationId": 18,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 19,
+      "destinationId": 20,
+      "originGapMeters": 12.3,
+      "destinationGapMeters": 24.5
+    },
+    {
+      "originId": 20,
+      "destinationId": 1,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 85.7
+    },
+    {
+      "originId": 20,
+      "destinationId": 2,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 39.3
+    },
+    {
+      "originId": 20,
+      "destinationId": 3,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 6.9
+    },
+    {
+      "originId": 20,
+      "destinationId": 4,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 50.3
+    },
+    {
+      "originId": 20,
+      "destinationId": 5,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 37.7
+    },
+    {
+      "originId": 20,
+      "destinationId": 6,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 47.3
+    },
+    {
+      "originId": 20,
+      "destinationId": 7,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 18.2
+    },
+    {
+      "originId": 20,
+      "destinationId": 8,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 53.0
+    },
+    {
+      "originId": 20,
+      "destinationId": 9,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 19.7
+    },
+    {
+      "originId": 20,
+      "destinationId": 10,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 35.7
+    },
+    {
+      "originId": 20,
+      "destinationId": 11,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 54.2
+    },
+    {
+      "originId": 20,
+      "destinationId": 12,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 107.9
+    },
+    {
+      "originId": 20,
+      "destinationId": 13,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 29.7
+    },
+    {
+      "originId": 20,
+      "destinationId": 14,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 68.9
+    },
+    {
+      "originId": 20,
+      "destinationId": 15,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 31.9
+    },
+    {
+      "originId": 20,
+      "destinationId": 16,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 10.4
+    },
+    {
+      "originId": 20,
+      "destinationId": 17,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 24.4
+    },
+    {
+      "originId": 20,
+      "destinationId": 18,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 11.3
+    },
+    {
+      "originId": 20,
+      "destinationId": 19,
+      "originGapMeters": 24.5,
+      "destinationGapMeters": 12.3
+    }
+  ]
+}

@@ -10,7 +10,7 @@
 .flag-row i{width:auto;height:7px}
 .hero-fact{font-size:clamp(25px,2.8vw,40px)}
 .timeline{gap:0}
-.slide-codigo .map-host,.slide-codigo .map-caption,.slide-codigo .map-credit{display:none}
+.slide-codigo .map-host,.slide-codigo .map-caption,.slide-codigo .map-credit,.slide-codigo .route-legend{display:none}
 .slide-codigo .visual{background:var(--deep)}
 .slide-codigo .stage{height:100%;max-height:none;margin:0;overflow:hidden;flex:1}
 .stage .complete-code{height:100%;display:flex;flex-direction:column;padding:0;border-radius:0;background:var(--deep);color:#f2f6ff}

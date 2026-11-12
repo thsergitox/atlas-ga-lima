@@ -3,7 +3,8 @@ import { loadCase } from './cases.js';
 import { completeCode } from './code-stage.js';
 import { codeBlock, announce, svgIcon } from './components.js';
 import { createMap } from '../map/route-map.js';
-import { intro, pipeline, dataset, population, fitness, replacement, result } from './basic-stages.js';
+import { intro, pipeline, population, fitness, replacement, result } from './basic-stages.js';
+import { dataset } from './dataset-stage.js';
 import { selection } from './selection-stage.js';
 import { crossing } from './crossover-stage.js';
 import { mutation } from './mutation-stage.js';
@@ -150,7 +151,9 @@ async function switchCase(id, initial = false) {
   try {
     const data = await loadCase(id);
     context?.map.destroy();
-    context = { ...data, stage: $('#stage'), map: createMap($('#map'), data.museums, data.basemap, data.profile) };
+    context = { ...data, stage: $('#stage'), map: createMap($('#map'), data.museums, data.basemap, data.profile, data.routes) };
+    $('#map-model').textContent = data.routes ? 'Automóvil · sin tráfico en vivo' : 'Conexiones esquemáticas · no trazado vial';
+    $('#routing-credit').hidden = !data.routes;
     lessons = getLessons(data.profile);
     selector.value = data.profile.id;
     $('#map-labels').setAttribute('aria-pressed', 'false');

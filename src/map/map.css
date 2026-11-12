@@ -1,8 +1,9 @@
 .map-host{flex:1;min-height:180px;position:relative;isolation:isolate}
 .map-host>svg{width:100%;height:100%;position:absolute;inset:0;overflow:visible}
 .basemap{opacity:.84;mix-blend-mode:multiply}
-.route-active{stroke:#204ed5;stroke-width:6;filter:drop-shadow(0 3px 3px #204ed51c)}
-.route-before{stroke:#8d9bae;stroke-width:3;stroke-dasharray:8 9;opacity:.7}
+.route-active,.route-before{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
+.route-active{stroke:#204ed5;stroke-width:2.8;filter:drop-shadow(0 3px 3px #204ed51c)}
+.route-before{stroke:#526579;stroke-width:1.6;stroke-dasharray:5 6;opacity:.65}
 .museum-marker{cursor:pointer;outline:none}
 .museum-marker>circle{fill:white;stroke:#204ed5;stroke-width:3;transition:fill .3s,stroke .3s}
 .museum-marker>text{font:600 22px Source,sans-serif;fill:#173b9f;pointer-events:none}
@@ -22,3 +23,9 @@
 .marker-leader{stroke:#526579;stroke-width:1.5;fill:none}
 
 .museum-location{fill:#204ed5}
+.route-legend{position:absolute;top:58px;left:25px;right:25px;z-index:2;display:flex;align-items:center;gap:12px;flex-wrap:wrap;pointer-events:none;font-size:11px;color:var(--muted)}
+.route-legend>span{display:flex;align-items:center;gap:6px}
+.legend-active,.legend-before{display:inline-block;width:19px;border-top:3px solid var(--blue)}
+.legend-before{border-top:2px dashed var(--muted)}
+#map-route-status{font-variant-numeric:tabular-nums;background:var(--bg);padding:3px 6px;border-radius:3px}
+@media(max-width:520px){.route-legend{left:18px;right:18px;gap:5px 10px;font-size:10px}.route-legend #map-route-status{flex-basis:100%;width:fit-content}}

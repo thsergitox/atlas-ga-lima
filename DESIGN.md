@@ -270,3 +270,12 @@ La preferencia de movimiento reducido limita animaciones y transiciones a `.01ms
 - **Don't** colorear supervivientes por un origen individual que la traza no contiene.
 - **Don't** aplicar sombras a todos los paneles de operación.
 - **Don't** depender de fuentes remotas durante la exposición.
+
+
+## Recorridos viales y matrices · 12 de noviembre de 2026
+
+Lima representa las polilíneas de cada par dirigido de openrouteservice, sin interpolar sus vértices a través de edificios. Los lugares conservan sus puntos geográficos. Una transición de850ms dibuja los tramos nuevos en oro hacia cobalto; los compartidos permanecen y los anteriores se distinguen en gris discontinuo. La comparación explícita mantiene las conexiones anteriores para explicarlas. Al reducir movimiento, el estado cambia de inmediato. La leyenda identifica actual/anterior y cuenta las conexiones nuevas y retiradas; no se consultan servicios durante las animaciones.
+
+La misma interfaz de mapa sirve al caso Estambul con conexiones esquemáticas explícitamente rotuladas: sus matrices originales no incluyen geometrías. No se atribuye trazado vial a esas rectas.
+
+Dataset alterna lista de destinos y tabla desplazable. La celda elegida usa cobalto y el par se dibuja en el mapa. Selectores nativos e inversión de recorrido ofrecen una alternativa a las celdas densas; en la tabla solo la celda activa entra al orden de tabulación y las flechas cambian de celda sin navegar la exposición. Sus coordenadas y unidades se comunican también como texto. La atribución ORS/OSM y la licencia quedan al pie fuera del panel de operación.

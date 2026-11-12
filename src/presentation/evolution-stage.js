@@ -6,8 +6,11 @@ export function evolution(ctx) {
   let generation = 0;
   let timer = 0;
   let playing = false;
-  const lo = experiment.run.initial.fitness * 0.95;
-  const hi = Math.max(...history.map(h => h.fitness)) * 1.04;
+  const values = [experiment.run.initial.fitness, ...history.map(h => h.fitness)];
+  const minimum = Math.min(...values), maximum = Math.max(...values);
+  const span = maximum - minimum || Math.abs(maximum) || 1;
+  const lo = minimum - span * 0.05;
+  const hi = maximum + span * 0.04;
   const x = i => 40 + i / 99 * 630;
   const y = value => 115 - (value - lo) / (hi - lo) * 95;
   const points = history.map((h, i) => `${x(i)},${y(h.fitness)}`).join(' ');

@@ -9,7 +9,7 @@ Explicar el paper de Şehab y Turan (2024) y el port Python de Arbues mediante d
 ## Operating Context
 Navegación manual por diapositivas, demostraciones repetibles de operadores, notas del expositor y enlaces al código fuente. El usuario pidió crear un repositorio y desplegar con Vercel CLI.
 ## Capabilities and Constraints
-Conservar la paleta azul existente. No ejecutar builds. Distinguir paper, implementación y adaptación. Las matrices de Lima son un modelo académico explícito. Estambul conserva coordenadas, matrices y población inicial del repositorio; sus resultados visibles son de una nueva ejecución, no la tabla del paper. No afirmar optimalidad global del GA. Preservar la web anterior.
+Conservar la paleta azul existente. No ejecutar builds. Distinguir paper, implementación y adaptación. Lima usa380recorridos de openrouteservice con distancias viales, tiempos estimados y geometrías; costo y presupuesto siguen siendo hipótesis académicas explícitas. Sin tráfico en vivo. Estambul conserva coordenadas, matrices y población inicial del repositorio; sus resultados visibles son de una nueva ejecución, no la tabla del paper. No afirmar optimalidad global del GA. Preservar la web anterior.
 ## Brand Commitments
 Atlas GA. Español claro, matemáticas verificables y mapa como objeto central.
 ## Evidence on Hand

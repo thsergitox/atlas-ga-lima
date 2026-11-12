@@ -27,8 +27,8 @@ export function mutation(ctx) {
     if (index >= 0) stage.querySelector(`[data-flag-row="${index}"]`).classList.add('current-row');
     stage.querySelector('#mutation-status').textContent = !draw.steps.length ? 'Ninguna fila activa: la ruta no cambia.' : step ? `Intercambio de posiciones ${index + 1} y ${index + 2}` : `${draw.steps.length} filas activas; listas para recorrer`;
     stage.querySelector('#mutation-counter').textContent = `${step} / ${draw.steps.length}`;
-    const delta = totals(route, experiment.matrices, ctx.profile.budget).fitness - totals(original, experiment.matrices, ctx.profile.budget).fitness;
-    stage.querySelector('#mutation-delta').textContent = step ? `Δ fitness ${delta >= 0 ? '+' : ''}${format(delta, 4)}` : 'Sorteo registrado en Python';
+    const delta = totals(route, experiment.matrices, ctx.profile.budget).fitness - totals(before || original, experiment.matrices, ctx.profile.budget).fitness;
+    stage.querySelector('#mutation-delta').textContent = step ? `Δf del paso ${delta >= 0 ? '+' : ''}${format(delta, 4)}` : 'Sorteo registrado en Python';
     stage.querySelector('#mutation-metrics').innerHTML = metricsFor(ctx, route);
     stage.querySelector('#mutation-step').disabled = step >= draw.steps.length;
     stage.querySelector('#mutation-play').disabled = !draw.steps.length;

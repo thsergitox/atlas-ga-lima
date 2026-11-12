@@ -21,24 +21,6 @@ export function pipeline(ctx) {
   ctx.stage.innerHTML = `<div class="pipeline-panel"><div class="pipeline-origin"><span>Şehab y Turan · 2024</span><a href="https://doi.org/10.7717/peerj-cs.2340" target="_blank" rel="noreferrer">PeerJ Computer Science · e2340 ↗</a></div><div class="pipeline-track">${['Datos', 'Población', 'Fitness', 'Selección', 'COX', 'Mutación', 'Reemplazo'].map((label, i) => `<button data-go="${[2, 3, 4, 5, 6, 7, 8][i]}"><span>${i + 1}</span>${label}</button>`).join('')}</div><p>Port Python de Arbues · ${ctx.profile.shortCity}: ${ctx.museums.length} destinos · 100 rutas × 100 generaciones</p></div>`;
 }
 
-export function dataset(ctx) {
-  const { stage, museums, map, experiment } = ctx;
-  map.show(experiment.run.initial.route);
-  stage.innerHTML = `<div class="dataset-panel"><div class="panel-heading"><span>${museums.length} registros, tres matrices ${museums.length} × ${museums.length}</span><a href="${ctx.profile.path}museums.csv" download>Descargar CSV ↧</a></div><div class="museum-list">${museums.map(p => `<button data-museum="${p.id}"><b>${p.id}</b><span>${p.short}</span><small>${p.district}</small></button>`).join('')}</div><div class="matrix-inspector"><label>Origen <select id="origin">${museums.map(p => `<option value="${p.id}">${p.id} · ${p.short}</option>`).join('')}</select></label><label>Destino <select id="destination">${museums.map(p => `<option value="${p.id}" ${p.id === 2 ? 'selected' : ''}>${p.id} · ${p.short}</option>`).join('')}</select></label><output id="matrix-values"></output></div></div>`;
-  const inspect = () => {
-    const a = +stage.querySelector('#origin').value - 1;
-    const b = +stage.querySelector('#destination').value - 1;
-    stage.querySelector('#matrix-values').textContent = `${format(experiment.matrices.distance[a][b])} km · ${format(experiment.matrices.time[a][b], 1)} min · ${ctx.profile.currency} ${format(experiment.matrices.cost[a][b])}`;
-    map.highlight(b + 1);
-  };
-  stage.querySelectorAll('[data-museum]').forEach(button => button.onclick = () => {
-    stage.querySelector('#destination').value = button.dataset.museum;
-    inspect();
-  });
-  stage.querySelectorAll('select').forEach(el => el.onchange = inspect);
-  inspect();
-}
-
 export function population(ctx) {
   const { stage, map, experiment } = ctx;
   const pool = experiment.run.selection.pool;
@@ -74,8 +56,13 @@ export function result(ctx) {
   const { experiment, stage, map } = ctx;
   const initial = experiment.run.initial;
   const final = experiment.run.history.at(-1);
-  const gain = (final.fitness / initial.fitness - 1) * 100;
-  stage.innerHTML = `<div class="result-panel"><div class="result-switch"><button id="show-initial" aria-pressed="false">Mejor inicial</button><button id="show-final" class="active" aria-pressed="true">Mejor encontrada</button></div><div id="result-genes">${genes(final.route)}</div><div id="result-metrics">${metricsFor(ctx, final.route)}</div><p><strong>+${format(gain, 1)} % de fitness</strong> frente al mejor individuo inicial de esta corrida.</p><p class="panel-footnote">${ctx.profile.currency} ${ctx.profile.budget} de presupuesto · 100 rutas · 100 generaciones · sin retorno al inicio</p></div>`;
+  const delta = final.fitness - initial.fitness;
+  const gain = initial.fitness > 0
+    ? `+${format(100 * delta / initial.fitness, 1)} % de fitness`
+    : `Δ fitness +${format(delta, 4)}`;
+  const explanation = initial.fitness > 0 ? 'frente al mejor individuo inicial de esta corrida.'
+    : 'frente al mejor inicial. Una base no positiva se compara con diferencia absoluta.';
+  stage.innerHTML = `<div class="result-panel"><div class="result-switch"><button id="show-initial" aria-pressed="false">Mejor inicial</button><button id="show-final" class="active" aria-pressed="true">Mejor encontrada</button></div><div id="result-genes">${genes(final.route)}</div><div id="result-metrics">${metricsFor(ctx, final.route)}</div><p><strong>${gain}</strong> ${explanation}</p><p class="panel-footnote">${ctx.profile.currency} ${ctx.profile.budget} de presupuesto · 100 rutas · 100 generaciones · sin retorno al inicio</p></div>`;
   const show = finalVisible => {
     const selected = finalVisible ? final : initial;
     map.show(selected.route, { compare: finalVisible ? initial.route : final.route });

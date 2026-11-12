@@ -30,10 +30,11 @@
     </section>
     <section class="visual" aria-label="Demostración del itinerario">
       <div class="map-caption"><span><span class="live-dot"></span><span id="map-title">Lima, Perú</span></span><button id="map-labels" class="map-label-toggle" aria-pressed="false">Nombres</button></div>
+      <div class="route-legend"><span><i class="legend-active"></i>Actual</span><span><i class="legend-before"></i>Anterior</span><span id="map-route-status"></span></div>
       <div id="map" class="map-host"></div>
       <div id="map-tooltip" class="map-tooltip" hidden></div>
       <div id="stage" class="stage"></div>
-      <div class="map-credit"><span>Conexiones entre paradas · no trazado vial</span><span>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a></span></div>
+      <div class="map-credit"><span id="map-model">Automóvil · sin tráfico en vivo</span><span><span id="routing-credit">© <a href="https://openrouteservice.org/" target="_blank" rel="noreferrer">openrouteservice by HeiGIT</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a> | </span>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a></span></div>
     </section>
   </main>
   <footer class="deck-controls">

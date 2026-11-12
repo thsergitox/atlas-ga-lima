@@ -29,13 +29,21 @@ Las etiquetas de zona son orientativas para lectura, no un levantamiento de lím
 
 ## Tres matrices 20 × 20
 
-Se calculan para TODOS los pares, con diagonal cero. Distancias en kilómetros, tiempos en minutos y costos en soles simulados. Matrices simétricas por construcción; el modelo no incluye sentidos de circulación.
+La versión actual usa380consultas dirigidas a openrouteservice (ORS), perfil `driving-car`. Cada consulta devuelve distancia, duración y una polilínea GeoJSON. Se adquieren solo los pares i≠j; las veinte diagonales se definen en cero localmente. El mismo recorrido proporciona la métrica y el trazado. Los sentidos de circulación hacen que D[i][j] y D[j][i] puedan diferir; no se copian ni promedian los viajes inversos.
 
-`D[i][j]`: Haversine con radio R=6371 km. Es distancia geodésica, NO distancia vial. El mapa usa segmentos rectos entre ubicaciones para mostrar orden y conexiones; no proporciona instrucciones de navegación.
+`D[i][j] = distanceMeters / 1000`: kilómetros por la red vial, no distancia geodésica.
 
-`T[i][j]`: si D≤1 km, se camina a 4.5 km/h: T=60D/4.5. En otro caso, T=4+60D/18. Se eligieron 18 km/h y cuatro minutos fijos únicamente para mostrar cómo crear una matriz temporal distinta de la distancia normalizada. No son mediciones ni predicciones de tráfico. El salto en el umbral refleja el cambio de modelo, no datos observados.
+`T[i][j] = durationSeconds / 60`: minutos estimados por ORS. El perfil no usa tráfico en vivo; una matriz fija permite comparar todas las rutas en la misma corrida. Las conexiones se modelan en automóvil, también entre museos cercanos.
 
-`C[i][j]`: cero si D≤1; si D>1, max(8,4+2.5D). Los parámetros (8 soles mínimos, 4 soles de base, 2.5 soles/km) son supuestos didácticos. NO son tarifas vigentes ni cotizaciones. Siguen el patrón conceptual del paper (caminar o traslado con base, tarifa por km y mínimo), pero no trasladan liras turcas a soles.
+`C[i][j] = max(8, 4 + 2.5D[i][j])` si i≠j; cero en diagonal. Los parámetros (8soles mínimos,4de base,2.5por km) siguen siendo supuestos académicos. No son tarifas de taxi, precios de ORS ni cotizaciones comerciales. Se retiró el umbral de caminar gratis para no mezclar tiempos de automóvil con un costo peatonal.
+
+Los resultados originales de ORS se conservan en `data/routes.geojson`:380features LineString, coordenadas [longitud,latitud], metros y segundos. `data/provenance.json` registra fecha de adquisición, perfil, hash y distancia entre los puntos de museo y los extremos de la red vial. Esos pequeños accesos pueden quedar fuera del recorrido del automóvil: no se dibujan como calles inventadas ni se suman como tiempos conocidos.
+
+El endpoint vigente es `api.heigit.org/openrouteservice/v2/directions/driving-car/geojson`. Los primeros200pares se obtuvieron del dominio anterior y se conservaron después de comprobar que un control coincidía exactamente en distancia, duración, geometría y motor. La procedencia de cada par conserva su endpoint original.
+
+La adquisición se hace una vez con `python3 python/fetch_routes.py`, leyendo ORS_API_KEY del `.env` ignorado. Pausas de2s mantienen el ritmo por debajo de40solicitudes/min del plan gratuito verificado. La caché local permite reanudar sin repetir los pares completados y no se publica. La web carga archivos locales y no necesita clave ni solicitudes al proveedor durante la exposición. Resultados ORS y derivados bajo CC BY-SA4.0, atribución visible y detalles en `data/LICENSE.md`.
+
+La versión anterior Haversine y sus matrices/experimento se preservan en `data/archive/haversine/`. Eran distancias geodésicas, tiempos y costos modelados, con matrices simétricas. El archivo no se presenta como dato vial actual.
 
 Presupuesto B=360 soles de traslados, elegido para este ejemplo. No incluye entradas ni comidas. La interfaz de fitness permite explorar B=30…600; ese control no modifica la corrida guardada, cuyo B es siempre 360.
 

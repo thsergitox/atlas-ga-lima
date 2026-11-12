@@ -1,10 +1,12 @@
+import { validateRoutes } from '../map/validate-routes.js';
+
 export const cases = {
   lima: {
     id: 'lima', label: 'Lima · 20 museos', city: 'Lima, Perú', shortCity: 'Lima', n: 20,
     start: 1, startName: 'MALI', budget: 360, currency: 'S/', budgetMin: 30, budgetMax: 600, budgetStep: 10,
     path: 'data/', searchSpace: '19! ≈ 1.216 × 10¹⁷',
-    timeLabel: 'Tiempo modelado', costLabel: 'Costo simulado',
-    dataNote: 'Coordenadas OSM. Distancias geodésicas; tiempos y costos de un modelo académico, sin tráfico real.',
+    timeLabel: 'Tiempo estimado', costLabel: 'Costo simulado', geometry: 'routes.geojson',
+    dataNote: '380 trayectos de openrouteservice: distancia, tiempo estimado y calles del mismo recorrido. Automóvil, sin tráfico en vivo; costo simulado.',
     districtLabels: [['Pueblo Libre', -77.074, -12.082], ['Centro de Lima', -77.048, -12.041], ['Miraflores', -77.046, -12.118], ['Barranco', -77.012, -12.144], ['San Borja', -77.005, -12.09]],
     ocean: 'Océano Pacífico'
   },
@@ -21,7 +23,7 @@ export const cases = {
 
 export async function loadCase(id) {
   const profile = cases[id] || cases.lima;
-  const [museums, basemap, experiment, algorithm] = await Promise.all([
+  const [museums, basemap, experiment, algorithm, routes] = await Promise.all([
     ...['museums.json', 'basemap.json', 'experiment.json'].map(async file => {
       const response = await fetch(profile.path + file);
       if (!response.ok) throw new Error(`No se pudo cargar ${file}`);
@@ -30,8 +32,13 @@ export async function loadCase(id) {
     fetch('data/algorithm.py').then(response => {
       if (!response.ok) throw new Error('No se pudo cargar el código completo');
       return response.text();
-    })
+    }),
+    profile.geometry ? fetch(profile.path + profile.geometry).then(response => {
+      if (!response.ok) throw new Error('No se pudieron cargar los recorridos viales');
+      return response.json();
+    }) : null
   ]);
   if (museums.places.length !== profile.n || experiment.run.initial.route.length !== profile.n) throw new Error('El tamaño del dataset no coincide con el caso');
-  return { profile, museums: museums.places, basemap, experiment, algorithm };
+  if (routes) validateRoutes(routes, profile.n, experiment.matrices);
+  return { profile, museums: museums.places, basemap, experiment, algorithm, routes };
 }

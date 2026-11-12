@@ -2,18 +2,18 @@
 import inspect
 from pathlib import Path
 
-from dataset import haversine, matrices, evaluate
+from dataset import evaluate
 from evolution import execute
 from operators import initial_population, copy_order, crossover, mutate, tournament
 
 ROOT = Path(__file__).resolve().parents[1]
 HEADER = '''"""Algoritmo genético completo de la exposición Atlas GA.
 Uso: python algorithm.py experiment.json
-JSON descargable para Lima (20) o Estambul (12). Nueva ejecución sin semilla.
+Lima: matrices viales ORS (20). Estambul: matrices del port (12).
+Adquisición separada del algoritmo; nueva ejecución sin semilla.
 COX, mutación por filas y torneo equivalentes al port de Arbues (MIT).
 """
 import json
-import math
 import random
 import sys
 from pathlib import Path
@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
 
 def main():
-    functions = [haversine, matrices, evaluate, initial_population, copy_order,
+    functions = [evaluate, initial_population, copy_order,
                  crossover, mutate, tournament, execute]
     code = HEADER + '\n\n'.join(inspect.getsource(f).rstrip() for f in functions) + MAIN
     compile(code, 'algorithm.py', 'exec')

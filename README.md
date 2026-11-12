@@ -31,13 +31,18 @@ Python 3, solo biblioteca estándar:
 ```sh
 # Opcional: actualizar los veinte registros OSM (una solicitud de red)
 python3 python/fetch_museums.py
+# Adquirir los 380 trayectos (solo al preparar/actualizar el dataset)
+# Requiere ORS_API_KEY en .env; admite --limit 6 para el piloto
+python3 python/fetch_routes.py
 # Crear matrices, ejecutar cien generaciones y exportar CSV/JSON
 python3 python/run_lima.py
 # Exportar el algoritmo completo a partir de las mismas funciones
 python3 python/export_code.py
 ```
 
-Lima usa coordenadas OSM, distancias Haversine y tiempo/costo didácticos. Presupuesto supuesto: 360 soles de traslados para veinte paradas. No son datos viales, tarifas reales ni una jornada de visitas validada.
+Lima usa coordenadas OSM y380recorridos dirigidos de openrouteservice: distancias viales, tiempos estimados y geometrías GeoJSON del mismo recorrido. Perfil driving-car, sin tráfico en vivo. Los costos `max(8,4+2.5D)` y el presupuesto de360soles son hipótesis académicas, no tarifas comerciales ni una jornada de visitas validada. El histórico Haversine queda en `data/archive/haversine/`.
+
+El endpoint vigente es `https://api.heigit.org/openrouteservice/v2/directions/driving-car/geojson`. El dominio anterior tiene una cuota reducida y ya no corresponde al panel. La adquisición se limita a menos de40consultas/min y conserva progreso en `.cache/ors/`. La clave solo se usa localmente, nunca en la web. Una vez preparado, el sitio reproduce los mapas y operadores sin consultar la API. En Dataset se exploran las matrices y se invierte cualquier par; Fuentes permite descargar los380trazados y su procedencia.
 
 ## Datos originales del paper
 
@@ -78,4 +83,4 @@ vercel deploy --prod --yes --scope pezosergios-projects
 
 `vercel.json` usa framework nulo y comando de compilación vacío. No ejecutar builds. `.vercelignore` excluye documentación, scripts de desarrollo y configuración local. `.env*` y `.vercel/` no se versionan.
 
-Código MIT; atribuciones originales en `python/upstream/LICENSE`. Coordenadas y mapas: © OpenStreetMap contributors, ODbL; teselas locales con procedencia. KaTeX y fuentes incluyen sus licencias en `assets/`.
+Código MIT; atribuciones originales en `python/upstream/LICENSE`. Resultados ORS y matrices derivadas: CC BY-SA4.0, ver `data/LICENSE.md`. Coordenadas y mapas: © OpenStreetMap contributors, ODbL; teselas locales con procedencia. KaTeX y fuentes incluyen sus licencias en `assets/`.
