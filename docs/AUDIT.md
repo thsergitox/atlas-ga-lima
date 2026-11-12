@@ -6,7 +6,7 @@ Fuentes inspeccionadas: PDF local de 41 páginas, port Arbues revisión e84ed98c
 
 | Paso | Evidencia | Decisión en Lima |
 |---|---|---|
-| Matrices | Paper pp. 8–10, ecuaciones 8–10: Bing Maps, kilómetros/minutos y tarifa de taxi. 98 destinos disponibles y caso de 12 museos. | Veinte registros OSM; Haversine y modelos de tiempo/costo claramente rotulados. No se afirman distancias viales. |
+| Matrices | Paper pp. 8–10, ecuaciones 8–10: Bing Maps, kilómetros/minutos y modelo de tarifa de taxi. 98 destinos disponibles y caso de 12 museos. | Veinte registros OSM; versión actual con 380 recorridos ORS y D/T del mismo trazado vial. Costo simulado max(8,4+2.5D). Haversine fue el modelo preliminar, sustituido en run_lima.py por routing.dataset. |
 | Cromosoma | Paper p. 10, figura 5: cada lugar una vez. initial_pop.py antepone 6 pero su permutación puede volver a incluirlo. | Se excluye el inicio de la cola antes de permutar. No se vuelve a generar ni sobrescribir ind.mat original. |
 | Fitness | Paper p. 11, ec. 11: (B−C)/(D+T), con discusión de normalización; ec. 12: min-max global. Fitness.py implementa ((B−C)/B)/sum(D_hat+T_hat). | Se muestra y ejecuta la fórmula del código, y se explica la diferencia con la expresión del artículo. |
 | Selección | Paper pp. 16–17; GA.py: torneo del 20 %, dos mejores y búsqueda adicional de planes distintos. | N=100, torneo=20, muestreo sin reemplazo dentro de cada torneo. No se convierte a ruleta. |

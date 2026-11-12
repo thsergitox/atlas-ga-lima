@@ -2,7 +2,7 @@ import { validateRoutes } from '../map/validate-routes.js';
 
 export const cases = {
   lima: {
-    id: 'lima', label: 'Lima · 20 museos', city: 'Lima, Perú', shortCity: 'Lima', n: 20,
+    id: 'lima', label: 'Lima · ORS (20 museos)', city: 'Lima, Perú', shortCity: 'Lima', n: 20,
     start: 1, startName: 'MALI', budget: 360, currency: 'S/', budgetMin: 30, budgetMax: 600, budgetStep: 10,
     path: 'data/', searchSpace: '19! ≈ 1.216 × 10¹⁷',
     information: 'data/museum-info.json',
@@ -12,7 +12,7 @@ export const cases = {
     ocean: 'Océano Pacífico'
   },
   paper: {
-    id: 'paper', label: 'Paper · Estambul (12)', city: 'Estambul, Turquía', shortCity: 'Estambul', n: 12,
+    id: 'paper', label: 'Estambul · datos del paper (12)', city: 'Estambul, Turquía', shortCity: 'Estambul', n: 12,
     start: 6, startName: 'Pelit Chocolate Museum', budget: 2000, currency: 'TL', budgetMin: 100, budgetMax: 3000, budgetStep: 100,
     path: 'data/paper/', searchSpace: '11! = 39 916 800',
     information: 'data/istanbul-info.json',

@@ -17,7 +17,7 @@
   <a class="skip-link" href="#slide-title">Saltar a la diapositiva</a>
   <header class="masthead">
     <a class="brand" href="#problema" aria-label="Atlas GA, ir al inicio"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M5 27 13 9l10 16 8-20"/><circle cx="5" cy="27" r="3"/><circle cx="13" cy="9" r="3"/><circle cx="23" cy="25" r="3"/><circle cx="31" cy="5" r="3"/></svg><span>Atlas <strong>GA</strong></span></a>
-    <div class="case-picker"><label for="case-select">Caso de estudio</label><select id="case-select" aria-describedby="case-status"><option value="lima">Lima · 20 museos</option><option value="paper">Paper · Estambul (12)</option><option value="istanbul">Estambul · ORS (12)</option></select><span id="case-status" role="status"></span></div>
+    <div class="case-picker"><label for="case-select">Caso de estudio</label><select id="case-select" aria-describedby="case-status"><option value="lima">Lima · ORS (20 museos)</option><option value="paper">Estambul · datos del paper (12)</option><option value="istanbul">Estambul · ORS (12)</option></select><span id="case-status" role="status"></span></div>
     <div class="header-actions"><button id="notes-button" class="quiet" aria-expanded="false" aria-controls="notes">Notas <kbd>N</kbd></button><button id="fullscreen" class="icon-button" aria-label="Entrar en pantalla completa" title="Pantalla completa (F)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button></div>
   </header>
   <main id="presentation" class="presentation">
@@ -33,7 +33,7 @@
       <div class="map-caption"><span><span class="live-dot"></span><span id="map-title">Lima, Perú</span></span><button id="map-labels" class="map-label-toggle" aria-pressed="false">Nombres</button></div>
       <div class="route-legend"><span><i class="legend-active"></i>Actual</span><span><i class="legend-before"></i>Anterior</span><span id="map-route-status"></span></div>
       <div id="map" class="map-host"></div>
-      <div id="stage" class="stage"></div>
+      <div id="stage" class="stage" tabindex="0" role="region" aria-label="Controles del paso; desplazarse para ver todo el contenido"></div>
       <div class="map-credit"><span id="map-model">Automóvil · sin tráfico en vivo</span><span><span id="routing-credit">© <a href="https://openrouteservice.org/" target="_blank" rel="noreferrer">openrouteservice by HeiGIT</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a> | </span>© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a></span></div>
     </section>
   </main>
@@ -43,7 +43,7 @@
     <div class="slide-position"><span id="slide-count">01 / 13</span><div class="arrow-controls"><button id="previous" class="icon-button" aria-label="Diapositiva anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button><button id="next" class="icon-button next" aria-label="Diapositiva siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button></div></div>
     <div id="progress" class="deck-progress"></div>
   </footer>
-  <aside id="notes" class="notes-panel" hidden aria-labelledby="notes-title"><div class="drawer-heading"><h2 id="notes-title">Notas del expositor</h2><button id="close-notes" class="icon-button" aria-label="Cerrar notas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><h3 id="notes-slide"></h3><div id="notes-copy"></div><p class="notes-hint">Flechas: diapositiva · N: notas · F: pantalla completa · Esc: cerrar</p></aside>
+  <aside id="notes" class="notes-panel" hidden aria-labelledby="notes-title"><div class="drawer-heading"><h2 id="notes-title">Notas del expositor</h2><button id="close-notes" class="icon-button" aria-label="Cerrar notas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><h3 id="notes-slide"></h3><div id="notes-copy"></div><p class="notes-hint"><a href="guion.html" target="_blank" rel="noreferrer">Abrir guion y preguntas de la exposición</a><br>Flechas: diapositiva · N: notas · F: pantalla completa · Esc: cerrar</p></aside>
   <div id="contents" class="contents-panel" hidden><div class="drawer-heading"><h2>La exposición</h2><button id="close-contents" class="icon-button" aria-label="Cerrar índice"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div><nav id="contents-list" aria-label="Índice de diapositivas"></nav></div>
   <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
   <div id="load-error" class="load-error" hidden><h2>No se pudieron cargar los datos.</h2><p>Recarga la página para volver a intentarlo.</p><button onclick="location.reload()">Recargar</button></div>

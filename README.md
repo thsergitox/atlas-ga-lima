@@ -8,6 +8,7 @@ Presentación interactiva en español del algoritmo genético de Şehab y Turan 
 - [Paper: doce destinos originales de Estambul](https://atlas-ga-lima.vercel.app/?caso=paper)
 - [Estambul ORS: rutas viales y comparación](https://atlas-ga-lima.vercel.app/?caso=istanbul#resultado)
 - [Código completo al final del algoritmo](https://atlas-ga-lima.vercel.app/?caso=lima#codigo)
+- [Guion por diapositiva y preguntas de defensa](https://atlas-ga-lima.vercel.app/guion.html)
 
 ## Presentar
 
@@ -17,7 +18,9 @@ Flechas: navegar. `F`: pantalla completa. `N`: notas. `Esc`: cerrar notas/índic
 
 Cada marcador abre una ficha con reseña, ubicación y fuente. El mapa tiene +/−, encuadre y desplazamiento al arrastrar. Leaflet ofrece rueda, doble clic y gestos táctiles, además de +/− y encuadre. Con el mapa enfocado, las flechas desplazan y +/− cambian el zoom; esas teclas no cambian de diapositiva. Escape cierra la ficha y devuelve el foco al marcador.
 
-**Ampliar mapa** abre una vista casi completa y **Pantalla completa** usa la pantalla del navegador. Ambas conservan el zoom, las rutas y las fichas del mismo mapa. **Volver a diapositiva** restaura su posición; Escape permite salir de la vista ampliada. Si el navegador no permite pantalla completa, queda disponible la ampliación. La atribución de rutas y mapa permanece visible.
+**Ampliar mapa** abre una vista casi completa y conserva el zoom, las rutas y las fichas del mismo mapa. **Volver a diapositiva** restaura su posición; Escape permite salir de la vista ampliada. La atribución permanece visible. Por petición del usuario se retiró el botón de pantalla completa propio del mapa; la presentación conserva su control general. La cabecera mide 52 px en escritorio y el mapa tiene prioridad sobre el panel desplazable del paso.
+
+En **Notas** se puede abrir el guion completo. [guion.md](guion.md) es su fuente descargable; `docs/render_guide.py` genera la versión de lectura con Python Markdown. Explica los trece pasos y responde preguntas sobre Bing/ORS, distancias, costos, mutación y comparación. Para actualizarlo: `python3 docs/render_guide.py`. Es conversión de documentación, sin compilación de la aplicación.
 
 COX permite elegir cortes y ver sus dos hijos. Mutación muestra los intercambios y su matriz de indicadores (20×20 o 12×12); μ=.9 es la demostración de diversificación, mientras la corrida inicia en .1. Evolución reproduce cien generaciones Python guardadas, sin fabricar curvas. El código completo permite copiar/descargar un archivo ejecutable con todas las funciones y el punto de entrada.
 
