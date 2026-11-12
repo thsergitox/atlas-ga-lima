@@ -15,7 +15,7 @@ El selector superior cambia el caso sin perder la diapositiva. Actualiza mapa, d
 
 Flechas: navegar. `F`: pantalla completa. `N`: notas. `Esc`: cerrar notas/índice. En el editor de código, las teclas de navegación desplazan el código.
 
-Cada marcador abre una ficha con reseña, ubicación y fuente. El mapa tiene +/−, encuadre y desplazamiento al arrastrar. Con el mapa enfocado, las flechas desplazan, +/− cambian el zoom y 0 encuadra; esas teclas no cambian de diapositiva. Escape cierra la ficha y devuelve el foco al marcador.
+Cada marcador abre una ficha con reseña, ubicación y fuente. El mapa tiene +/−, encuadre y desplazamiento al arrastrar. Leaflet ofrece rueda, doble clic y gestos táctiles, además de +/− y encuadre. Con el mapa enfocado, las flechas desplazan y +/− cambian el zoom; esas teclas no cambian de diapositiva. Escape cierra la ficha y devuelve el foco al marcador.
 
 COX permite elegir cortes y ver sus dos hijos. Mutación muestra los intercambios y su matriz de indicadores (20×20 o 12×12); μ=.9 es la demostración de diversificación, mientras la corrida inicia en .1. Evolución reproduce cien generaciones Python guardadas, sin fabricar curvas. El código completo permite copiar/descargar un archivo ejecutable con todas las funciones y el punto de entrada.
 
@@ -25,7 +25,7 @@ COX permite elegir cortes y ver sus dos hijos. Mutación muestra los intercambio
 python3 -m http.server 8766
 ```
 
-Abrir http://localhost:8766. HTML/CSS/módulos ES sin framework ni compilación. Fórmulas, fuentes y mapas se sirven localmente.
+Abrir http://localhost:8766. HTML/CSS/módulos ES sin framework ni compilación. Fórmulas, fuentes y Leaflet 1.9.4 se sirven localmente. El detalle de calles usa teselas OpenStreetMap solicitadas al navegar; requiere conexión. Las imágenes de base ya disponibles sirven de respaldo sin nuevos niveles de detalle.
 
 ## Pipeline Lima
 
@@ -45,7 +45,7 @@ python3 python/export_code.py
 
 Lima usa coordenadas OSM y380 recorridos dirigidos de openrouteservice: distancias viales, tiempos estimados y geometrías GeoJSON del mismo recorrido. Perfil driving-car, sin tráfico en vivo. Los costos `max(8,4+2.5D)` y el presupuesto de360 soles son hipótesis académicas, no tarifas comerciales ni una jornada de visitas validada. El histórico Haversine queda en `data/archive/haversine/`.
 
-El endpoint vigente es `https://api.heigit.org/openrouteservice/v2/directions/driving-car/geojson`. El dominio anterior tiene una cuota reducida y ya no corresponde al panel. La adquisición se limita a menos de40 consultas/min y conserva progreso en `.cache/ors/`. La clave solo se usa localmente, nunca en la web. Una vez preparado, el sitio reproduce los mapas y operadores sin consultar la API. En Dataset se exploran las matrices y se invierte cualquier par; Fuentes permite descargar los380trazados y su procedencia.
+El endpoint vigente es `https://api.heigit.org/openrouteservice/v2/directions/driving-car/geojson`. El dominio anterior tiene una cuota reducida y ya no corresponde al panel. La adquisición se limita a menos de40 consultas/min y conserva progreso en `.cache/ors/`. La clave solo se usa localmente, nunca en la web. Una vez preparado, el sitio reproduce las rutas y operadores sin consultar la API de ORS. Leaflet solicita solo las teselas del mapa al navegar, con atribución y caché del navegador. En Dataset se exploran las matrices y se invierte cualquier par; Fuentes permite descargar los380trazados y su procedencia.
 
 ## Datos originales del paper
 

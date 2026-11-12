@@ -10,7 +10,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 ## Plan
 1. Auditar paper y port, con referencias y diferencias.
 2. Veinte museos de Lima y doce destinos de Estambul, matrices propias de cada caso y ejecución Python que exporta trazas reales.
-3. Diapositivas, mapa SVG geográfico, operadores interactivos, notas y fórmulas locales.
+3. Diapositivas, mapa Leaflet geográfico, operadores interactivos, notas y fórmulas locales.
 4. Revisar escritorio/móvil, invariantes y correspondencia Python/JavaScript sin build.
 5. Crear repositorio independiente y desplegar por Vercel CLI; verificar URL pública.
 

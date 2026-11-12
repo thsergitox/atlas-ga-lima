@@ -1,10 +1,8 @@
-import { tilePoint } from './geography.js';
-
-export function createRouteGeometry(museums, zoom, collection) {
-  const points = new Map(museums.map(p => [p.id, tilePoint(p.lon, p.lat, zoom)]));
+export function createRouteGeometry(museums, collection) {
+  const points = new Map(museums.map(p => [p.id, [p.lat, p.lon]]));
   const routes = new Map((collection?.features || []).map(feature => {
     const { originId, destinationId } = feature.properties;
-    return [`${originId}:${destinationId}`, feature.geometry.coordinates.map(([lon, lat]) => tilePoint(lon, lat, zoom))];
+    return [`${originId}:${destinationId}`, feature.geometry.coordinates.map(([lon, lat]) => [lat, lon])];
   }));
   const extent = [...points.values(), ...[...routes.values()].flat()];
   function edges(ids) {
@@ -17,5 +15,5 @@ export function createRouteGeometry(museums, zoom, collection) {
       return [{ key, origin, destination, coordinates }];
     });
   }
-  return { points: [...points.values()], extent, edges, routed: !!collection };
+  return { extent, edges, routed: !!collection };
 }

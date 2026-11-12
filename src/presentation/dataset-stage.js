@@ -6,7 +6,7 @@ export function dataset(ctx) {
   let metric = 'distance';
   let matrixVisible = false;
   const options = museums.map(p => `<option value="${p.id}">${p.id} · ${p.short}</option>`).join('');
-  stage.innerHTML = `<div class="dataset-panel"><div class="panel-heading"><span>${museums.length} ${profile.id === 'paper' ? 'destinos' : 'museos'} · matrices ${museums.length} × ${museums.length}</span><button id="toggle-dataset" class="text-button" aria-pressed="false">Ver matriz</button></div><div id="dataset-museums" class="museum-list">${museums.map(p => `<button data-museum="${p.id}"><b>${p.id}</b><span>${p.short}</span><small>${p.district}</small></button>`).join('')}</div><div id="dataset-matrix" hidden><label class="matrix-metric">Mostrar <select id="matrix-metric"><option value="distance">Distancia · km</option><option value="time">Tiempo · min</option><option value="cost">${profile.id === 'paper' ? 'Costo' : 'Costo simulado'} · ${profile.currency}</option></select></label><div id="matrix-table" class="matrix-scroll"></div></div><div class="matrix-inspector"><label>Origen <select id="origin">${options}</select></label><label>Destino <select id="destination">${options}</select></label><button id="reverse-pair" class="text-button">Invertir recorrido</button><output id="matrix-values" aria-live="polite"></output></div><p id="pair-source" class="panel-footnote"></p></div>`;
+  stage.innerHTML = `<div class="dataset-panel"><div class="panel-heading"><span>${museums.length} ${profile.id !== 'lima' ? 'destinos' : 'museos'} · matrices ${museums.length} × ${museums.length}</span><button id="toggle-dataset" class="text-button" aria-pressed="false">Ver matriz</button></div><div id="dataset-museums" class="museum-list">${museums.map(p => `<button data-museum="${p.id}"><b>${p.id}</b><span>${p.short}</span><small>${p.district}</small></button>`).join('')}</div><div id="dataset-matrix" hidden><label class="matrix-metric">Mostrar <select id="matrix-metric"><option value="distance">Distancia · km</option><option value="time">Tiempo · min</option><option value="cost">${profile.costLabel} · ${profile.currency}</option></select></label><div id="matrix-table" class="matrix-scroll"></div></div><div class="matrix-inspector"><label>Origen <select id="origin">${options}</select></label><label>Destino <select id="destination">${options}</select></label><button id="reverse-pair" class="text-button">Invertir recorrido</button><output id="matrix-values" aria-live="polite"></output></div><p id="pair-source" class="panel-footnote"></p></div>`;
   stage.querySelector('#destination').value = '2';
 
   function renderTable() {
@@ -32,7 +32,7 @@ export function dataset(ctx) {
       cell.tabIndex = selected ? 0 : -1;
     });
     stage.querySelector('#pair-source').textContent = origin === destination ? 'Diagonal: cero local, sin consulta ni desplazamiento.' : ctx.routes
-      ? 'D y T del recorrido azul de ORS. El costo es simulado. La red vial puede separar el acceso del punto del museo.'
+      ? `D y T del recorrido azul de ORS. ${profile.id === 'lima' ? 'El costo es simulado.' : 'El costo histórico se conserva.'} La red vial puede separar el acceso del punto del museo.`
       : 'D, T y C de las matrices originales. La línea del mapa es esquemática; no se dispone de su geometría vial.';
   }
 

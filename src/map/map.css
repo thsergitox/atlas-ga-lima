@@ -1,29 +1,27 @@
-.map-host{flex:1;min-height:180px;position:relative;isolation:isolate}
-.map-host>svg{width:100%;height:100%;position:absolute;inset:0;overflow:visible}
-.basemap{opacity:.84;mix-blend-mode:multiply}
-.route-active,.route-before{fill:none;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
-.route-active{stroke:#204ed5;stroke-width:2.8;filter:drop-shadow(0 3px 3px #204ed51c)}
-.route-before{stroke:#526579;stroke-width:1.6;stroke-dasharray:5 6;opacity:.65}
-.museum-marker{cursor:pointer;outline:none}
-.museum-marker>circle{fill:white;stroke:#204ed5;stroke-width:3;transition:fill .3s,stroke .3s}
-.museum-marker>text{font:600 22px Source,sans-serif;fill:#173b9f;pointer-events:none}
-.museum-marker[data-start="true"]>circle{fill:#204ed5;stroke:white;stroke-width:4}
-.museum-marker[data-start="true"]>text{fill:white}
-.museum-marker:hover>circle,.museum-marker:focus>circle,.museum-marker.highlighted>circle{fill:#e4aa40;stroke:#80580e}
-.museum-marker.affected>circle{fill:#e4aa40;stroke:#80580e}
-.museum-marker .museum-label{font:600 21px Source,sans-serif;fill:#172c43;paint-order:stroke;stroke:#f7f8fa;stroke-width:6px;stroke-linejoin:round;display:none}
-.show-labels .museum-label,.museum-marker.highlighted .museum-label,.museum-marker:focus .museum-label{display:block}
-.district-labels text{fill:#637d98;font:400 24px Source,sans-serif;letter-spacing:.02em}
-.district-labels .ocean-label{font:400 26px Bricolage,serif;fill:#6d8baa;letter-spacing:.01em}
-.compass{stroke:#526579;fill:none;stroke-width:2}
-.compass text{stroke:none;fill:#526579;font:600 19px Source,sans-serif}
-.basemap{filter:saturate(.15);opacity:.5}
-.marker-leader{stroke:#526579;stroke-width:1.5;fill:none}
-
-.museum-location{fill:#204ed5}
+.map-host{flex:1;min-height:240px;position:relative;isolation:isolate;margin-top:88px;margin-bottom:16px;z-index:1}
+.leaflet-frame{position:absolute;inset:0}
+.map-host .leaflet-container{font-family:Source,sans-serif;background:#edf1f5}
+.route-active,.route-before{stroke-linecap:round;stroke-linejoin:round}
+.route-active{filter:drop-shadow(0 2px 2px #172c4330)}
+.museum-marker{display:grid;place-items:center;background:var(--white);color:var(--blue);border:2px solid var(--blue);border-radius:50%;font:600 13px Source,sans-serif;box-shadow:0 2px 5px #172c4330;cursor:pointer}
+.museum-marker[data-start="true"]{background:var(--blue);color:var(--white);border-color:var(--white)}
+.museum-marker.highlighted,.museum-marker.affected,.museum-marker:hover{background:var(--gold);color:var(--ink);border-color:var(--ink)}
+.museum-marker:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.leaflet-tooltip.museum-label{font:600 12px Source,sans-serif;color:var(--ink);border:0;border-radius:5px;padding:4px 7px;box-shadow:0 3px 10px #172c4320}
+.map-host .leaflet-bar{border:0;border-radius:9px;overflow:hidden;box-shadow:0 4px 16px #172c4324}
+.map-host .leaflet-bar a,.map-fit button{width:40px;height:40px;line-height:40px;background:var(--white);color:var(--blue);border:0;border-bottom:1px solid var(--line);border-radius:0}
+.map-host .leaflet-bar a:hover,.map-fit button:hover{background:var(--tint)}
+.map-fit button{display:grid;place-items:center;padding:10px;cursor:pointer}
+.map-fit svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+.map-host .leaflet-control-attribution{font:10px/1.4 Source,sans-serif;background:var(--white);padding:2px 5px}
+.map-host .leaflet-control-attribution a{color:var(--blue)}
+.map-host .leaflet-control-scale-line{font:11px Source,sans-serif;color:var(--ink);border-color:var(--muted)}
+.map-connection{position:absolute;z-index:1001;bottom:24px;left:10px;right:60px;background:var(--white);color:var(--ink);padding:8px 12px;border-radius:6px;font-size:12px;pointer-events:none}
+.map-connection[hidden]{display:none}
 .route-legend{position:absolute;top:58px;left:25px;right:25px;z-index:2;display:flex;align-items:center;gap:12px;flex-wrap:wrap;pointer-events:none;font-size:11px;color:var(--muted)}
 .route-legend>span{display:flex;align-items:center;gap:6px}
 .legend-active,.legend-before{display:inline-block;width:19px;border-top:3px solid var(--blue)}
 .legend-before{border-top:2px dashed var(--muted)}
 #map-route-status{font-variant-numeric:tabular-nums;background:var(--bg);padding:3px 6px;border-radius:3px}
+@media(min-width:901px){.presentation:not(.slide-codigo) .stage{max-height:calc(100% - 390px)}}
 @media(max-width:520px){.route-legend{left:18px;right:18px;gap:5px 10px;font-size:10px}.route-legend #map-route-status{flex-basis:100%;width:fit-content}}

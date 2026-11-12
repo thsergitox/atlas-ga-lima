@@ -279,3 +279,10 @@ Lima representa las polilíneas de cada par dirigido de openrouteservice, sin in
 La misma interfaz de mapa sirve al caso Estambul con conexiones esquemáticas explícitamente rotuladas: sus matrices originales no incluyen geometrías. No se atribuye trazado vial a esas rectas.
 
 Dataset alterna lista de destinos y tabla desplazable. La celda elegida usa cobalto y el par se dibuja en el mapa. Selectores nativos e inversión de recorrido ofrecen una alternativa a las celdas densas; en la tabla solo la celda activa entra al orden de tabulación y las flechas cambian de celda sin navegar la exposición. Sus coordenadas y unidades se comunican también como texto. La atribución ORS/OSM y la licencia quedan al pie fuera del panel de operación.
+
+
+## Visor Leaflet · 12 de noviembre de 2026
+
+El usuario sustituyó expresamente el mapa SVG propio por Leaflet 1.9.4 estable. Navegación nativa con rueda, doble clic, arrastre, teclado y pinch; +/− localizados y encuadre. Se eliminan la cámara, la proyección y la separación artificial de marcadores. Los divIcon numerados permanecen en coordenadas exactas; las fichas son popups nativos con contenido DOM seguro y altura desplazable. Las rutas son L.polyline sobre coordenadas ORS sin cambios, con transiciones por conexiones compartidas/nuevas/retiradas.
+
+El fondo de calles conserva color y contraste, sin desaturación. El mapa tiene al menos 240 px útiles en escritorio y 380 px en móvil, con cabecera/leyenda fuera de su superficie. Leaflet, CSS y licencia BSD-2-Clause son locales; las teselas detalladas OSM se solicitan solo al navegar. La atribución nativa y la escala permanecen visibles. Las imágenes previas de base quedan como respaldo; un aviso señala fallos parciales sin ocultarse cuando carga otra tesela. No se regeneran datos ni se consulta ORS desde la exposición.

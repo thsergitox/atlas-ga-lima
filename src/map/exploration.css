@@ -1,20 +1,13 @@
-.map-host>svg{overflow:hidden;cursor:grab;touch-action:none}
-.map-host>svg.dragging{cursor:grabbing}
-.map-host>svg:focus-visible{outline:2px solid var(--blue);outline-offset:-3px}
-.map-zoom{position:absolute;right:20px;top:98px;z-index:4;display:flex;flex-direction:column;align-items:center;background:var(--white);border-radius:12px;box-shadow:0 6px 20px #172c4320;overflow:hidden}
-.map-zoom button{border:0;background:transparent;width:44px;height:40px;display:grid;place-items:center;color:var(--blue);padding:10px}
-.map-zoom button:hover:enabled{background:var(--tint)}
-.map-zoom button:disabled{color:var(--muted);cursor:default}
-.map-zoom svg,.museum-card-close svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
-.map-zoom output{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
-.map-compact .map-zoom{top:auto;bottom:12px;flex-direction:row}
-.map-compact .map-zoom output{padding:0 4px}
-.museum-card{position:absolute;z-index:10;width:min(330px,calc(100% - 24px));max-height:calc(100% - 118px);overflow-y:auto;background:var(--white);border-radius:14px;padding:20px;box-shadow:0 14px 42px #172c4330;font-size:14px}
+.museum-card{font:14px/1.5 Source,sans-serif;color:var(--ink)}
+.museum-popover .leaflet-popup-content-wrapper{padding:1px;border-radius:14px;box-shadow:0 10px 35px #172c4330}
+.museum-popover .leaflet-popup-content{margin:18px;width:min(294px,calc(100vw - 90px))!important}
+.museum-popover .leaflet-popup-scrolled{border:0;padding-right:6px;scrollbar-color:var(--blue-light) var(--white)}
 .museum-card[hidden]{display:none}
 .museum-card-heading{display:flex;gap:10px;align-items:flex-start}
 .museum-card-number{display:grid;place-items:center;background:var(--blue);color:white;font-size:13px;font-weight:600;width:30px;height:30px;border-radius:50%;flex-shrink:0;margin-top:1px}
 .museum-card h2{font:500 23px/1.12 Bricolage,serif;letter-spacing:-.025em;overflow-wrap:anywhere}
 .museum-card-close{border:0;background:transparent;color:var(--muted);width:36px;height:36px;display:grid;place-items:center;flex-shrink:0;margin:-8px -10px 0 auto}
+.museum-card-close svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .museum-card-close:hover{color:var(--blue);background:var(--tint);border-radius:50%}
 .museum-card-meta{color:var(--blue);font-size:12px;line-height:1.5;margin-top:12px}
 .museum-card-description{line-height:1.55;margin-top:12px;color:var(--ink)}
@@ -22,6 +15,6 @@
 .museum-card-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:8px;font-size:12px}
 .museum-card a{color:var(--blue);text-underline-offset:3px;padding:5px 0}
 .museum-card-access{font-size:11px;line-height:1.5;color:var(--muted);margin-top:12px}
-@media(max-width:900px){.map-zoom{top:18px;right:18px}.museum-card{max-height:340px}}
-@media(max-width:520px){.museum-card{padding:18px}.museum-card h2{font-size:22px}}
+
+@media(max-width:520px){.museum-card h2{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.map-host *,.museum-card,.museum-card *{transition:none!important;animation:none!important}}
