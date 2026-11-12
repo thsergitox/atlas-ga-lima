@@ -35,13 +35,13 @@ La versión actual usa380 consultas dirigidas a openrouteservice (ORS), perfil `
 
 `T[i][j] = durationSeconds / 60`: minutos estimados por ORS. El perfil no usa tráfico en vivo; una matriz fija permite comparar todas las rutas en la misma corrida. Las conexiones se modelan en automóvil, también entre museos cercanos.
 
-`C[i][j] = max(8, 4 + 2.5D[i][j])` si i≠j; cero en diagonal. Los parámetros (8 soles mínimos,4 de base,2.5 por km) siguen siendo supuestos académicos. No son tarifas de taxi, precios de ORS ni cotizaciones comerciales. Se retiró el umbral de caminar gratis para no mezclar tiempos de automóvil con un costo peatonal.
+`C[i][j] = max(8, 4 + 2.5D[i][j])` si i≠j; cero en diagonal. Los parámetros (8 soles mínimos,4de base,2.5por km) siguen siendo supuestos académicos. No son tarifas de taxi, precios de ORS ni cotizaciones comerciales. Se retiró el umbral de caminar gratis para no mezclar tiempos de automóvil con un costo peatonal.
 
-Los resultados originales de ORS se conservan en `data/routes.geojson`:380 features LineString, coordenadas [longitud,latitud], metros y segundos. `data/provenance.json` registra fecha de adquisición, perfil, hash y distancia entre los puntos de museo y los extremos de la red vial. Esos pequeños accesos pueden quedar fuera del recorrido del automóvil: no se dibujan como calles inventadas ni se suman como tiempos conocidos.
+Los resultados originales de ORS se conservan en `data/routes.geojson`:380features LineString, coordenadas [longitud,latitud], metros y segundos. `data/provenance.json` registra fecha de adquisición, perfil, hash y distancia entre los puntos de museo y los extremos de la red vial. Esos pequeños accesos pueden quedar fuera del recorrido del automóvil: no se dibujan como calles inventadas ni se suman como tiempos conocidos.
 
 El endpoint vigente es `api.heigit.org/openrouteservice/v2/directions/driving-car/geojson`. Los primeros200 pares se obtuvieron del dominio anterior y se conservaron después de comprobar que un control coincidía exactamente en distancia, duración, geometría y motor. La procedencia de cada par conserva su endpoint original.
 
-La adquisición se hace una vez con `python3 python/fetch_routes.py`, leyendo ORS_API_KEY del `.env` ignorado. Pausas de2 s mantienen el ritmo por debajo de40 solicitudes/min del plan gratuito verificado. La caché local permite reanudar sin repetir los pares completados y no se publica. La web carga archivos locales y no necesita clave ni solicitudes al proveedor durante la exposición. Resultados ORS y derivados bajo CC BY-SA4.0, atribución visible y detalles en `data/LICENSE.md`.
+La adquisición se hace una vez con `python3 python/fetch_routes.py`, leyendo ORS_API_KEY del `.env` ignorado. Pausas de2s mantienen el ritmo por debajo de40solicitudes/min del plan gratuito verificado. La caché local permite reanudar sin repetir los pares completados y no se publica. La web carga archivos locales y no necesita clave ni solicitudes al proveedor durante la exposición. Resultados ORS y derivados bajo CC BY-SA4.0, atribución visible y detalles en `data/LICENSE.md`.
 
 La versión anterior Haversine y sus matrices/experimento se preservan en `data/archive/haversine/`. Eran distancias geodésicas, tiempos y costos modelados, con matrices simétricas. El archivo no se presenta como dato vial actual.
 

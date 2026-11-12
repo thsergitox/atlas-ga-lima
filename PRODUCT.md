@@ -13,6 +13,6 @@ Conservar la paleta azul existente. No ejecutar builds. Distinguir paper, implem
 ## Brand Commitments
 Atlas GA. Español claro, matemáticas verificables y mapa como objeto central.
 ## Evidence on Hand
-Paper local ../proyecto/peerj-cs-10-2340.pdf; Python clonado en ../ga-itinerary-planning-pc3, commit e84 ed98 c8 ecd65 bf269 da847 ee26147 f1 f282 d70; implementación MATLAB ../GA-for-Itinerary-Planning.
+Paper local ../proyecto/peerj-cs-10-2340.pdf; Python clonado en ../ga-itinerary-planning-pc3, commit e84ed98c8ecd65bf269da847ee26147f1f282d70; implementación MATLAB ../GA-for-Itinerary-Planning.
 ## Product Principles
 Cada animación representa una operación real. Cada fragmento apunta a su fuente. El algoritmo completo se ofrece al final y sus datos descargables dependen del caso elegido. Los supuestos del caso local son visibles. La exposición funciona sin servicios externos en tiempo de presentación.
