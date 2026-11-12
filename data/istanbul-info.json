@@ -1,0 +1,8 @@
+{
+  "verifiedOn": "2026-11-12",
+  "note": "Los nombres de los otros diez destinos no están incluidos en Places.mat; no se infieren a partir de la cercanía a otros lugares.",
+  "places": {
+    "1": {"category":"Palacio y museo","description":"El palacio de Dolmabahçe forma parte del patrimonio de los Palacios Nacionales de Turquía y se encuentra junto al Bósforo.","source":"https://www.millisaraylar.gov.tr/Lokasyon/3/Dolmabahce-Sarayi?culture=en"},
+    "6": {"category":"Arte en chocolate","description":"Museo de Pelit en Esenyurt que convierte el chocolate en obras y figuras artísticas. Es el inicio fijo de los itinerarios de este dataset.","source":"https://www.pelitcikolatamuse.com/hakkimizda"}
+  }
+}

@@ -6,8 +6,8 @@ from routing.client import fetch_pair
 from routing.cache import cache_folder
 
 
-def collect(places, key, cache, limit=None):
-    folder = cache_folder(cache, places)
+def collect(places, key, cache, limit=None, snap_radius=None):
+    folder = cache_folder(cache, places, snap_radius)
     pairs = [(a, b) for a in places for b in places if a['id'] != b['id']]
     if limit is not None:
         pairs = pairs[:limit]
@@ -18,7 +18,7 @@ def collect(places, key, cache, limit=None):
             if attempts >= 420:
                 raise SystemExit('Límite de intentos alcanzado. Se conserva el progreso local.')
             attempts += 1
-            feature = fetch_pair(origin, destination, key)
+            feature = fetch_pair(origin, destination, key, snap_radius)
             temporary = path.with_suffix('.tmp')
             temporary.write_text(json.dumps(feature, separators=(',', ':')))
             temporary.replace(path)

@@ -1,4 +1,4 @@
-"""Adquirir una vez los 380 trayectos; reanuda desde la caché local."""
+"""Adquirir los trayectos dirigidos de un caso; reanuda desde la caché local."""
 import argparse
 import json
 from pathlib import Path
@@ -12,26 +12,35 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--case', choices=['lima', 'istanbul'], default='lima')
+    parser.add_argument('--snap-radius', type=int, choices=range(1, 2001), metavar='METROS',
+                        help='Radio máximo de búsqueda de vía, separado en la caché.')
     parser.add_argument('--limit', type=int, help='Piloto: primeros pares, sin exportar dataset parcial.')
     arguments = parser.parse_args()
-    places = json.loads((ROOT / 'data/museums.json').read_text())['places']
-    if len(places) != 20 or [p['id'] for p in places] != list(range(1, 21)):
-        raise SystemExit('Se requieren los veinte museos confirmados, con IDs 1…20.')
-    features = collect(places, api_key(ROOT), ROOT / '.cache/ors', arguments.limit)
+    source = ROOT / ('data/' if arguments.case == 'lima' else 'data/paper/')
+    target = ROOT / ('data/' if arguments.case == 'lima' else 'data/istanbul/')
+    places = json.loads((source / 'museums.json').read_text())['places']
+    expected = 20 if arguments.case == 'lima' else 12
+    if len(places) != expected or [p['id'] for p in places] != list(range(1, expected + 1)):
+        raise SystemExit(f'Se requieren {expected} destinos con IDs consecutivos.')
+    features = collect(places, api_key(ROOT), ROOT / '.cache/ors', arguments.limit, arguments.snap_radius)
     if arguments.limit is not None:
         print('Piloto conservado en caché; los archivos públicos siguen completos.')
         return
-    payload = {'type': 'FeatureCollection', 'name': 'Lima · 380 trayectos dirigidos',
+    city = 'Lima' if arguments.case == 'lima' else 'Estambul'
+    payload = {'type': 'FeatureCollection', 'name': f'{city} · {len(features)} trayectos dirigidos',
         'attribution': '© openrouteservice by HeiGIT | © OpenStreetMap contributors',
         'license': 'CC-BY-SA-4.0', 'licenseUrl': 'https://creativecommons.org/licenses/by-sa/4.0/',
         'provider': 'openrouteservice', 'profile': 'driving-car', 'liveTraffic': False,
         'endpoint': ENDPOINT,
+        'snapRadiusMeters': arguments.snap_radius or 350,
         'features': features}
-    output = ROOT / 'data/routes.geojson'
+    target.mkdir(exist_ok=True)
+    output = target / 'routes.geojson'
     temporary = output.with_suffix('.tmp')
     temporary.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')))
     temporary.replace(output)
-    print('Dataset completo exportado: data/routes.geojson; 380 pares. Sin credenciales.')
+    print(f'Dataset completo exportado: {output.relative_to(ROOT)}; {len(features)} pares. Sin credenciales.')
 
 
 if __name__ == '__main__':

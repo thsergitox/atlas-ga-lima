@@ -1,0 +1,13 @@
+id,name,short,district,lon,lat,source
+1,Dolmabahçe Palace,Dolmabahçe Palace,Estambul,29.0004594,41.03919665,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+2,Destino 2 del dataset,Destino 2,Estambul,29.01273464,41.05047653,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+3,Destino 3 del dataset,Destino 3,Estambul,29.21133689,41.10986741,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+4,Destino 4 del dataset,Destino 4,Estambul,28.94922233,41.05898967,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+5,Destino 5 del dataset,Destino 5,Estambul,28.97982842,41.03464114,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+6,Pelit Chocolate Museum,Pelit Chocolate Museum,Estambul,28.66369354,41.05901735,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+7,Destino 7 del dataset,Destino 7,Estambul,28.98025,41.008872,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+8,Destino 8 del dataset,Destino 8,Estambul,28.97968467,41.01383117,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+9,Destino 9 del dataset,Destino 9,Estambul,28.97927883,41.00965006,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+10,Destino 10 del dataset,Destino 10,Estambul,28.98338061,41.01152287,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+11,Destino 11 del dataset,Destino 11,Estambul,28.97784512,41.00835949,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat
+12,Destino 12 del dataset,Destino 12,Estambul,28.92017642,41.01819623,https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat

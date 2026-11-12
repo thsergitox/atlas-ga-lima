@@ -1,9 +1,11 @@
 @import url('./type.css');
 @import url('./layout.css');
 @import url('../map/map.css');
+@import url('../map/exploration.css');
 @import url('./controls.css');
 @import url('./stages.css');
 @import url('./responsive.css');
 
 @import url("./cases.css");
 @import url('./dataset.css');
+@import url('./comparison.css');

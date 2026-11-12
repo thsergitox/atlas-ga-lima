@@ -3,7 +3,8 @@ import { loadCase } from './cases.js';
 import { completeCode } from './code-stage.js';
 import { codeBlock, announce, svgIcon } from './components.js';
 import { createMap } from '../map/route-map.js';
-import { intro, pipeline, population, fitness, replacement, result } from './basic-stages.js';
+import { intro, pipeline, population, fitness, replacement } from './basic-stages.js';
+import { result } from './result-stage.js';
 import { dataset } from './dataset-stage.js';
 import { selection } from './selection-stage.js';
 import { crossing } from './crossover-stage.js';
@@ -27,7 +28,7 @@ function renderCopy(lesson) {
   $('#slide-title').innerHTML = lesson.title.replace('\n', '<br>');
   $('#slide-lead').textContent = lesson.lead;
   $('#lesson-detail').innerHTML = index === 0
-    ? `<div class="hero-actions"><button class="primary" data-go="1">Comenzar exposición ${svgIcon('arrow')}</button><span>${lessons.length} diapositivas<br> Un algoritmo, dos casos</span></div><p class="hero-fact">${context.profile.searchSpace} <span>órdenes posibles con ${context.profile.startName} como inicio</span></p>`
+    ? `<div class="hero-actions"><button class="primary" data-go="1">Comenzar exposición ${svgIcon('arrow')}</button><span>${lessons.length} diapositivas<br> Lima y Estambul</span></div><p class="hero-fact">${context.profile.searchSpace} <span>órdenes posibles con ${context.profile.startName} como inicio</span></p>`
     : `<p class="insight">${lesson.insight}</p>${renderFormula(lesson)}`;
   $('#lesson-bottom').innerHTML = lesson.code ? codeBlock(lesson) : `<div class="hero-reference"><span>Basado en Şehab y Turan (2024)</span><a href="https://doi.org/10.7717/peerj-cs.2340" target="_blank" rel="noreferrer">PeerJ Computer Science · e2340 ↗</a></div>`;
   if (lesson.formula && window.katex) {
@@ -65,7 +66,7 @@ function go(nextIndex, focus = false) {
   renderCopy(lessons[index]); renderNavigation(); renderNotes();
   cleanup = stages[index](context) || (() => {});
   history.replaceState(null, '', `?caso=${context.profile.id}#${lessons[index].id}`);
-  $('#map-tooltip').hidden = true;
+  context.map.dismiss();
   context.map.highlight(null);
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     $('.lesson').animate([{ opacity: 0.7, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 350, easing: 'cubic-bezier(.16,1,.3,1)' });
@@ -114,9 +115,9 @@ function bindControls() {
     if (event.key === 'Escape') {
       if (!$('#notes').hidden) toggleNotes(false);
       if (!$('#contents').hidden) { toggleContents(false); $('#contents-button').focus(); }
-      $('#map-tooltip').hidden = true; return;
+      context?.map.dismiss(); return;
     }
-    if (event.target.closest('input,select,textarea,[contenteditable],pre') || event.ctrlKey || event.altKey || event.metaKey) return;
+    if (event.target.closest('input,select,textarea,[contenteditable],pre,#map,.museum-card') || event.ctrlKey || event.altKey || event.metaKey) return;
     if (['ArrowRight', 'PageDown'].includes(event.key) || (event.key === ' ' && !event.target.closest('button,a,[role="button"]'))) { event.preventDefault(); go(index + 1, true); }
     if (['ArrowLeft', 'PageUp'].includes(event.key)) { event.preventDefault(); go(index - 1, true); }
     if (event.key === 'Home') go(0, true);
@@ -127,14 +128,6 @@ function bindControls() {
   window.addEventListener('hashchange', () => {
     const found = lessons.findIndex(lesson => `#${lesson.id}` === location.hash);
     if (found >= 0) go(found);
-  });
-  $('#map').addEventListener('museum-select', event => {
-    const p = event.detail;
-    const tooltip = $('#map-tooltip');
-    tooltip.replaceChildren();
-    const title = document.createElement('strong'); title.textContent = `${p.id}. ${p.name}`;
-    const detail = document.createElement('span'); detail.textContent = `${p.district} · ${p.lat.toFixed(5)}, ${p.lon.toFixed(5)}`;
-    tooltip.append(title, detail); tooltip.hidden = false;
   });
 }
 
@@ -151,7 +144,7 @@ async function switchCase(id, initial = false) {
   try {
     const data = await loadCase(id);
     context?.map.destroy();
-    context = { ...data, stage: $('#stage'), map: createMap($('#map'), data.museums, data.basemap, data.profile, data.routes) };
+    context = { ...data, stage: $('#stage'), map: createMap($('#map'), data.museums, data.basemap, data.profile, data.routes, data.information) };
     $('#map-model').textContent = data.routes ? 'Automóvil · sin tráfico en vivo' : 'Conexiones esquemáticas · no trazado vial';
     $('#routing-credit').hidden = !data.routes;
     lessons = getLessons(data.profile);

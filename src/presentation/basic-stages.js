@@ -51,27 +51,3 @@ export function replacement(ctx) {
   ctx.map.show(ctx.experiment.run.history[0].route);
   ctx.stage.innerHTML = `<div class="replacement-panel"><div class="survivors"><div><strong>100</strong><span>padres</span></div><span>+</span><div class="offspring-count"><strong>100</strong><span>hijos</span></div><span>=</span><div><strong>200</strong><span>candidatos</span></div></div><div class="survival-track">${Array.from({ length: 100 }, () => '<i></i>').join('')}</div><div class="panel-heading"><span>Ordenar por fitness descendente</span><strong>Conservar los mejores 100</strong></div><p>El mejor histórico sobrevive. La diversidad puede disminuir.</p></div>`;
 }
-
-export function result(ctx) {
-  const { experiment, stage, map } = ctx;
-  const initial = experiment.run.initial;
-  const final = experiment.run.history.at(-1);
-  const delta = final.fitness - initial.fitness;
-  const gain = initial.fitness > 0
-    ? `+${format(100 * delta / initial.fitness, 1)} % de fitness`
-    : `Δ fitness +${format(delta, 4)}`;
-  const explanation = initial.fitness > 0 ? 'frente al mejor individuo inicial de esta corrida.'
-    : 'frente al mejor inicial. Una base no positiva se compara con diferencia absoluta.';
-  stage.innerHTML = `<div class="result-panel"><div class="result-switch"><button id="show-initial" aria-pressed="false">Mejor inicial</button><button id="show-final" class="active" aria-pressed="true">Mejor encontrada</button></div><div id="result-genes">${genes(final.route)}</div><div id="result-metrics">${metricsFor(ctx, final.route)}</div><p><strong>${gain}</strong> ${explanation}</p><p class="panel-footnote">${ctx.profile.currency} ${ctx.profile.budget} de presupuesto · 100 rutas · 100 generaciones · sin retorno al inicio</p></div>`;
-  const show = finalVisible => {
-    const selected = finalVisible ? final : initial;
-    map.show(selected.route, { compare: finalVisible ? initial.route : final.route });
-    stage.querySelector('#result-genes').innerHTML = genes(selected.route);
-    stage.querySelector('#result-metrics').innerHTML = metricsFor(ctx, selected.route);
-    stage.querySelectorAll('.result-switch button').forEach((el, i) => {
-      el.classList.toggle('active', !!i === finalVisible); el.setAttribute('aria-pressed', !!i === finalVisible);
-    });
-  };
-  stage.querySelector('#show-initial').onclick = () => show(false);
-  stage.querySelector('#show-final').onclick = () => show(true); show(true);
-}

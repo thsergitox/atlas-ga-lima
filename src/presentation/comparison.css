@@ -1,0 +1,12 @@
+.result-switch{flex-wrap:wrap}
+.comparison-caption{color:var(--muted);font-size:13px;line-height:1.5;margin:14px 0 10px}
+.comparison-table{overflow-x:auto;margin-bottom:14px}
+.comparison-table table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.comparison-table th,.comparison-table td{padding:8px 7px;border-bottom:1px solid var(--line);text-align:right}
+.comparison-table th:first-child{text-align:left;padding-left:0}
+.comparison-table thead th{color:var(--muted);font-weight:400;font-size:11px}
+.comparison-table button{border:0;background:transparent;color:var(--ink);font:inherit;padding:8px 10px;border-radius:6px;text-align:left}
+.comparison-table tr.selected{background:var(--tint);color:var(--blue)}
+.comparison-table button[aria-pressed="true"]{color:var(--blue);font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.comparison-panel .panel-footnote{font-size:11px;line-height:1.5;margin-top:10px}
+.result-comparison-link{display:inline-block;color:var(--blue);font-size:13px;margin-top:14px;padding:6px 0;text-underline-offset:3px}

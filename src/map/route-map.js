@@ -1,9 +1,11 @@
-import { tilePoint, viewport } from './geography.js';
+import { tilePoint } from './geography.js';
+import { createCamera } from './camera.js';
+import { createMuseumPopover } from './museum-popover.js';
 import { node, createMarkers } from './markers.js';
 import { createRouteGeometry } from './route-geometry.js';
 import { createRouteLayers } from './route-layers.js';
 
-export function createMap(host, museums, basemap, profile, collection = null) {
+export function createMap(host, museums, basemap, profile, collection = null, information = {}) {
   const point = museum => tilePoint(museum.lon, museum.lat, basemap.zoom);
   const geometry = createRouteGeometry(museums, basemap.zoom, collection);
   const points = geometry.points;
@@ -21,13 +23,11 @@ export function createMap(host, museums, basemap, profile, collection = null) {
   const markers = createMarkers(museums, points, host, profile.start);
   svg.append(base, labels, layers.previous, layers.active, markers.layer);
   host.replaceChildren(svg);
-  const resize = new ResizeObserver(([entry]) => {
-    const box = viewport(geometry.extent, entry.contentRect.width, entry.contentRect.height);
-    svg.setAttribute('viewBox', `${box.x} ${box.y} ${box.w} ${box.h}`);
-    labels.querySelectorAll('text').forEach(el => { el.style.fontSize = `${12 / box.scale}px`; });
-    markers.layout(box.scale);
+  const camera = createCamera(host, svg, geometry.extent, scale => {
+    labels.querySelectorAll('text').forEach(el => { el.style.fontSize = `${12 / scale}px`; });
+    markers.layout(scale);
   });
-  resize.observe(host);
+  const popover = createMuseumPopover(host, information, profile.start);
   function show(ids, { compare = null, animate = true, affected = [] } = {}) {
     const counts = layers.show(geometry.edges(ids), { compare: compare ? geometry.edges(compare) : undefined, animate });
     markers.layer.querySelectorAll('.affected').forEach(el => el.classList.remove('affected'));
@@ -42,7 +42,8 @@ export function createMap(host, museums, basemap, profile, collection = null) {
   }
   return {
     show,
-    destroy() { resize.disconnect(); layers.destroy(); },
+    destroy() { popover.destroy(); camera.destroy(); layers.destroy(); },
+    dismiss() { popover.close(); },
     labels(visible) { svg.classList.toggle('show-labels', visible); },
     highlight(id) {
       markers.layer.querySelectorAll('.highlighted').forEach(el => el.classList.remove('highlighted'));

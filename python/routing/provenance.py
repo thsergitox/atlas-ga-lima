@@ -4,7 +4,7 @@ import hashlib
 from dataset import haversine
 
 
-def provenance(places, routes, raw):
+def provenance(places, routes, raw, *, budget=360, currency='PEN', cost_model='Cii=0; Cij=max(8,4+2.5*Dij) soles. Hipótesis, no tarifa comercial.'):
     by_id = {p['id']: p for p in places}
     gaps = []
     for feature in routes['features']:
@@ -22,14 +22,15 @@ def provenance(places, routes, raw):
     return {'provider': 'openrouteservice by HeiGIT', 'profile': routes['profile'],
         'liveTraffic': False, 'coordinates': 'GeoJSON [longitude, latitude]',
         'acquiredFrom': dates[0], 'acquiredUntil': dates[-1], 'directedPairs': len(gaps),
-        'diagonal': '20 valores cero locales; no se consulta i→i',
+        'diagonal': f'{len(places)} valores cero locales; no se consulta i→i',
         'routesSha256': hashlib.sha256(raw).hexdigest(),
         'sourceEndpoints': endpoints,
         'migrationNote': 'Cada par conserva el endpoint original de adquisición; sourceEndpoints cuenta los pares de cada dominio del mismo servicio ORS.',
         'routesLicense': 'CC-BY-SA-4.0', 'licenseUrl': routes['licenseUrl'],
         'termsUrl': 'https://account.heigit.org/info/tos',
         'attribution': routes['attribution'],
-        'costModel': 'Cii=0; Cij=max(8,4+2.5*Dij) soles. Hipótesis, no tarifa comercial.',
-        'budget': 360, 'units': {'distance': 'km', 'time': 'min', 'cost': 'PEN'},
+        'snapRadiusMeters': routes.get('snapRadiusMeters', 350),
+        'costModel': cost_model,
+        'budget': budget, 'units': {'distance': 'km', 'time': 'min', 'cost': currency},
         'accessNote': 'La polilínea empieza/termina en la red accesible en automóvil. No se inventa un tramo hasta el punto OSM del museo; esos accesos no están incluidos en D/T.',
         'accessGaps': gaps}

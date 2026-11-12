@@ -9,9 +9,10 @@ ENDPOINT = 'https://api.heigit.org/openrouteservice/v2/directions/driving-car/ge
 LEGACY_ENDPOINT = 'https://api.openrouteservice.org/v2/directions/driving-car/geojson'
 
 
-def fetch_pair(origin, destination, key):
+def fetch_pair(origin, destination, key, snap_radius=None):
     coordinates = [[p['lon'], p['lat']] for p in (origin, destination)]
-    request = Request(ENDPOINT, data=json.dumps({'coordinates': coordinates}).encode(),
+    options = {} if snap_radius is None else {'radiuses': [snap_radius, snap_radius]}
+    request = Request(ENDPOINT, data=json.dumps({'coordinates': coordinates, **options}).encode(),
                       headers={'Authorization': key, 'Content-Type': 'application/json',
                                'User-Agent': 'Atlas-GA-Lima/1.0 (academic presentation)'})
     try:
@@ -45,5 +46,6 @@ def fetch_pair(origin, destination, key):
         'originId': origin['id'], 'destinationId': destination['id'],
         'distanceMeters': summary['distance'], 'durationSeconds': summary['duration'],
         'sourceEndpoint': ENDPOINT,
+        'requestOptions': options,
         'acquiredAt': datetime.now(timezone.utc).isoformat(),
         'engine': payload.get('metadata', {}).get('engine', {})}}

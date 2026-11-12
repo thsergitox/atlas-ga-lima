@@ -2,7 +2,7 @@
 import math
 
 
-def matrices(places, features):
+def matrices(places, features, historical_cost=None):
     n = len(places)
     expected = {(a['id'], b['id']) for a in places for b in places if a['id'] != b['id']}
     pairs = {(f['properties']['originId'], f['properties']['destinationId']) for f in features}
@@ -18,5 +18,5 @@ def matrices(places, features):
             raise ValueError(f'Trayecto no válido: {p["originId"]}→{p["destinationId"]}')
         data['distance'][i][j] = distance
         data['time'][i][j] = duration
-        data['cost'][i][j] = max(8, 4 + 2.5 * distance)
+        data['cost'][i][j] = historical_cost[i][j] if historical_cost is not None else max(8, 4 + 2.5 * distance)
     return data

@@ -1,8 +1,8 @@
 # Licencias de los datos
 
-## Resultados viales de Lima
+## Resultados viales de Lima y Estambul ORS
 
-`routes.geojson` contiene resultados de openrouteservice by HeiGIT, calculados sobre datos de OpenStreetMap. Se distribuyen bajo **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** según los términos de HeiGIT consultados el12de noviembre de2026.
+`routes.geojson` y `istanbul/routes.geojson` contienen resultados de openrouteservice by HeiGIT, calculados sobre datos de OpenStreetMap. Se distribuyen bajo **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)** según los términos de HeiGIT consultados el 12 de noviembre de 2026.
 
 - Atribución: © openrouteservice by HeiGIT | © OpenStreetMap contributors.
 - Licencia: https://creativecommons.org/licenses/by-sa/4.0/
@@ -18,6 +18,8 @@ Las matrices de distancia y tiempo de Lima (`distance.csv`, `time.csv`) y sus va
 Las ubicaciones de museos y las teselas proceden de OpenStreetMap, con atribución y condiciones de sus datos ODbL. Los enlaces de procedencia se conservan en `museums.json` y `basemap.json`. El histórico en `archive/haversine/` identifica la aproximación anterior; no contiene rutas adquiridas de ORS.
 
 `paper/` conserva los archivos originales y la procedencia del repositorio de Arbues. No se sustituyen sus matrices ni se atribuyen a ORS.
+
+En `istanbul/`, las matrices D/T son derivadas de ORS bajo CC BY-SA 4.0. Las coordenadas, la población inicial y C se conservan del dataset de Arbues con su procedencia original; C no es una tarifa suministrada por ORS. Las reseñas de `museum-info.json` e `istanbul-info.json` son paráfrasis breves con enlace individual a su fuente; no se incluyen fotografías ni textos íntegros de esas instituciones.
 
 ## Código
 

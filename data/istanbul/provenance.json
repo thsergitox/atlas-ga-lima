@@ -1,0 +1,824 @@
+{
+  "provider": "openrouteservice by HeiGIT",
+  "profile": "driving-car",
+  "liveTraffic": false,
+  "coordinates": "GeoJSON [longitude, latitude]",
+  "acquiredFrom": "2026-11-12T15:55:55.891028+00:00",
+  "acquiredUntil": "2026-11-12T16:01:55.741726+00:00",
+  "directedPairs": 132,
+  "diagonal": "12 valores cero locales; no se consulta i→i",
+  "routesSha256": "bdb9f88bd0e483efd85dd8587752efd8c6937b2e2eb8b0a21c63b5471fcbae72",
+  "sourceEndpoints": {
+    "https://api.heigit.org/openrouteservice/v2/directions/driving-car/geojson": 132
+  },
+  "migrationNote": "Cada par conserva el endpoint original de adquisición; sourceEndpoints cuenta los pares de cada dominio del mismo servicio ORS.",
+  "routesLicense": "CC-BY-SA-4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "termsUrl": "https://account.heigit.org/info/tos",
+  "attribution": "© openrouteservice by HeiGIT | © OpenStreetMap contributors",
+  "snapRadiusMeters": 1000,
+  "costModel": "Travel_Costs.mat original, sin recalcular. Costo histórico en TL, no tarifa actual de ORS.",
+  "budget": 2000,
+  "units": {
+    "distance": "km",
+    "time": "min",
+    "cost": "TRY"
+  },
+  "accessNote": "La polilínea empieza/termina en la red accesible en automóvil. No se inventa un tramo hasta el punto OSM del museo; esos accesos no están incluidos en D/T.",
+  "accessGaps": [
+    {
+      "originId": 1,
+      "destinationId": 2,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 1,
+      "destinationId": 3,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 1,
+      "destinationId": 4,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 1,
+      "destinationId": 5,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 1,
+      "destinationId": 6,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 1,
+      "destinationId": 7,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 1,
+      "destinationId": 8,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 1,
+      "destinationId": 9,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 1,
+      "destinationId": 10,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 1,
+      "destinationId": 11,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 1,
+      "destinationId": 12,
+      "originGapMeters": 153.2,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 2,
+      "destinationId": 1,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 2,
+      "destinationId": 3,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 2,
+      "destinationId": 4,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 2,
+      "destinationId": 5,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 2,
+      "destinationId": 6,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 2,
+      "destinationId": 7,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 2,
+      "destinationId": 8,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 2,
+      "destinationId": 9,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 2,
+      "destinationId": 10,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 2,
+      "destinationId": 11,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 2,
+      "destinationId": 12,
+      "originGapMeters": 163.9,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 3,
+      "destinationId": 1,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 3,
+      "destinationId": 2,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 3,
+      "destinationId": 4,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 3,
+      "destinationId": 5,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 3,
+      "destinationId": 6,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 3,
+      "destinationId": 7,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 3,
+      "destinationId": 8,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 3,
+      "destinationId": 9,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 3,
+      "destinationId": 10,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 3,
+      "destinationId": 11,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 3,
+      "destinationId": 12,
+      "originGapMeters": 4.5,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 4,
+      "destinationId": 1,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 4,
+      "destinationId": 2,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 4,
+      "destinationId": 3,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 4,
+      "destinationId": 5,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 4,
+      "destinationId": 6,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 4,
+      "destinationId": 7,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 4,
+      "destinationId": 8,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 4,
+      "destinationId": 9,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 4,
+      "destinationId": 10,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 4,
+      "destinationId": 11,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 4,
+      "destinationId": 12,
+      "originGapMeters": 34.7,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 5,
+      "destinationId": 1,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 5,
+      "destinationId": 2,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 5,
+      "destinationId": 3,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 5,
+      "destinationId": 4,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 5,
+      "destinationId": 6,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 5,
+      "destinationId": 7,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 5,
+      "destinationId": 8,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 5,
+      "destinationId": 9,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 5,
+      "destinationId": 10,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 5,
+      "destinationId": 11,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 5,
+      "destinationId": 12,
+      "originGapMeters": 63.6,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 6,
+      "destinationId": 1,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 6,
+      "destinationId": 2,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 6,
+      "destinationId": 3,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 6,
+      "destinationId": 4,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 6,
+      "destinationId": 5,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 6,
+      "destinationId": 7,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 6,
+      "destinationId": 8,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 6,
+      "destinationId": 9,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 6,
+      "destinationId": 10,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 6,
+      "destinationId": 11,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 6,
+      "destinationId": 12,
+      "originGapMeters": 39.9,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 7,
+      "destinationId": 1,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 7,
+      "destinationId": 2,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 7,
+      "destinationId": 3,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 7,
+      "destinationId": 4,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 7,
+      "destinationId": 5,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 7,
+      "destinationId": 6,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 7,
+      "destinationId": 8,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 7,
+      "destinationId": 9,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 7,
+      "destinationId": 10,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 7,
+      "destinationId": 11,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 7,
+      "destinationId": 12,
+      "originGapMeters": 140.4,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 8,
+      "destinationId": 1,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 8,
+      "destinationId": 2,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 8,
+      "destinationId": 3,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 8,
+      "destinationId": 4,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 8,
+      "destinationId": 5,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 8,
+      "destinationId": 6,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 8,
+      "destinationId": 7,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 8,
+      "destinationId": 9,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 8,
+      "destinationId": 10,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 8,
+      "destinationId": 11,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 8,
+      "destinationId": 12,
+      "originGapMeters": 240.9,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 9,
+      "destinationId": 1,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 9,
+      "destinationId": 2,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 9,
+      "destinationId": 3,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 9,
+      "destinationId": 4,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 9,
+      "destinationId": 5,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 9,
+      "destinationId": 6,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 9,
+      "destinationId": 7,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 9,
+      "destinationId": 8,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 9,
+      "destinationId": 10,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 9,
+      "destinationId": 11,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 9,
+      "destinationId": 12,
+      "originGapMeters": 51.5,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 10,
+      "destinationId": 1,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 10,
+      "destinationId": 2,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 10,
+      "destinationId": 3,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 10,
+      "destinationId": 4,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 10,
+      "destinationId": 5,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 10,
+      "destinationId": 6,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 10,
+      "destinationId": 7,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 10,
+      "destinationId": 8,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 10,
+      "destinationId": 9,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 10,
+      "destinationId": 11,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 48.9
+    },
+    {
+      "originId": 10,
+      "destinationId": 12,
+      "originGapMeters": 354.8,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 11,
+      "destinationId": 1,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 11,
+      "destinationId": 2,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 11,
+      "destinationId": 3,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 11,
+      "destinationId": 4,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 11,
+      "destinationId": 5,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 11,
+      "destinationId": 6,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 11,
+      "destinationId": 7,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 11,
+      "destinationId": 8,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 11,
+      "destinationId": 9,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 11,
+      "destinationId": 10,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 11,
+      "destinationId": 12,
+      "originGapMeters": 48.9,
+      "destinationGapMeters": 37.3
+    },
+    {
+      "originId": 12,
+      "destinationId": 1,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 153.2
+    },
+    {
+      "originId": 12,
+      "destinationId": 2,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 163.9
+    },
+    {
+      "originId": 12,
+      "destinationId": 3,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 4.5
+    },
+    {
+      "originId": 12,
+      "destinationId": 4,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 34.7
+    },
+    {
+      "originId": 12,
+      "destinationId": 5,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 63.6
+    },
+    {
+      "originId": 12,
+      "destinationId": 6,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 39.9
+    },
+    {
+      "originId": 12,
+      "destinationId": 7,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 140.4
+    },
+    {
+      "originId": 12,
+      "destinationId": 8,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 240.9
+    },
+    {
+      "originId": 12,
+      "destinationId": 9,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 51.5
+    },
+    {
+      "originId": 12,
+      "destinationId": 10,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 354.8
+    },
+    {
+      "originId": 12,
+      "destinationId": 11,
+      "originGapMeters": 37.3,
+      "destinationGapMeters": 48.9
+    }
+  ],
+  "originalData": "../paper/provenance.json",
+  "comparisonControls": "Mismas doce coordenadas, cien rutas iniciales, inicio 6 y B=2000 TL. D/T se sustituyen por ORS; C se conserva. Corridas sin semilla, no experimento causal."
+}

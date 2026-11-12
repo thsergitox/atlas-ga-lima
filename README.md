@@ -1,4 +1,4 @@
-# Atlas GA · Dos casos, un algoritmo
+# Atlas GA · Lima y Estambul
 
 Presentación interactiva en español del algoritmo genético de Şehab y Turan (2024), contrastado con el port Python de Arbues.
 
@@ -6,6 +6,7 @@ Presentación interactiva en español del algoritmo genético de Şehab y Turan 
 
 - [Lima: veinte museos](https://atlas-ga-lima.vercel.app/?caso=lima)
 - [Paper: doce destinos originales de Estambul](https://atlas-ga-lima.vercel.app/?caso=paper)
+- [Estambul ORS: rutas viales y comparación](https://atlas-ga-lima.vercel.app/?caso=istanbul#resultado)
 - [Código completo al final del algoritmo](https://atlas-ga-lima.vercel.app/?caso=lima#codigo)
 
 ## Presentar
@@ -13,6 +14,8 @@ Presentación interactiva en español del algoritmo genético de Şehab y Turan 
 El selector superior cambia el caso sin perder la diapositiva. Actualiza mapa, dataset, fórmulas, cromosomas, presupuesto, moneda y descargas. Trece diapositivas: problema, pipeline, datos, población, fitness, selección, COX, mutación, reemplazo, evolución, resultado, código completo y fuentes.
 
 Flechas: navegar. `F`: pantalla completa. `N`: notas. `Esc`: cerrar notas/índice. En el editor de código, las teclas de navegación desplazan el código.
+
+Cada marcador abre una ficha con reseña, ubicación y fuente. El mapa tiene +/−, encuadre y desplazamiento al arrastrar. Con el mapa enfocado, las flechas desplazan, +/− cambian el zoom y 0 encuadra; esas teclas no cambian de diapositiva. Escape cierra la ficha y devuelve el foco al marcador.
 
 COX permite elegir cortes y ver sus dos hijos. Mutación muestra los intercambios y su matriz de indicadores (20×20 o 12×12); μ=.9 es la demostración de diversificación, mientras la corrida inicia en .1. Evolución reproduce cien generaciones Python guardadas, sin fabricar curvas. El código completo permite copiar/descargar un archivo ejecutable con todas las funciones y el punto de entrada.
 
@@ -56,6 +59,17 @@ uv run --with scipy python python/export_paper.py
 
 Los resultados visibles son de una NUEVA ejecución Python del ciclo equivalente a S6 sobre esos datos originales. No se atribuyen a los resultados numéricos de la tabla 7 del artículo. Los controles y las comparaciones respetan el mismo caso.
 
+## Estambul con openrouteservice
+
+```sh
+python3 python/fetch_routes.py --case istanbul --snap-radius 1000
+python3 python/run_istanbul.py
+```
+
+Son 132 pares dirigidos de las mismas doce coordenadas. Se conservan las cien rutas iniciales, inicio 6, B=2000 TL y C histórica; solo se sustituyen D/T. El destino 10 no tenía vía accesible dentro del radio predeterminado de 350 m: se amplió a 1000 m sin mover su coordenada. La máxima separación real es 354,8 m, publicada en la procedencia y visible en la ficha. Esos accesos peatonales no se cuentan en D/T.
+
+En Resultado → Paper vs ORS, las dos mejores rutas guardadas se evalúan bajo las MISMAS matrices ORS y C histórica. La ruta histórica resulta en 83,3387 km / 111,9383 min; la nueva, 81,9766 km / 108,5133 min estimados. No se comparan fitness con normalizadores distintos ni se interpreta una sola corrida como prueba causal de superioridad. Los proveedores y fechas difieren, los costos son históricos y no se incorporan tráfico, visitas, entradas ni horarios. El caso Paper permanece intacto.
+
 ## Código completo, ejecutable sin instalaciones
 
 Descargar `algorithm.py` y el `experiment.json` del caso elegido. Después:
@@ -64,7 +78,7 @@ Descargar `algorithm.py` y el `experiment.json` del caso elegido. Después:
 python3 algorithm.py experiment.json
 ```
 
-Ejecuta cien generaciones con sus matrices y población inicial guardadas, sin SciPy. No fija semilla. La traza distribuida permite repetir la exposición; volver a ejecutar puede cambiar los resultados. `python/evolution.py` y `operators.py` son compartidos por ambos casos.
+Ejecuta cien generaciones con sus matrices y población inicial guardadas, sin SciPy. No fija semilla. La traza distribuida permite repetir la exposición; volver a ejecutar puede cambiar los resultados. `python/evolution.py` y `operators.py` son compartidos por los tres casos.
 
 ## Fuentes y verificación
 

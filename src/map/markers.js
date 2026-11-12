@@ -12,7 +12,7 @@ export function createMarkers(museums, points, host, start) {
   const elements = museums.map((museum, i) => {
     const leader = node('path', { class: 'marker-leader' });
     const location = node('circle', { class: 'museum-location', cx: points[i][0], cy: points[i][1] });
-    const marker = node('g', { class: 'museum-marker', tabindex: '0', role: 'button', 'aria-label': `${museum.id}. ${museum.name}`, 'data-id': museum.id, 'data-start': museum.id === start });
+    const marker = node('g', { class: 'museum-marker', tabindex: '0', role: 'button', 'aria-label': `${museum.id}. ${museum.name}`, 'aria-controls': 'museum-card', 'aria-expanded': 'false', 'data-id': museum.id, 'data-start': museum.id === start });
     const title = node('title'); title.textContent = `${museum.id}. ${museum.name}`;
     const circle = node('circle');
     const text = node('text', { 'text-anchor': 'middle', dy: '.35em' }); text.textContent = museum.id;

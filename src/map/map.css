@@ -17,8 +17,6 @@
 .district-labels .ocean-label{font:400 26px Bricolage,serif;fill:#6d8baa;letter-spacing:.01em}
 .compass{stroke:#526579;fill:none;stroke-width:2}
 .compass text{stroke:none;fill:#526579;font:600 19px Source,sans-serif}
-.map-tooltip{position:absolute;top:57px;left:25px;right:25px;background:var(--white);padding:12px 16px;border-radius:8px;font-size:14px;z-index:5;box-shadow:0 5px 18px #172c431a}
-.map-tooltip span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
 .basemap{filter:saturate(.15);opacity:.5}
 .marker-leader{stroke:#526579;stroke-width:1.5;fill:none}
 

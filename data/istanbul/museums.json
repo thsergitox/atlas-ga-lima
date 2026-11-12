@@ -1,0 +1,113 @@
+{
+  "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat",
+  "places": [
+    {
+      "id": 1,
+      "name": "Dolmabahçe Palace",
+      "short": "Dolmabahçe Palace",
+      "district": "Estambul",
+      "lon": 29.0004594,
+      "lat": 41.03919665,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 2,
+      "name": "Destino 2 del dataset",
+      "short": "Destino 2",
+      "district": "Estambul",
+      "lon": 29.01273464,
+      "lat": 41.05047653,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 3,
+      "name": "Destino 3 del dataset",
+      "short": "Destino 3",
+      "district": "Estambul",
+      "lon": 29.21133689,
+      "lat": 41.10986741,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 4,
+      "name": "Destino 4 del dataset",
+      "short": "Destino 4",
+      "district": "Estambul",
+      "lon": 28.94922233,
+      "lat": 41.05898967,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 5,
+      "name": "Destino 5 del dataset",
+      "short": "Destino 5",
+      "district": "Estambul",
+      "lon": 28.97982842,
+      "lat": 41.03464114,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 6,
+      "name": "Pelit Chocolate Museum",
+      "short": "Pelit Chocolate Museum",
+      "district": "Estambul",
+      "lon": 28.66369354,
+      "lat": 41.05901735,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 7,
+      "name": "Destino 7 del dataset",
+      "short": "Destino 7",
+      "district": "Estambul",
+      "lon": 28.98025,
+      "lat": 41.008872,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 8,
+      "name": "Destino 8 del dataset",
+      "short": "Destino 8",
+      "district": "Estambul",
+      "lon": 28.97968467,
+      "lat": 41.01383117,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 9,
+      "name": "Destino 9 del dataset",
+      "short": "Destino 9",
+      "district": "Estambul",
+      "lon": 28.97927883,
+      "lat": 41.00965006,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 10,
+      "name": "Destino 10 del dataset",
+      "short": "Destino 10",
+      "district": "Estambul",
+      "lon": 28.98338061,
+      "lat": 41.01152287,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 11,
+      "name": "Destino 11 del dataset",
+      "short": "Destino 11",
+      "district": "Estambul",
+      "lon": 28.97784512,
+      "lat": 41.00835949,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    },
+    {
+      "id": 12,
+      "name": "Destino 12 del dataset",
+      "short": "Destino 12",
+      "district": "Estambul",
+      "lon": 28.92017642,
+      "lat": 41.01819623,
+      "source": "https://github.com/Arbues/ga-itinerary-planning-pc3/blob/e84ed98c8ecd65bf269da847ee26147f1f282d70/Turism_Istanbul/Places.mat"
+    }
+  ]
+}
